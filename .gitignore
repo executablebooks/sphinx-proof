@@ -1,0 +1,6 @@
+docs/build/
+__pycache__
+*.egg-info/
+*.pyc
+.DS_Store
+.vscode/
