@@ -1,0 +1,127 @@
+/*********************************************
+* Variables *
+*********************************************/
+:root {
+  --note-title-color: rgba(68,138,255,.1);
+  --note-border-color: #007bff;
+  --warning-title-color: rgba(220,53,69,.1);
+  --warning-border-color: #dc3545;
+  --hint-title-color: rgba(255,193,7,.2);
+  --hint-border-color: #ffc107;
+  --caution-title-color: rgba(253,126,20,.1);
+  --caution-border-color: #fd7e14;
+  --grey-title-color: rgba(204,204,204,.2);
+  --grey-border-color: #ccc;
+}
+
+/*********************************************
+* Main body *
+*********************************************/
+div#proof p{
+	padding: .4rem .6rem .4rem 1rem;
+}
+
+p.proof-title {
+    margin: 0 -0.6rem !important;
+    font-weight: 700;
+}
+
+/*********************************************
+* Proof *
+*********************************************/
+div.proof {
+	border-left: .2rem solid var(--warning-border-color);
+	background-color: var(--warning-title-color);
+}
+
+div.proof p {
+	margin-top: .6rem;
+}
+
+/*********************************************
+* Theorem *
+*********************************************/
+div.theorem {
+	border-left: .2rem solid var(--note-border-color);
+	background-color: var(--note-title-color);
+}
+
+p.theorem-title {
+	background-color: var(--note-title-color);
+}
+
+/*********************************************
+* Lemma *
+*********************************************/
+div.lemma {
+	border-left: .2rem solid var(--hint-border-color);
+	background-color: var(--hint-title-color);
+}
+
+p.lemma-title {
+	background-color: var(--hint-title-color);
+}
+
+/*********************************************
+* Definition *
+*********************************************/
+div.definition {
+	border-left: .2rem solid var(--note-border-color);
+	background-color: var(--note-title-color);
+}
+
+p.definition-title {
+	background-color: var(--note-title-color);
+}
+
+/*********************************************
+* Remark *
+*********************************************/
+div.remark {
+	border-left: .2rem solid var(--warning-border-color);
+	background-color: var(--warning-title-color);
+}
+
+p.remark-title {
+	background-color: var(--warning-title-color);
+}
+
+/*********************************************
+* Conjecture *
+*********************************************/
+div.conjecture {
+	border-left: .2rem solid var(--hint-border-color);
+	background-color: var(--hint-title-color);
+}
+
+p.conjecture-title {
+	background-color: var(--hint-title-color);
+}
+
+/*********************************************
+* Corollary *
+*********************************************/
+div.corollary {
+	border-left: .2rem solid var(--caution-border-color);
+	background-color: var(--caution-title-color);
+}
+
+p.corollary-title {
+	background-color: var(--caution-title-color);
+}
+
+/*********************************************
+* Algorithm *
+*********************************************/
+div.algorithm {
+	border-left: .2rem solid var(--grey-border-color);
+	background-color: var(--grey-title-color);
+}
+
+div.algorithm p {
+	margin: 0 -0.6rem !important;
+}
+
+p.algorithm-title {
+	background-color: var(--grey-title-color);
+}
