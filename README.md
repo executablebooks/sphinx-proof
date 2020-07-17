@@ -1,8 +1,6 @@
-# sphinxcontrib-proof
+# sphinxcontrib-pretty-proof
 
-A Sphinx extension for producing ...
-
-<!-- [![Documentation Status](https://readthedocs.org/projects/sphinxcontrib-rst2myst/badge/?version=latest)](https://sphinxcontrib-rst2myst.readthedocs.io/en/latest/?badge=latest) -->
+A Sphinx extension for producing proofs, theorems, lemmas, definitions, remarks, corollaries, conjectures and algorithms.
 
 ## Installation
 
@@ -12,7 +10,7 @@ A Sphinx extension for producing ...
 python setup.py install
 ```
 
-**Step 2:** Add `sphinxcontrib.proof` to your sphinx `extensions` in the `conf.py`
+**Step 2:** Add `sphinxcontrib.pretty_proof` to your sphinx `extensions` in the `conf.py`
 
 **Step 3:** then you can build using `make html`
 
