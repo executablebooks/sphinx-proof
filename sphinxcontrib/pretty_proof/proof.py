@@ -1,5 +1,5 @@
 """
-sphinxcontrib.proof.proof
+sphinxcontrib.pretty_proof.proof
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 A Proof Sphinx Domain
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
@@ -33,10 +33,76 @@ def depart_proof_node(self, node):
     pass
 
 
-class ProofDirective(Directive):
-    """A custom proof directive."""
+class TitledDirective(Directive):
+    """A custom directive which includes a title"""
 
-    name = "proof"
+    name = ""
+    has_content = True
+    required_arguments = 0
+    optional_arguments = 1
+    final_argument_whitespace = True
+    option_spec = {
+        "label": directives.unchanged_required,
+        "class": directives.class_option,
+        "nonumber": directives.flag,
+    }
+
+    def run(self):
+
+        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
+        env = self.state.document.settings.env
+
+        ids, classes = [domain_name], [typ]
+        class_name = self.options.get("class")
+        # If class in options add to class array
+        if class_name:
+            classes.extend(class_name)
+
+        # If label in options
+        label = self.options.get("label")
+        if label:
+            section_id = nodes.make_id(typ + "-" + label)
+            ids.append(section_id)
+        else:
+            label = "{}-{}".format(env.docname, env.new_serialno())
+            self.options["noindex"] = True
+
+        # If label, add element
+        if "noindex" not in self.options:
+            domain = env.get_domain(domain_name)
+            domain.add_element(typ, label)
+
+        # If nonumber, add number
+        if "nonumber" not in self.options:
+            domain = env.get_domain(domain_name)
+            domain.add_number(typ, label)
+            number = domain.data["obj_options"]["{}-{}".format(typ, label)]
+
+        section = nodes.admonition(ids=ids, classes=classes)
+
+        title = '{} '.format(typ.title())
+
+        if "nonumber" not in self.options:
+            title += "{} ".format(number)
+
+        if self.arguments != []:
+            title += " (" + self.arguments[0]
+            title += ")"
+
+        section += nodes.paragraph(
+            text=title, classes=[typ + "-title", domain_name + "-title"]
+        )
+        self.state.nested_parse(self.content, self.content_offset, section)
+
+        node = proof_node()
+        node += section
+
+        return [node]
+
+class UntitledDirective(Directive):
+    """A custom directive which does not include a title"""
+
+    name = ""
     has_content = True
     required_arguments = 0
     optional_arguments = 1
@@ -66,474 +132,69 @@ class ProofDirective(Directive):
             content.append(self.arguments[0], 0)
             self.content.insert(0, content)
 
-        self.content[0] = "Proof. " + self.content[0]
+        self.content[0] = '{}. '.format(typ.title()) + self.content[0]
         self.state.nested_parse(self.content, self.content_offset, emph)
 
         node = proof_node()
         section += emph
         node += section
 
-        # Todo: add QED
         return [node]
 
 
-class TheoremDirective(Directive):
+class ProofDirective(UntitledDirective):
+    """A custom proof directive."""
+    name = "proof"
+
+
+class TheoremDirective(TitledDirective):
     """A custom theorem directive."""
-
     name = "theorem"
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 1
-    final_argument_whitespace = True
-    option_spec = {
-        "label": directives.unchanged_required,
-        "class": directives.class_option,
-        "nonumber": directives.flag,
-    }
-
-    def run(self):
-
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
-        env = self.state.document.settings.env
-
-        ids, classes = [domain_name], [typ]
-        class_name = self.options.get("class")
-        # If class in options add to class array
-        if class_name:
-            classes.extend(class_name)
-
-        # If label in options
-        label = self.options.get("label")
-        if label:
-            section_id = nodes.make_id(typ + "-" + label)
-            ids.append(section_id)
-        else:
-            label = "{}-{}".format(env.docname, env.new_serialno())
-            self.options["noindex"] = True
-
-        # If label, add element
-        if "noindex" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_element(typ, label)
-
-        # If nonumber, add number
-        if "nonumber" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_number(typ, label)
-            number = domain.data["obj_options"]["{}-{}".format(typ, label)]
-
-        section = nodes.admonition(ids=ids, classes=classes)
-
-        title = "Theorem "
-
-        if "nonumber" not in self.options:
-            title += "{} ".format(number)
-
-        if self.arguments != []:
-            title += " (" + self.arguments[0]
-            title += ")"
-
-        section += nodes.paragraph(
-            text=title, classes=[typ + "-title", domain_name + "-title"]
-        )
-        self.state.nested_parse(self.content, self.content_offset, section)
-
-        node = proof_node()
-        node += section
-
-        return [node]
 
 
-class LemmaDirective(Directive):
+class LemmaDirective(TitledDirective):
     """A custom lemma directive."""
-
     name = "lemma"
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 1
-    final_argument_whitespace = True
-    option_spec = {
-        "label": directives.unchanged_required,
-        "class": directives.class_option,
-        "nonumber": directives.flag,
-    }
-
-    def run(self):
-
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
-        env = self.state.document.settings.env
-        content = ViewList()
-
-        ids, classes = [domain_name], [typ]
-        class_name = self.options.get("class")
-        # If class in options add to class array
-        if class_name:
-            classes.extend(class_name)
-
-        # If label in options
-        label = self.options.get("label")
-        if label:
-            section_id = nodes.make_id(typ + "-" + label)
-            ids.append(section_id)
-        else:
-            label = "{}-{}".format(env.docname, env.new_serialno())
-            self.options["noindex"] = True
-
-        # If label, add element
-        if "noindex" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_element(typ, label)
-
-        # If nonumber, add number
-        if "nonumber" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_number(typ, label)
-            number = domain.data["obj_options"]["{}-{}".format(typ, label)]
-
-        section = nodes.admonition(ids=ids, classes=classes)
-
-        title = "Lemma "
-        if "nonumber" not in self.options:
-            title += "{} ".format(number)
-
-        section += nodes.paragraph(
-            text=title, classes=[typ + "-title", domain_name + "-title"]
-        )
-
-        if self.arguments != []:
-            content.append(self.arguments[0], 0)
-            self.content.insert(0, content)
-
-        self.state.nested_parse(self.content, self.content_offset, section)
-
-        node = proof_node()
-        node += section
-        return [node]
 
 
-class DefinitionDirective(Directive):
+class DefinitionDirective(TitledDirective):
     """A custom definition directive."""
-
     name = "definition"
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 1
-    final_argument_whitespace = True
-    option_spec = {
-        "label": directives.unchanged_required,
-        "class": directives.class_option,
-        "nonumber": directives.flag,
-    }
-
-    def run(self):
-
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
-        env = self.state.document.settings.env
-
-        ids, classes = [domain_name], [typ]
-        class_name = self.options.get("class")
-        # If class in options add to class array
-        if class_name:
-            classes.extend(class_name)
-
-        # If label in options
-        label = self.options.get("label")
-        if label:
-            section_id = nodes.make_id(typ + "-" + label)
-            ids.append(section_id)
-        else:
-            label = "{}-{}".format(env.docname, env.new_serialno())
-            self.options["noindex"] = True
-
-        # If label, add element
-        if "noindex" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_element(typ, label)
-
-        # If nonumber, add number
-        if "nonumber" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_number(typ, label)
-            number = domain.data["obj_options"]["{}-{}".format(typ, label)]
-
-        section = nodes.admonition(ids=ids, classes=classes)
-
-        title = "Definition "
-        if "nonumber" not in self.options:
-            title += "{} ".format(number)
-
-        if self.arguments != []:
-            title += " (" + self.arguments[0]
-            title += ")"
-
-        section += nodes.paragraph(
-            text=title, classes=[typ + "-title", domain_name + "-title"]
-        )
-        self.state.nested_parse(self.content, self.content_offset, section)
-
-        node = proof_node()
-        node += section
-        return [node]
 
 
-class RemarkDirective(Directive):
+class RemarkDirective(TitledDirective):
     """A custom remark directive."""
-
     name = "remark"
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 1
-    final_argument_whitespace = True
-    option_spec = {
-        "label": directives.unchanged_required,
-        "class": directives.class_option,
-        "nonumber": directives.flag,
-    }
-
-    def run(self):
-
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
-        env = self.state.document.settings.env
-
-        ids, classes = [domain_name], [typ]
-        class_name = self.options.get("class")
-        # If class in options add to class array
-        if class_name:
-            classes.extend(class_name)
-
-        # If label in options
-        label = self.options.get("label")
-        if label:
-            section_id = nodes.make_id(typ + "-" + label)
-            ids.append(section_id)
-        else:
-            label = "{}-{}".format(env.docname, env.new_serialno())
-            self.options["noindex"] = True
-
-        # If label, add element
-        if "noindex" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_element(typ, label)
-
-        # If nonumber, add number
-        if "nonumber" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_number(typ, label)
-            number = domain.data["obj_options"]["{}-{}".format(typ, label)]
-
-        section = nodes.admonition(ids=ids, classes=classes)
-
-        title = "Remark "
-        if "nonumber" not in self.options:
-            title += "{} ".format(number)
-
-        if self.arguments != []:
-            title += " (" + self.arguments[0]
-            title += ")"
-
-        section += nodes.paragraph(
-            text=title, classes=[typ + "-title", domain_name + "-title"]
-        )
-        self.state.nested_parse(self.content, self.content_offset, section)
-
-        node = proof_node()
-        node += section
-        return [node]
 
 
-class ConjectureDirective(Directive):
+class ConjectureDirective(TitledDirective):
     """A custom conjecture directive."""
-
     name = "conjecture"
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 1
-    final_argument_whitespace = True
-    option_spec = {
-        "label": directives.unchanged_required,
-        "class": directives.class_option,
-        "nonumber": directives.flag,
-    }
-
-    def run(self):
-
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
-        env = self.state.document.settings.env
-
-        ids, classes = [domain_name], [typ]
-        class_name = self.options.get("class")
-        # If class in options add to class array
-        if class_name:
-            classes.extend(class_name)
-
-        # If label in options
-        label = self.options.get("label")
-        if label:
-            section_id = nodes.make_id(typ + "-" + label)
-            ids.append(section_id)
-        else:
-            label = "{}-{}".format(env.docname, env.new_serialno())
-            self.options["noindex"] = True
-
-        # If label, add element
-        if "noindex" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_element(typ, label)
-
-        # If nonumber, add number
-        if "nonumber" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_number(typ, label)
-            number = domain.data["obj_options"]["{}-{}".format(typ, label)]
-
-        section = nodes.admonition(ids=ids, classes=classes)
-
-        title = "Conjecture "
-        if "nonumber" not in self.options:
-            title += "{} ".format(number)
-
-        if self.arguments != []:
-            title += " (" + self.arguments[0]
-            title += ")"
-
-        section += nodes.paragraph(
-            text=title, classes=[typ + "-title", domain_name + "-title"]
-        )
-        self.state.nested_parse(self.content, self.content_offset, section)
-
-        node = proof_node()
-        node += section
-        return [node]
 
 
-class CorollaryDirective(Directive):
+class CorollaryDirective(TitledDirective):
     """A custom corollary directive."""
-
     name = "corollary"
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 1
-    final_argument_whitespace = True
-    option_spec = {
-        "label": directives.unchanged_required,
-        "class": directives.class_option,
-        "nonumber": directives.flag,
-    }
-
-    def run(self):
-
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
-        env = self.state.document.settings.env
-
-        ids, classes = [domain_name], [typ]
-        class_name = self.options.get("class")
-        # If class in options add to class array
-        if class_name:
-            classes.extend(class_name)
-
-        # If label in options
-        label = self.options.get("label")
-        if label:
-            section_id = nodes.make_id(typ + "-" + label)
-            ids.append(section_id)
-        else:
-            label = "{}-{}".format(env.docname, env.new_serialno())
-            self.options["noindex"] = True
-
-        # If label, add element
-        if "noindex" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_element(typ, label)
-
-        # If nonumber, add number
-        if "nonumber" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_number(typ, label)
-            number = domain.data["obj_options"]["{}-{}".format(typ, label)]
-
-        section = nodes.admonition(ids=ids, classes=classes)
-
-        title = "Corollary "
-        if "nonumber" not in self.options:
-            title += "{} ".format(number)
-
-        if self.arguments != []:
-            title += " (" + self.arguments[0]
-            title += ")"
-
-        section += nodes.paragraph(
-            text=title, classes=[typ + "-title", domain_name + "-title"]
-        )
-        self.state.nested_parse(self.content, self.content_offset, section)
-
-        node = proof_node()
-        node += section
-        return [node]
 
 
-class AlgorithmDirective(Directive):
+class AlgorithmDirective(TitledDirective):
     """A custom algorithm directive."""
-
     name = "algorithm"
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 1
-    final_argument_whitespace = True
-    option_spec = {
-        "label": directives.unchanged_required,
-        "class": directives.class_option,
-        "nonumber": directives.flag,
-    }
 
-    def run(self):
 
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
-        env = self.state.document.settings.env
+class CriteriaDirective(TitledDirective):
+    """A custom criteria directive."""
+    name = "criteria"
 
-        ids, classes = [domain_name], [typ]
-        class_name = self.options.get("class")
-        # If class in options add to class array
-        if class_name:
-            classes.extend(class_name)
 
-        # If label in options
-        label = self.options.get("label")
-        if label:
-            section_id = nodes.make_id(typ + "-" + label)
-            ids.append(section_id)
-        else:
-            label = "{}-{}".format(env.docname, env.new_serialno())
-            self.options["noindex"] = True
+class AxiomDirective(TitledDirective):
+    """A custom axiom directive."""
+    name = "axiom"
 
-        # If label, add element
-        if "noindex" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_element(typ, label)
 
-        # If nonumber, add number
-        if "nonumber" not in self.options:
-            domain = env.get_domain(domain_name)
-            domain.add_number(typ, label)
-            number = domain.data["obj_options"]["{}-{}".format(typ, label)]
-
-        section = nodes.admonition(ids=ids, classes=classes)
-
-        title = "Algorithm "
-        if "nonumber" not in self.options:
-            title += "{} ".format(number)
-
-        if self.arguments != []:
-            title += " (" + self.arguments[0]
-            title += ")"
-
-        section += nodes.paragraph(
-            text=title, classes=[typ + "-title", domain_name + "-title"]
-        )
-        self.state.nested_parse(self.content, self.content_offset, section)
-
-        node = proof_node()
-        node += section
-        return [node]
+class ExerciseDirective(TitledDirective):
+    """A custom exercise directive."""
+    name = "exercise"
 
 
 class ProofIndex(Index):
@@ -573,6 +234,7 @@ class ProofDomain(Domain):
 
     directives = {
         "proof": ProofDirective,
+        "axiom": AxiomDirective,
         "theorem": TheoremDirective,
         "lemma": LemmaDirective,
         "definition": DefinitionDirective,
@@ -580,6 +242,8 @@ class ProofDomain(Domain):
         "conjecture": ConjectureDirective,
         "corollary": CorollaryDirective,
         "algorithm": AlgorithmDirective,
+        "criteria": CriteriaDirective,
+        "exercise": ExerciseDirective,
     }
 
     indices = {ProofIndex}
