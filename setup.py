@@ -15,32 +15,50 @@ This project is maintained and supported by `najuzilu <https://github.com/najuzi
 requires = ["Sphinx>=0.6"]
 
 setup(
-    name="sphinxcontrib-theorem",
+    name="sphinxcontrib-pretty-proof",
     version=VERSION,
+    python_requires=">=3.6",
+    author="QuantEcon",
+    author_email="admin@quantecon.org",
     url="https://github.com/najuzilu/sphinxcontrib-pretty-proof",
     download_url="https://github.com/najuzilu/sphinxcontrib-pretty-proof/archive/{}.tar.gz".format(
         VERSION
     ),
-    license="BSD",
-    author="QuantEcon",
-    author_email="admin@quantecon.org",
-    description='A Sphinx extension for producing proofs, theorems, lemmas, definitions, remarks, corollaries, conjectures and algorithms.',
-    long_description=LONG_DESCRIPTION,
-    zip_safe=False,
-    classifiers=[
-        "Development Status :: 4 - Beta",
-        "Framework :: Sphinx",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3",
-        "Framework :: Sphinx :: Extension",
-    ],
-    platforms="any",
-    packages=find_packages(),
-    include_package_data=True,
-    install_requires=["docutils", "sphinx", "sphinx-book-theme"],
-    extras_require={
-        # "code_style": ["flake8<3.8.0,>=3.7.0", "black", "pre-commit==1.17.0"],
-        "testing": ["coverage", "pytest>=3.6,<4", "pytest-cov", "pytest-regressions",],
+    project_urls={
+        "Documentation": "",
+        "Source": "",
+        "Tracker": "",
     },
+    description="A Sphinx extension for producing proofs, theorems, lemmas, definitions, remarks, corollaries, conjectures and algorithms.",
+    # long_description=open("./README.md", "r").read(),
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
+    license="BSD",
+    packages=find_packages(),
+    install_requires=[
+        "docutils>=0.15",
+        "sphinx",
+        "sphinx-book-theme"
+    ],
+    extras_require={
+        "code_style": [
+            "flake8<3.8.0,>=3.7.0",
+            "black",
+            "pre-commit==1.17.0"
+        ],
+        "testing": [
+            "coverage",
+            "pytest>=3.6,<4",
+            "pytest-cov",
+            "pytest-regressions",
+        ],
+    },
+    entry_points={"sphinxcontrib.pretty_proof": ["sphinxcontrib_pretty_proof = sphinxcontrib_pretty_proof"]},
+    package_data={
+        "sphinxcontrib_pretty_proof": [
+            "_static/*"
+        ]
+    },
+    include_package_data=True,
     namespace_packages=["sphinxcontrib"],
 )
