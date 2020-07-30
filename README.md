@@ -1,16 +1,30 @@
 # sphinxcontrib-pretty-proof
 
-A Sphinx extension for producing proofs, theorems, lemmas, definitions, remarks, corollaries, conjectures and algorithms.
+[![Documentation Status](https://readthedocs.org/projects/sphinxcontrib-pretty-proof/badge/?version=latest)](https://sphinxcontrib-pretty-proof.readthedocs.io/en/latest/?badge=latest)
 
-## Installation
+**A proof extension for Sphinx**.
 
-**Step 1:** To install the extension you need to clone the repository then run:
+This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
+for producing proof, theorem, axiom, lemma, definition, criteria, remark, conjecture, corollary, algorithm and exercise directives.
 
-```bash
-python setup.py install
+
+## Get started
+
+To get started with `sphinxcontrib-pretty-proof`, first install it through `pip`:
+
+```
+pip install sphinxcontrib-pretty-proof
 ```
 
-**Step 2:** Add `sphinxcontrib.pretty_proof` to your sphinx `extensions` in the `conf.py`
+then, add `sphinxcontrib.pretty_proof` to your sphinx `extensions` in the `conf.py`
 
-**Step 3:** then you can build using `make html`
+```python
+...
+extensions = ["sphinxcontrib.pretty_proof"]
+...
+```
 
+
+## Documentation
+
+See the [Sphinxcontrib Pretty Proof documentation](https://sphinxcontrib-pretty-proof.readthedocs.io/en/latest/) for more information.
