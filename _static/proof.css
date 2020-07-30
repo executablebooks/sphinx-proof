@@ -51,6 +51,42 @@ p.theorem-title {
 }
 
 /*********************************************
+* Axiom *
+*********************************************/
+div.axiom {
+	border-left: .2rem solid var(--hint-border-color);
+	background-color: var(--hint-title-color);
+}
+
+p.axiom-title {
+	background-color: var(--hint-title-color);
+}
+
+/*********************************************
+* Criteria *
+*********************************************/
+div.criteria {
+	border-left: .2rem solid var(--caution-border-color);
+	background-color: var(--caution-title-color);
+}
+
+p.criteria-title {
+	background-color: var(--caution-title-color);
+}
+
+/*********************************************
+* Exercise *
+*********************************************/
+div.exercise {
+	border-left: .2rem solid var(--note-border-color);
+	background-color: var(--note-title-color);
+}
+
+p.exercise-title {
+	background-color: var(--note-title-color);
+}
+
+/*********************************************
 * Lemma *
 *********************************************/
 div.lemma {
