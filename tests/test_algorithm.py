@@ -1,11 +1,11 @@
 from pathlib import Path
 from subprocess import run, PIPE
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 import pytest
 import os
 
 path_tests = Path(__file__).parent.resolve()
-path_book = path_tests.joinpath("book")
+path_book = path_tests.joinpath("books", "mybook")
 path_html = path_book.joinpath("build", "html")
 path_algo = path_html.joinpath("algorithm")
 
@@ -24,19 +24,49 @@ def test_build(tmpdir):
 	assert path_book.joinpath("build").exists()
 	assert path_html.joinpath("index.html").exists()
 	assert path_algo.exists()
-	assert path_algo.joinpath("content_rst.html").exists()
+
 
 @pytest.mark.usefixtures("file_regression")
 def test_algorithm(tmpdir, file_regression):
 	"""Test algorithm directive markup."""
 
+	# assert each file exists in build
 	algo_list = [
-		"_algo_options.html",
-		"_algo_nonumber.html",
+		"_algo_labeled_titled_with_classname.rst",
+		"_algo_nonumber.rst",
 	]
 
-	# for ialgo in algo_list:
-	# 	soup = bs(path_algo.joinpath("content_rst.html").read_text(encoding="utf8"), "html.parser")
-	# 	algo = soup.find_all("div", class_="algorithm")[0]
+	for idir in algo_list:
+		fname = idir.split(".")[0]+'.html'
+		path_algo_directive = path_algo.joinpath(fname)
+		assert path_algo_directive.exists()
 
-	# 	file_regression.check(str(algo), basename=ialgo.split(".")[0], extension=".html")
+		# get content markup
+		soup = BeautifulSoup(
+			path_algo_directive.read_text(encoding="utf8"), "html.parser"
+		)
+
+		algo = soup.select("div.algorithm")[0]
+		file_regression.check(str(algo), basename=idir.split(".")[0], extension=".html")
+
+
+def test_reference(tmpdir, file_regression):
+	"""Test algorithm ref role markup."""
+
+	algo_list = [
+		"_algo_numbered_reference.rst",
+		"_algo_text_reference.rst",
+	]
+
+	for idir in algo_list:
+		fname = idir.split(".")[0]+'.html'
+		path_algo_directive = path_algo.joinpath(fname)
+		assert path_algo_directive.exists()
+
+		# get content markup
+		soup = BeautifulSoup(
+			path_algo_directive.read_text(encoding="utf8"), "html.parser"
+		)
+
+		algo = soup.select("p")[0]
+		file_regression.check(str(algo), basename=idir.split(".")[0], extension=".html")

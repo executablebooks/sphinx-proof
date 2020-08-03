@@ -4,7 +4,7 @@ import pytest
 import os
 
 path_tests = Path(__file__).parent.resolve()
-path_book = path_tests.joinpath("book")
+path_book = path_tests.joinpath("books", "mybook")
 path_root = path_tests.parent
 
 def test_build_book(tmpdir):
@@ -23,12 +23,4 @@ def test_build_book(tmpdir):
 	assert path_book.joinpath("build").exists()
 	assert path_html.joinpath("index.html").exists()
 	assert path_html.joinpath("algorithm").exists()
-	assert path_html.joinpath("axiom").exists()
-	assert path_html.joinpath("conjecture").exists()
-	assert path_html.joinpath("corollary").exists()
-	assert path_html.joinpath("criteria").exists()
-	assert path_html.joinpath("definition").exists()
-	assert path_html.joinpath("exercise").exists()
-	assert path_html.joinpath("lemma").exists()
-	assert path_html.joinpath("proof").exists()
-	assert path_html.joinpath("theorem").exists()
+	# assert path_html.joinpath("proof").exists()
