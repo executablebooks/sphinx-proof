@@ -17,25 +17,26 @@
 /*********************************************
 * Main body *
 *********************************************/
-div#proof p{
-	padding: .4rem .6rem .4rem 1rem;
+div.proof {
+	padding-left: 0rem !important;
+	padding-right: 0rem !important;
 }
 
-p.proof-title {
-    margin: 0 -0.6rem !important;
-    font-weight: 700;
+div.proof-title, div#proof-content {
+	padding: .6rem .8rem;
+}
+
+div.proof-title {
+	font-weight: 900;
 }
 
 /*********************************************
 * Proof *
 *********************************************/
-div.proof {
+div#proof{
+	padding: .6rem .8rem !important;
 	border-left: .2rem solid var(--warning-border-color);
 	background-color: var(--warning-title-color);
-}
-
-div.proof p {
-	margin-top: .6rem;
 }
 
 /*********************************************
@@ -46,7 +47,7 @@ div.theorem {
 	background-color: var(--note-title-color);
 }
 
-p.theorem-title {
+div.theorem-title {
 	background-color: var(--note-title-color);
 }
 
@@ -58,7 +59,7 @@ div.axiom {
 	background-color: var(--hint-title-color);
 }
 
-p.axiom-title {
+div.axiom-title {
 	background-color: var(--hint-title-color);
 }
 
@@ -70,7 +71,7 @@ div.criteria {
 	background-color: var(--caution-title-color);
 }
 
-p.criteria-title {
+div.criteria-title {
 	background-color: var(--caution-title-color);
 }
 
@@ -82,7 +83,7 @@ div.exercise {
 	background-color: var(--note-title-color);
 }
 
-p.exercise-title {
+div.exercise-title {
 	background-color: var(--note-title-color);
 }
 
@@ -94,7 +95,7 @@ div.lemma {
 	background-color: var(--hint-title-color);
 }
 
-p.lemma-title {
+div.lemma-title {
 	background-color: var(--hint-title-color);
 }
 
@@ -106,7 +107,7 @@ div.definition {
 	background-color: var(--note-title-color);
 }
 
-p.definition-title {
+div.definition-title {
 	background-color: var(--note-title-color);
 }
 
@@ -118,7 +119,7 @@ div.remark {
 	background-color: var(--warning-title-color);
 }
 
-p.remark-title {
+div.remark-title {
 	background-color: var(--warning-title-color);
 }
 
@@ -130,7 +131,7 @@ div.conjecture {
 	background-color: var(--hint-title-color);
 }
 
-p.conjecture-title {
+div.conjecture-title {
 	background-color: var(--hint-title-color);
 }
 
@@ -142,7 +143,7 @@ div.corollary {
 	background-color: var(--caution-title-color);
 }
 
-p.corollary-title {
+div.corollary-title {
 	background-color: var(--caution-title-color);
 }
 
@@ -154,10 +155,6 @@ div.algorithm {
 	background-color: var(--grey-title-color);
 }
 
-div.algorithm p {
-	margin: 0 -0.6rem !important;
-}
-
-p.algorithm-title {
+div.algorithm-title {
 	background-color: var(--grey-title-color);
 }
