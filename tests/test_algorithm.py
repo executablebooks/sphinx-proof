@@ -26,7 +26,6 @@ def test_build(tmpdir):
 	assert path_algo.exists()
 
 
-@pytest.mark.usefixtures("file_regression")
 def test_algorithm(tmpdir, file_regression):
 	"""Test algorithm directive markup."""
 

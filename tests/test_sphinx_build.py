@@ -23,4 +23,4 @@ def test_build_book(tmpdir):
 	assert path_book.joinpath("build").exists()
 	assert path_html.joinpath("index.html").exists()
 	assert path_html.joinpath("algorithm").exists()
-	# assert path_html.joinpath("proof").exists()
+	assert path_html.joinpath("proof").exists()
