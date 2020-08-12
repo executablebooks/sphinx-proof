@@ -8,6 +8,7 @@ A Proof Sphinx Domain
 
 from docutils import nodes
 from docutils.parsers.rst import directives
+from sphinx.util.docutils import SphinxDirective
 
 class enumerable_node(nodes.Admonition, nodes.Element):
     pass
