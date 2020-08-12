@@ -51,6 +51,7 @@ class ElementDirective(SphinxDirective):
             node_id = f"{label}"
         else:
             self.options["noindex"] = True
+            label = f"{typ}-{serial_no}"
             node_id = f"{typ}-{serial_no}"
         ids = ["proof", node_id]
 
