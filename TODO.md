@@ -1,0 +1,6 @@
+- [ ] add documentation `requirements.txt`
+- [ ] rewrite test files to address new implementation
+- [ ] create `proof` and `numproof` roles
+- [ ] incorporate flake8 and black
+- [ ] update CSS to address new implementation changes
+- [ ] implement LaTeX
