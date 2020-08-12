@@ -9,7 +9,9 @@ from docutils import nodes
 from sphinx.util import logging
 from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
+from docutils.statemachine import ViewList
 from .nodes import enumerable_node, unenumerable_node
+from .nodes import proof_node
 
 logger = logging.getLogger(__name__)
 
@@ -33,14 +35,14 @@ class ElementDirective(SphinxDirective):
     def run(self):
 
         env = self.env
-        typ = self.name.split(":")[1]
+        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
         serial_no = env.new_serialno()
 
         if not hasattr(env, "proof_list"):
             env.proof_list = {}
 
         # If class in options add to class array
-        classes, class_name = [], self.options.get("class", [])
+        classes, class_name = [domain_name, typ], self.options.get("class", [])
         if class_name:
             classes.extend(class_name)
 
@@ -53,7 +55,7 @@ class ElementDirective(SphinxDirective):
             self.options["noindex"] = True
             label = f"{typ}-{serial_no}"
             node_id = f"{typ}-{serial_no}"
-        ids = ["proof", node_id]
+        ids = [f"{env.docname}-{typ}-{serial_no}", node_id]
 
         # Duplicate label warning
         if not label == "" and label in env.proof_list.keys():
@@ -66,7 +68,7 @@ class ElementDirective(SphinxDirective):
         if self.arguments != []:
             title += f" ({self.arguments[0]})"
 
-        section = nodes.section(classes=[f"{typ}-content"], ids=["test"])
+        section = nodes.section(classes=[f"{typ}-content"], ids=["proof-content"])
         self.state.nested_parse(self.content, self.content_offset, section)
 
         if "nonumber" in self.options:
@@ -91,5 +93,43 @@ class ElementDirective(SphinxDirective):
             "prio": 0,
             "nonumber": True if "nonumber" in self.options else False,
         }
+
+        return [node]
+
+class SpecialDirective(SphinxDirective):
+    """ A custom directive for proofs """
+
+    name = ""
+    has_content = True
+    required_arguments = 0
+    optional_arguments = 1
+    final_argument_whitespace = True
+    option_spec = {
+        "class": directives.class_option,
+    }
+
+    def run(self):
+        env = self.env
+        content = ViewList()
+        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
+
+        # If class in options add to class array
+        classes, class_name = [domain_name, typ], self.options.get("class", [])
+        if class_name:
+            classes.extend(class_name)
+
+        section = nodes.admonition(classes=classes, ids=[typ])
+        emph = nodes.emphasis()
+
+        if self.arguments != []:
+            content.append(self.arguments[0], 0)
+            self.content.insert(0, content)
+
+        self.content[0] = '{}. '.format(typ.title()) + self.content[0]
+        self.state.nested_parse(self.content, self.content_offset, emph)
+
+        node = proof_node()
+        section += emph
+        node += section
 
         return [node]

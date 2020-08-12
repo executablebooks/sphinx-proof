@@ -4,6 +4,7 @@ from typing import Any, Dict
 from sphinx.application import Sphinx
 from .nodes import enumerable_node, visit_enumerable_node, depart_enumerable_node
 from .nodes import unenumerable_node, visit_unenumerable_node, depart_unenumerable_node
+from .nodes import proof_node, visit_proof_node, depart_proof_node
 from .domain import ProofDomain
 from sphinx.util import logging
 
@@ -29,6 +30,7 @@ def merge_proofs(app, env, docnames, other):
 
 def init_numfig(app, config):
     """Initialize proof numfig format."""
+    config['numfig'] = True
 
     numfig_format = {
         "proof": "Proof %s",
@@ -46,6 +48,11 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.connect("config-inited", init_numfig)
 
     app.add_domain(ProofDomain)
+    app.add_node(
+        proof_node,
+        singlehtml=(visit_proof_node, depart_proof_node),
+        html=(visit_proof_node, depart_proof_node)
+    )
     app.add_node(
         unenumerable_node,
         singlehtml=(visit_unenumerable_node, depart_unenumerable_node),

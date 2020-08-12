@@ -6,10 +6,10 @@ List of proof-type directives
 :licences: see LICENSE for details
 """
 
-from .directive import ElementDirective
+from .directive import ElementDirective, SpecialDirective
 
 
-class ProofDirective(ElementDirective):
+class ProofDirective(SpecialDirective):
     """A custom proof directive."""
 
     name = "proof"

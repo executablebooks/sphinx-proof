@@ -10,23 +10,9 @@ from docutils import nodes
 
 import pdb
 
-HTML_TEMPLATE = """
 
-    <div class="{{ typ }} {%- if class -%} {{ class }} admonition" id="{{ label }}">
-
-        <div class="{{ typ }}-title">
-
-            <span class="">{{ typ.title() }} {%- if number -%} {{ number }} {%- if title -%} {{ title }}
-            </span>
-
-        </div>
-
-        <div class="{{ typ }}-content section" id="{{ section_id }}">
-        </div>
-
-    </div>
-
-"""
+class proof_node(nodes.Admonition, nodes.Element):
+    pass
 
 class enumerable_node(nodes.Admonition, nodes.Element):
     pass
@@ -40,7 +26,7 @@ def visit_enumerable_node(self, node):
     label = node.attributes.get("label", "")
 
     self.body.append(self.starttag(node, "div", CLASS="admonition"))
-    self.body.append(f"<div class=\"{typ}-title\">")
+    self.body.append(f"<div class=\"{typ}-title proof-title\">")
     self.add_fignumber(node)
     self.body.append("</div>")
 
@@ -60,13 +46,21 @@ def visit_unenumerable_node(self, node):
     label = node.attributes.get("label", "")
 
     self.body.append(self.starttag(node, "div", CLASS="admonition"))
-    self.body.append(f'<div class="{typ}-title">')
+    self.body.append(f'<div class="{typ}-title  proof-title">')
     self.body.append(f"<span>{typ.title()} {title}</span>")
     self.body.append("</div>")
 
 
 def depart_unenumerable_node(self, node):
     self.body.append("</div>")
+
+
+def visit_proof_node(self, node):
+    pass
+
+
+def depart_proof_node(self, node):
+    pass
 
 
 def get_node_number(self: HTMLTranslator, node: nodes.Admonition) -> str:
