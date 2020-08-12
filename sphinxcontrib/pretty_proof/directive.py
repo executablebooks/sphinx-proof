@@ -55,7 +55,7 @@ class ElementDirective(SphinxDirective):
             self.options["noindex"] = True
             label = f"{typ}-{serial_no}"
             node_id = f"{typ}-{serial_no}"
-        ids = [f"{env.docname}-{typ}-{serial_no}", node_id]
+        ids = [node_id]
 
         # Duplicate label warning
         if not label == "" and label in env.proof_list.keys():
