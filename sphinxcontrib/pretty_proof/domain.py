@@ -15,6 +15,8 @@ from sphinx.util.nodes import make_refnode
 from docutils import nodes
 from .proof_type import *
 
+logger = logging.getLogger(__name__)
+
 class ProofIndex(Index):
 
     name = "proof"

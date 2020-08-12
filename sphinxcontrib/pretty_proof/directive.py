@@ -1,7 +1,7 @@
 """
 sphinxcontrib.pretty_proof.directive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A Proof Sphinx Domain
+A custom Sphinx Directive
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
@@ -9,12 +9,12 @@ A Proof Sphinx Domain
 from docutils import nodes
 from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
+from .nodes import enumerable_node, unenumerable_node
 
-class enumerable_node(nodes.Admonition, nodes.Element):
-    pass
+logger = logging.getLogger(__name__)
 
-class unenumerable_node(nodes.Admonition, nodes.Element):
-    pass
+import pdb
+
 
 class ElementDirective(SphinxDirective):
     """ A custom Sphinx Directive """

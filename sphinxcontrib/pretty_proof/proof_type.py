@@ -1,7 +1,7 @@
 """
 sphinxcontrib.pretty_proof.proof_type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A Proof Sphinx Domain
+List of proof-type directives
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
