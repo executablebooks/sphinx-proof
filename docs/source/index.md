@@ -12,12 +12,24 @@ for producing proof, theorem, axiom, lemma, definition, criteria, remark, conjec
 sphinxcontrib-pretty-proof `0.1.0a` is in a development stage and may change rapidly.
 ```
 
+**Features**:
+
+1. directives are automatically numbered
+2. supports directive options such as `class`, `label`, and `nonumber`
+3. can easily be referenced through `proof:ref` and `proof:numref` roles
+
+
+```{toctree}
+:hidden:
+
+usage
+```
 
 ## Get started
 
 To get started with `sphinxcontrib-pretty-proof`, first install it through `pip`:
 
-```
+```bash
 pip install sphinxcontrib-pretty-proof
 ```
 
@@ -29,13 +41,12 @@ extensions = ["sphinxcontrib.pretty_proof"]
 ...
 ```
 
-
 ## Installation
 
 
 **Step 1:** To install the extension you need to clone the repository then run:
 
-```python
+```bash
 python setup.py install
 ```
 
@@ -43,45 +54,3 @@ python setup.py install
 
 **Step 3:** Build using ``make html``
 
-
-## Test
-
-```{proof:proof} This is a
-proof directive.
-```
-
-```{proof:theorem} Title
-This is a theorem directive.
-```
-
-```{proof:axiom} Title
-This is a theorem directive.
-```
-
-```{proof:lemma} Title
-This is a theorem directive.
-```
-
-```{proof:definition} Title
-This is a theorem directive.
-```
-
-```{proof:corollary} Title
-This is a theorem directive.
-```
-
-```{proof:conjecture} Title
-This is a theorem directive.
-```
-
-```{proof:algorithm} Title
-This is a theorem directive.
-```
-
-```{proof:criteria} Title
-This is a theorem directive.
-```
-
-```{proof:exercise} Title
-This is a theorem directive.
-```
