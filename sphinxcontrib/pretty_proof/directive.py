@@ -1,0 +1,93 @@
+"""
+sphinxcontrib.pretty_proof.directive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A Proof Sphinx Domain
+:copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
+:licences: see LICENSE for details
+"""
+
+from docutils import nodes
+from docutils.parsers.rst import directives
+
+class enumerable_node(nodes.Admonition, nodes.Element):
+    pass
+
+class unenumerable_node(nodes.Admonition, nodes.Element):
+    pass
+
+class ElementDirective(SphinxDirective):
+    """ A custom Sphinx Directive """
+
+    name = ""
+    has_content = True
+    required_arguments = 0
+    optional_arguments = 1
+    final_argument_whitespace = True
+    option_spec = {
+        "label": directives.unchanged_required,
+        "class": directives.class_option,
+        "nonumber": directives.flag,
+    }
+
+    def run(self):
+
+        env = self.env
+        typ = self.name.split(":")[1]
+        serial_no = env.new_serialno()
+
+        if not hasattr(env, "proof_list"):
+            env.proof_list = {}
+
+        # If class in options add to class array
+        classes, class_name = [], self.options.get("class", [])
+        if class_name:
+            classes.extend(class_name)
+
+        label = self.options.get("label", "")
+        # If label
+        if label:
+            self.options["noindex"] = False
+            node_id = f"{label}"
+        else:
+            self.options["noindex"] = True
+            node_id = f"{typ}-{serial_no}"
+        ids = ["proof", node_id]
+
+        # Duplicate label warning
+        if not label == "" and label in env.proof_list.keys():
+            path = env.doc2path(env.docname)[:-4]
+            other_path = env.doc2path(env.proof_list[label]["docname"])
+            msg = f"duplicate {typ} label '{label}', other instance in {other_path}"
+            logger.warning(msg, location=path, color="red")
+
+        title = ""
+        if self.arguments != []:
+            title += f" ({self.arguments[0]})"
+
+        section = nodes.section(classes=[f"{typ}-content"], ids=["test"])
+        self.state.nested_parse(self.content, self.content_offset, section)
+
+        if "nonumber" in self.options:
+            node = unenumerable_node()
+        else:
+            node = enumerable_node()
+
+        node += section
+
+        # Set node attributes
+        node["ids"].extend(ids)
+        node["classes"].extend(classes)
+        node["title"] = title
+        node["label"] = label
+        node["type"] = typ
+
+        env.proof_list[label] = {
+            "docname": env.docname,
+            "type": typ,
+            "ids": ids,
+            "label": label,
+            "prio": 0,
+            "nonumber": True if "nonumber" in self.options else False,
+        }
+
+        return [node]
