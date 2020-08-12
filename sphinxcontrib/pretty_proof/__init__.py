@@ -5,6 +5,7 @@ from sphinx.application import Sphinx
 from .nodes import enumerable_node, visit_enumerable_node, depart_enumerable_node
 from .nodes import unenumerable_node, visit_unenumerable_node, depart_unenumerable_node
 from .domain import ProofDomain
+from sphinx.util import logging
 
 import pdb
 logger = logging.getLogger(__name__)

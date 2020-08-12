@@ -5,8 +5,8 @@ A custom Sphinx Directive
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
-
 from docutils import nodes
+from sphinx.util import logging
 from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
 from .nodes import enumerable_node, unenumerable_node

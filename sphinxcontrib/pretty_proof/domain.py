@@ -12,6 +12,7 @@ from collections import defaultdict
 from sphinx.domains import Domain, Index
 from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_refnode
+from sphinx.util import logging
 from docutils import nodes
 from .proof_type import *
 
