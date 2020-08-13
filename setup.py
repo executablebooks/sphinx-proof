@@ -2,14 +2,14 @@
 
 from setuptools import setup, find_packages
 
-VERSION = "v0.1.0a"
+VERSION = "v0.1.4c"
 
 LONG_DESCRIPTION = """
-This package contains a `Sphinx <http://www.sphinx-doc.org/en/master/>`_ extension
+This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
 for producing proof, theorem, lemma, definition, remark, conjecture, corollary and
 algorithm directives.
 
-This project is maintained and supported by `najuzilu <https://github.com/najuzilu>`_.
+This project is maintained and supported by [najuzilu](https://github.com/najuzilu).
 """
 
 requires = ["Sphinx>=0.6"]
@@ -25,12 +25,10 @@ setup(
         VERSION
     ),
     project_urls={
-        "Documentation": "",
-        "Source": "",
-        "Tracker": "",
+        "Source": "https://github.com/najuzilu/sphinxcontrib-pretty-proof",
+        "Tracker": "https://github.com/najuzilu/sphinxcontrib-pretty-proof/issues",
     },
     description="A Sphinx extension for producing proofs, theorems, lemmas, definitions, remarks, corollaries, conjectures and algorithms.",
-    # long_description=open("./README.md", "r").read(),
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     license="BSD",
@@ -53,11 +51,8 @@ setup(
             "pytest-regressions",
         ],
     },
-    entry_points={"sphinxcontrib.pretty_proof": ["sphinxcontrib_pretty_proof = sphinxcontrib_pretty_proof"]},
     package_data={
-        "sphinxcontrib_pretty_proof": [
-            "_static/*"
-        ]
+        "sphinxcontrib": ["_static/*"]
     },
     include_package_data=True,
     namespace_packages=["sphinxcontrib"],

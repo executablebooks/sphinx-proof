@@ -1,4 +1,12 @@
-
+# -*- coding: utf-8 -*-
+"""
+    sphinxcontrib.pretty_proof
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    This package is a namespace package that contains all extensions
+    distributed in the ``sphinx-contrib`` distribution.
+    :copyright: Copyright 2007-2009 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+"""
 from pathlib import Path
 from typing import Any, Dict
 from sphinx.application import Sphinx
@@ -66,7 +74,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
         html=(visit_enumerable_node, depart_enumerable_node),
     )
 
-    root_path = Path(__file__).parent.parent.parent
+    root_path = Path(__file__).parent.parent
     static_path = root_path.joinpath("_static").absolute()
     app.config.html_static_path.append(str(static_path))
     app.config.html_css_files.append("proof.css")
