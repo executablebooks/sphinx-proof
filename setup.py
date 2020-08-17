@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = "v0.1.4c"
+VERSION = "v0.1.11"
 
 LONG_DESCRIPTION = """
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
@@ -11,8 +11,6 @@ algorithm directives.
 
 This project is maintained and supported by [najuzilu](https://github.com/najuzilu).
 """
-
-requires = ["Sphinx>=0.6"]
 
 setup(
     name="sphinxcontrib-pretty-proof",
