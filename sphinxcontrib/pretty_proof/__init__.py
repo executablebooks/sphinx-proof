@@ -53,6 +53,14 @@ def get_title(node):
 
 def setup(app: Sphinx) -> Dict[str, Any]:
 
+    root_path = Path(__file__).parent.parent
+    static_path = root_path.joinpath("_static").absolute()
+
+    app.config.html_static_path.append(str(static_path))
+
+    for path_css in static_path.rglob("*.css"):
+        app.add_css_file(str(path_css.relative_to(static_path)))
+
     app.connect("config-inited", init_numfig)
 
     app.add_domain(ProofDomain)
@@ -73,11 +81,6 @@ def setup(app: Sphinx) -> Dict[str, Any]:
         singlehtml=(visit_enumerable_node, depart_enumerable_node),
         html=(visit_enumerable_node, depart_enumerable_node),
     )
-
-    root_path = Path(__file__).parent.parent
-    static_path = root_path.joinpath("_static").absolute()
-    app.config.html_static_path.append(str(static_path))
-    app.config.html_css_files.append("proof.css")
 
     return {
         "version": "builtin",
