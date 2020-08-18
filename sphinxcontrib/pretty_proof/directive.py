@@ -1,11 +1,15 @@
 """
 sphinxcontrib.pretty_proof.directive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 A custom Sphinx Directive
+
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
+from typing import List
 from docutils import nodes
+from docutils.nodes import Node
 from sphinx.util import logging
 from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
@@ -32,7 +36,7 @@ class ElementDirective(SphinxDirective):
         "nonumber": directives.flag,
     }
 
-    def run(self):
+    def run(self) -> List[Node]:
 
         env = self.env
         domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
@@ -96,7 +100,7 @@ class ElementDirective(SphinxDirective):
 
         return [node]
 
-class SpecialDirective(SphinxDirective):
+class ProofDirective(SphinxDirective):
     """ A custom directive for proofs """
 
     name = ""
@@ -108,7 +112,7 @@ class SpecialDirective(SphinxDirective):
         "class": directives.class_option,
     }
 
-    def run(self):
+    def run(self) -> List[Node]:
         env = self.env
         content = ViewList()
         domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]

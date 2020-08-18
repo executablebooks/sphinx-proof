@@ -1,18 +1,14 @@
 """
 sphinxcontrib.pretty_proof.proof_type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 List of proof-type directives
+
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
 
-from .directive import ElementDirective, SpecialDirective
-
-
-class ProofDirective(SpecialDirective):
-    """A custom proof directive."""
-
-    name = "proof"
+from .directive import ElementDirective
 
 
 class TheoremDirective(ElementDirective):

@@ -19,6 +19,7 @@ from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_refnode
 from sphinx.util import logging
 from docutils import nodes
+from .directive import ProofDirective
 from .proof_type import *
 
 import pdb
