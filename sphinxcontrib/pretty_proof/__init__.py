@@ -8,8 +8,10 @@
     :license: BSD, see LICENSE for details.
 """
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Set
+from sphinx.config import Config
 from sphinx.application import Sphinx
+from sphinx.environment import BuildEnvironment
 from .nodes import enumerable_node, visit_enumerable_node, depart_enumerable_node
 from .nodes import unenumerable_node, visit_unenumerable_node, depart_unenumerable_node
 from .nodes import proof_node, visit_proof_node, depart_proof_node
@@ -19,27 +21,27 @@ from sphinx.util import logging
 import pdb
 logger = logging.getLogger(__name__)
 
-def purge_proofs(app, env, docname):
-    logger.info('=== PURGE PROOFS ===', color='blue')
-    if not hasattr(env, 'proofs'):
+def purge_proofs(app: Sphinx, env: BuildEnvironment, docname: str) -> None:
+    if not hasattr(env, 'proof_list'):
         return
 
-    env.proofs = [proof for proof in env.proofs
-                  if proof['docname'] != docname]
+    # Override env.proof_list
+    env.proof_list = {proof: env.proof_list[proof] for proof in env.proof_list.keys() \
+        if env.proof_list[proof]['docname'] != docname}
 
 
-def merge_proofs(app, env, docnames, other):
-    logger.info('=== MERGE PROOFS ===', color='blue')
-    if not hasattr(env, 'proofs'):
-        env.proofs = []
+def merge_proofs(app: Sphinx, env: BuildEnvironment, docnames: Set[str],
+                 other: BuildEnvironment) -> None:
+    if not hasattr(env, 'proof_list'):
+        env.proof_list = {}
 
-    if hasattr(other, 'proofs'):
-        env.proofs.extend(other.proofs)
+    # Merge env stored data
+    if hasattr(other, 'proof_list'):
+        env.proof_list = {**env.proof_list, **other.proof_list}
 
-def init_numfig(app, config):
+def init_numfig(app: Sphinx, config: Config) -> None:
     """Initialize proof numfig format."""
     config['numfig'] = True
-
     numfig_format = {
         "proof": "Proof %s",
     }
@@ -47,21 +49,18 @@ def init_numfig(app, config):
     config.numfig_format = numfig_format
 
 
-def get_title(node):
-    return node['type']
-
-
 def setup(app: Sphinx) -> Dict[str, Any]:
-
+    # Add static files
     root_path = Path(__file__).parent.parent
     static_path = root_path.joinpath("_static").absolute()
-
     app.config.html_static_path.append(str(static_path))
 
     for path_css in static_path.rglob("*.css"):
         app.add_css_file(str(path_css.relative_to(static_path)))
 
     app.connect("config-inited", init_numfig)
+    app.connect("env-purge-doc", purge_proofs)
+    app.connect("env-merge-info", merge_proofs)
 
     app.add_domain(ProofDomain)
     app.add_node(
@@ -77,7 +76,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_enumerable_node(
         enumerable_node,
         "proof",
-        get_title,
+        None,
         singlehtml=(visit_enumerable_node, depart_enumerable_node),
         html=(visit_enumerable_node, depart_enumerable_node),
     )
