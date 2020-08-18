@@ -1,6 +1,6 @@
-# sphinxcontrib-pretty-proof
+# sphinxcontrib-prettyproof
 
-[![Documentation Status](https://readthedocs.org/projects/sphinxcontrib-pretty-proof/badge/?version=latest)](https://sphinxcontrib-pretty-proof.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/sphinxcontrib-prettyproof/badge/?version=latest)](https://sphinxcontrib-prettyproof.readthedocs.io/en/latest/?badge=latest)
 
 **A proof extension for Sphinx**.
 
@@ -10,21 +10,21 @@ for producing proof, theorem, axiom, lemma, definition, criteria, remark, conjec
 
 ## Get started
 
-To get started with `sphinxcontrib-pretty-proof`, first install it through `pip`:
+To get started with `sphinxcontrib-prettyproof`, first install it through `pip`:
 
 ```
-pip install sphinxcontrib-pretty-proof
+pip install sphinxcontrib-prettyproof
 ```
 
-then, add `sphinxcontrib.pretty_proof` to your sphinx `extensions` in the `conf.py`
+then, add `sphinxcontrib.prettyproof` to your sphinx `extensions` in the `conf.py`
 
 ```python
 ...
-extensions = ["sphinxcontrib.pretty_proof"]
+extensions = ["sphinxcontrib.prettyproof"]
 ...
 ```
 
 
 ## Documentation
 
-See the [Sphinxcontrib Pretty Proof documentation](https://sphinxcontrib-pretty-proof.readthedocs.io/en/latest/) for more information.
+See the [Sphinxcontrib Pretty Proof documentation](https://sphinxcontrib-prettyproof.readthedocs.io/en/latest/) for more information.

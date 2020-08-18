@@ -1,6 +1,6 @@
 # -- Project information -----------------------------------------------------
 
-project = "sphinxcontrib-pretty-proof"
+project = "sphinxcontrib-prettyproof"
 copyright = "2020, QuantEcon Developers"
 author = "QuantEcon Developers"
 master_doc = "index"
@@ -11,7 +11,7 @@ master_doc = "index"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["sphinxcontrib.pretty_proof", "myst_parser"]
+extensions = ["sphinxcontrib.prettyproof", "myst_parser"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -36,9 +36,9 @@ html_theme = "sphinx_book_theme"
 # html_static_path = ["_static"]
 
 html_theme_options = {
-	"path_to_docs": "docs",
-	"repository_url": "https://github.com/najuzilu/sphinxcontrib-pretty-proof",
-	"use_edit_page_button": True,
-	"use_issues_button": True,
-	"use_repository_button": True,
+    "path_to_docs": "docs",
+    "repository_url": "https://github.com/najuzilu/sphinxcontrib-prettyproof",
+    "use_edit_page_button": True,
+    "use_issues_button": True,
+    "use_repository_button": True,
 }

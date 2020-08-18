@@ -11,39 +11,42 @@ path_proof = path_html.joinpath("proof")
 
 
 def test_build(tmpdir):
-	"""Test building the book template and a few test configs."""
-	os.chdir(path_book)
+    """Test building the book template and a few test configs."""
+    os.chdir(path_book)
 
-	# Clean build
-	run(f"make clean".split())
-	assert path_book.joinpath("conf.py").exists()
+    # Clean build
+    run(f"make clean".split())
+    assert path_book.joinpath("conf.py").exists()
 
-	# Build the book
-	run(f"make html".split(), check=True)
+    # Build the book
+    run(f"make html".split(), check=True)
 
-	assert path_book.joinpath("build").exists()
-	assert path_html.joinpath("index.html").exists()
-	assert path_proof.exists()
+    assert path_book.joinpath("build").exists()
+    assert path_html.joinpath("index.html").exists()
+    assert path_proof.exists()
+
 
 @pytest.mark.usefixtures("file_regression")
 def test_proof(tmpdir, file_regression):
-	"""Test proof directive markup."""
+    """Test proof directive markup."""
 
-	# assert each file exists in build
-	proof_list = [
-		"_proof_with_classname.rst",
-		"_proof_no_classname.rst",
-	]
+    # assert each file exists in build
+    proof_list = [
+        "_proof_with_classname.rst",
+        "_proof_no_classname.rst",
+    ]
 
-	for idir in proof_list:
-		fname = idir.split(".")[0]+'.html'
-		path_proof_directive = path_proof.joinpath(fname)
-		assert path_proof_directive.exists()
+    for idir in proof_list:
+        fname = idir.split(".")[0] + ".html"
+        path_proof_directive = path_proof.joinpath(fname)
+        assert path_proof_directive.exists()
 
-		# get content markup
-		soup = BeautifulSoup(
-			path_proof_directive.read_text(encoding="utf8"), "html.parser"
-		)
+        # get content markup
+        soup = BeautifulSoup(
+            path_proof_directive.read_text(encoding="utf8"), "html.parser"
+        )
 
-		proof = soup.select("div.proof")[0]
-		file_regression.check(str(proof), basename=idir.split(".")[0], extension=".html")
+        proof = soup.select("div.proof")[0]
+        file_regression.check(
+            str(proof), basename=idir.split(".")[0], extension=".html"
+        )

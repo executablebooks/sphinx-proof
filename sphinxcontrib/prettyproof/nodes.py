@@ -1,5 +1,5 @@
 """
-sphinxcontrib.pretty_proof.nodes
+sphinxcontrib.prettyproof.nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Enumerable and unenumerable nodes
@@ -11,17 +11,18 @@ from sphinx.builders.html import HTMLTranslator
 from docutils import nodes
 from docutils.nodes import Node
 
-import pdb
-
 
 class proof_node(nodes.Admonition, nodes.Element):
     pass
 
+
 class enumerable_node(nodes.Admonition, nodes.Element):
     pass
 
+
 class unenumerable_node(nodes.Admonition, nodes.Element):
     pass
+
 
 def visit_enumerable_node(self, node: Node) -> None:
     typ = node.attributes.get("type", "")
@@ -29,7 +30,7 @@ def visit_enumerable_node(self, node: Node) -> None:
     label = node.attributes.get("label", "")
 
     self.body.append(self.starttag(node, "div", CLASS="admonition"))
-    self.body.append(f"<div class=\"{typ}-title proof-title\">")
+    self.body.append(f'<div class="{typ}-title proof-title">')
     self.add_fignumber(node)
     self.body.append("</div>")
 

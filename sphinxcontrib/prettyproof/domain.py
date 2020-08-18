@@ -1,5 +1,5 @@
 """
-sphinxcontrib.pretty_proof.domain
+sphinxcontrib.prettyproof.domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A Proof Sphinx Domain
@@ -22,9 +22,9 @@ from docutils import nodes
 from .directive import ProofDirective
 from .proof_type import *
 
-import pdb
 
 logger = logging.getLogger(__name__)
+
 
 class ProofIndex(Index):
 
@@ -39,8 +39,15 @@ class ProofIndex(Index):
         # name, subtype, docname, typ, anchor, extra, qualifier, description
         for anchor, values in proofs.items():
             content[anchor].append(
-                (anchor, values["prio"], values["docname"], anchor,
-                values["docname"], "", values["type"])
+                (
+                    anchor,
+                    values["prio"],
+                    values["docname"],
+                    anchor,
+                    values["docname"],
+                    "",
+                    values["type"],
+                )
             )
 
         content = sorted(content.items())
@@ -48,9 +55,9 @@ class ProofIndex(Index):
 
 
 class ProofXRefRole(XRefRole):
-
-    def result_nodes(self, document: document, env: BuildEnvironment, node: Element,
-                     is_ref: bool) -> Tuple[List[Node], List[system_message]]:
+    def result_nodes(
+        self, document: document, env: BuildEnvironment, node: Element, is_ref: bool
+    ) -> Tuple[List[Node], List[system_message]]:
 
         node["refdomain"] = "proof"
         return [node], []
@@ -61,8 +68,8 @@ class ProofDomain(Domain):
     name = "proof"
     label = "Proof Domain"
 
-    roles = { "ref": ProofXRefRole() }
-    indices = { ProofIndex }
+    roles = {"ref": ProofXRefRole()}
+    indices = {ProofIndex}
 
     directives = {
         "proof": ProofDirective,
@@ -78,8 +85,16 @@ class ProofDomain(Domain):
         "exercise": ExerciseDirective,
     }
 
-    def resolve_xref(self, env: BuildEnvironment, fromdocname: str, builder: Builder,
-                     typ: str, target: str, node: pending_xref, contnode: Element) -> Element:
+    def resolve_xref(
+        self,
+        env: BuildEnvironment,
+        fromdocname: str,
+        builder: Builder,
+        typ: str,
+        target: str,
+        node: pending_xref,
+        contnode: Element,
+    ) -> Element:
 
         try:
             match = env.proof_list[target]

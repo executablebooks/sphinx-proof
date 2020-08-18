@@ -10,13 +10,13 @@ path_html = path_book.joinpath("build", "html")
 
 
 def test_build(capfd):
-	# Clean build
-	os.chdir(path_book)
+    # Clean build
+    os.chdir(path_book)
 
-	run(f"make clean".split())
-	assert path_book.joinpath("conf.py").exists()
+    run(f"make clean".split())
+    assert path_book.joinpath("conf.py").exists()
 
-	run(f"make html".split(), check=True)
-	out, err = capfd.readouterr()
+    run(f"make html".split(), check=True)
+    out, err = capfd.readouterr()
 
-	assert "WARNING: label \'foo\' not found" in err
+    assert "WARNING: label 'foo' not found" in err

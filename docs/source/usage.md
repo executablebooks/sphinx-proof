@@ -142,5 +142,5 @@ _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algor
 
 ## Contribute
 
-<!-- `sphinxcontrib-pretty-proof` is an open project and we welcome your feedback and contributions! To contribute to `sphinxcontrib-pretty-proof`, see [Contribute to `sphinxcontrib-pretty-proof`](). -->
+<!-- `sphinxcontrib-prettyproof` is an open project and we welcome your feedback and contributions! To contribute to `sphinxcontrib-prettyproof`, see [Contribute to `sphinxcontrib-prettyproof`](). -->
 

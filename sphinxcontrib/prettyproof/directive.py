@@ -1,5 +1,5 @@
 """
-sphinxcontrib.pretty_proof.directive
+sphinxcontrib.prettyproof.directive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A custom Sphinx Directive
@@ -18,8 +18,6 @@ from .nodes import enumerable_node, unenumerable_node
 from .nodes import proof_node
 
 logger = logging.getLogger(__name__)
-
-import pdb
 
 
 class ElementDirective(SphinxDirective):
@@ -100,6 +98,7 @@ class ElementDirective(SphinxDirective):
 
         return [node]
 
+
 class ProofDirective(SphinxDirective):
     """ A custom directive for proofs """
 
@@ -129,7 +128,7 @@ class ProofDirective(SphinxDirective):
             content.append(self.arguments[0], 0)
             self.content.insert(0, content)
 
-        self.content[0] = '{}. '.format(typ.title()) + self.content[0]
+        self.content[0] = "{}. ".format(typ.title()) + self.content[0]
         self.state.nested_parse(self.content, self.content_offset, emph)
 
         node = proof_node()

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    sphinxcontrib.pretty_proof
+    sphinxcontrib.prettyproof
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
     This package is a namespace package that contains all extensions
     distributed in the ``sphinx-contrib`` distribution.
@@ -18,30 +18,35 @@ from .nodes import proof_node, visit_proof_node, depart_proof_node
 from .domain import ProofDomain
 from sphinx.util import logging
 
-import pdb
 logger = logging.getLogger(__name__)
 
+
 def purge_proofs(app: Sphinx, env: BuildEnvironment, docname: str) -> None:
-    if not hasattr(env, 'proof_list'):
+    if not hasattr(env, "proof_list"):
         return
 
     # Override env.proof_list
-    env.proof_list = {proof: env.proof_list[proof] for proof in env.proof_list.keys() \
-        if env.proof_list[proof]['docname'] != docname}
+    env.proof_list = {
+        proof: env.proof_list[proof]
+        for proof in env.proof_list.keys()
+        if env.proof_list[proof]["docname"] != docname
+    }
 
 
-def merge_proofs(app: Sphinx, env: BuildEnvironment, docnames: Set[str],
-                 other: BuildEnvironment) -> None:
-    if not hasattr(env, 'proof_list'):
+def merge_proofs(
+    app: Sphinx, env: BuildEnvironment, docnames: Set[str], other: BuildEnvironment
+) -> None:
+    if not hasattr(env, "proof_list"):
         env.proof_list = {}
 
     # Merge env stored data
-    if hasattr(other, 'proof_list'):
+    if hasattr(other, "proof_list"):
         env.proof_list = {**env.proof_list, **other.proof_list}
+
 
 def init_numfig(app: Sphinx, config: Config) -> None:
     """Initialize proof numfig format."""
-    config['numfig'] = True
+    config["numfig"] = True
     numfig_format = {
         "proof": "Proof %s",
     }
@@ -66,12 +71,12 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_node(
         proof_node,
         singlehtml=(visit_proof_node, depart_proof_node),
-        html=(visit_proof_node, depart_proof_node)
+        html=(visit_proof_node, depart_proof_node),
     )
     app.add_node(
         unenumerable_node,
         singlehtml=(visit_unenumerable_node, depart_unenumerable_node),
-        html=(visit_unenumerable_node, depart_unenumerable_node)
+        html=(visit_unenumerable_node, depart_unenumerable_node),
     )
     app.add_enumerable_node(
         enumerable_node,
