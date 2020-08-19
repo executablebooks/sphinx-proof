@@ -17,6 +17,8 @@ from .nodes import unenumerable_node, visit_unenumerable_node, depart_unenumerab
 from .nodes import proof_node, visit_proof_node, depart_proof_node
 from .domain import ProofDomain
 from sphinx.util import logging
+from sphinx.util.fileutil import copy_asset
+
 
 logger = logging.getLogger(__name__)
 
@@ -54,15 +56,14 @@ def init_numfig(app: Sphinx, config: Config) -> None:
     config.numfig_format = numfig_format
 
 
-def setup(app: Sphinx) -> Dict[str, Any]:
-    # Add static files
-    root_path = Path(__file__).parent.parent
-    static_path = root_path.joinpath("_static").absolute()
+def add_static_path(app):
+    static_path = Path(__file__).parent.parent.joinpath("_static").absolute()
     app.config.html_static_path.append(str(static_path))
 
-    for path_css in static_path.rglob("*.css"):
-        app.add_css_file(str(path_css.relative_to(static_path)))
 
+def setup(app: Sphinx) -> Dict[str, Any]:
+
+    app.add_css_file("proof.css")
     app.connect("config-inited", init_numfig)
     app.connect("env-purge-doc", purge_proofs)
     app.connect("env-merge-info", merge_proofs)
