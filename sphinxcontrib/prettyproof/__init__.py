@@ -61,9 +61,22 @@ def add_static_path(app):
     app.config.html_static_path.append(str(static_path))
 
 
+def copy_asset_files(app, exc):
+    # import pdb; pdb.set_trace()
+    static_path = (
+        Path(__file__).parent.parent.joinpath("_static", "proof.css").absolute()
+    )
+    asset_files = [str(static_path)]
+
+    if exc is None:
+        for path in asset_files:
+            copy_asset(path, str(Path(app.outdir).joinpath("_static").absolute()))
+
+
 def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_css_file("proof.css")
+    app.connect("build-finished", copy_asset_files)
     app.connect("config-inited", init_numfig)
     app.connect("env-purge-doc", purge_proofs)
     app.connect("env-merge-info", merge_proofs)
