@@ -8,7 +8,7 @@
     :license: BSD, see LICENSE for details.
 """
 from pathlib import Path
-from typing import Any, Dict, Set
+from typing import Any, Dict, Set, Union
 from sphinx.config import Config
 from sphinx.application import Sphinx
 from sphinx.environment import BuildEnvironment
@@ -56,13 +56,7 @@ def init_numfig(app: Sphinx, config: Config) -> None:
     config.numfig_format = numfig_format
 
 
-def add_static_path(app):
-    static_path = Path(__file__).parent.parent.joinpath("_static").absolute()
-    app.config.html_static_path.append(str(static_path))
-
-
-def copy_asset_files(app, exc):
-    # import pdb; pdb.set_trace()
+def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
     static_path = (
         Path(__file__).parent.parent.joinpath("_static", "proof.css").absolute()
     )

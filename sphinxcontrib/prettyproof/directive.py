@@ -35,7 +35,6 @@ class ElementDirective(SphinxDirective):
     }
 
     def run(self) -> List[Node]:
-
         env = self.env
         domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
         serial_no = env.new_serialno()
@@ -61,7 +60,7 @@ class ElementDirective(SphinxDirective):
 
         # Duplicate label warning
         if not label == "" and label in env.proof_list.keys():
-            path = env.doc2path(env.docname)[:-4]
+            path = env.doc2path(env.docname)[:-3]
             other_path = env.doc2path(env.proof_list[label]["docname"])
             msg = f"duplicate {typ} label '{label}', other instance in {other_path}"
             logger.warning(msg, location=path, color="red")

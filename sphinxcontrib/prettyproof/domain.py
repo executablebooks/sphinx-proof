@@ -34,6 +34,10 @@ class ProofIndex(Index):
 
     def generate(self, docnames=None) -> Tuple[Dict[str, Any], bool]:
         content = defaultdict(list)
+
+        if not hasattr(self.domain.env, "proof_list"):
+            return content, True
+
         proofs = self.domain.env.proof_list
 
         # name, subtype, docname, typ, anchor, extra, qualifier, description
@@ -99,7 +103,7 @@ class ProofDomain(Domain):
         try:
             match = env.proof_list[target]
         except:
-            path = self.env.doc2path(fromdocname)[:-4]
+            path = self.env.doc2path(fromdocname)[:-3]
             msg = "label '{}' not found.".format(target)
             logger.warning(msg, location=path, color="red")
             return None
