@@ -9,20 +9,20 @@ This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
 for producing proof, theorem, axiom, lemma, definition, criteria, remark, conjecture, corollary, algorithm and exercise directives.
 
 ```{warning}
-sphinxcontrib-prettyproof `0.0.1a` is in a development stage and may change rapidly.
+sphinxcontrib-prettyproof `0.0.1` is in a development stage and may change rapidly.
 ```
 
 **Features**:
 
 1. directives are automatically numbered
 2. supports directive options such as `class`, `label`, and `nonumber`
-3. can easily be referenced through `proof:ref` and `proof:numref` roles
+3. can easily be referenced through `proof:ref` role
 
 
 ```{toctree}
 :hidden:
 
-usage
+syntax
 ```
 
 ## Get started
@@ -33,11 +33,11 @@ To get started with `sphinxcontrib-prettyproof`, first install it through `pip`:
 pip install sphinxcontrib-prettyproof
 ```
 
-then, add `sphinxcontrib.pretty_proof` to your sphinx `extensions` in the `conf.py`
+then, add `sphinxcontrib.prettyproof` to your sphinx `extensions` in the `conf.py`
 
 ```python
 ...
-extensions = ["sphinxcontrib.pretty_proof"]
+extensions = ["sphinxcontrib.prettyproof"]
 ...
 ```
 
@@ -50,7 +50,7 @@ extensions = ["sphinxcontrib.pretty_proof"]
 python setup.py install
 ```
 
-**Step 2:** Add `sphinxcontrib.pretty_proof` to your sphinx `extensions` in the `conf.py`
+**Step 2:** Add `sphinxcontrib.prettyproof` to your sphinx `extensions` in the `conf.py`
 
 **Step 3:** Build using ``make html``
 
