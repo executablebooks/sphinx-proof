@@ -65,9 +65,11 @@ class ElementDirective(SphinxDirective):
             msg = f"duplicate {typ} label '{label}', other instance in {other_path}"
             logger.warning(msg, location=path, color="red")
 
-        title = ""
+        title_text = ""
         if self.arguments != []:
-            title += f" ({self.arguments[0]})"
+            title_text += f" ({self.arguments[0]})"
+
+        textnodes, messages = self.state.inline_text(title_text, self.lineno)
 
         section = nodes.section(classes=[f"{typ}-content"], ids=["proof-content"])
         self.state.nested_parse(self.content, self.content_offset, section)
@@ -77,12 +79,13 @@ class ElementDirective(SphinxDirective):
         else:
             node = enumerable_node()
 
+        node += nodes.title(title_text, "", *textnodes)
         node += section
 
         # Set node attributes
         node["ids"].extend(ids)
         node["classes"].extend(classes)
-        node["title"] = title
+        node["title"] = title_text
         node["label"] = label
         node["type"] = typ
 

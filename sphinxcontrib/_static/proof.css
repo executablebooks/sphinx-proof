@@ -22,12 +22,17 @@ div.proof {
 	padding-right: 0rem !important;
 }
 
-div.proof-title, div#proof-content {
-	padding: .6rem .8rem;
+div.proof p.admonition-title {
+	padding: .6rem .4rem .6rem 1.6rem;
 }
 
-div.proof-title {
-	font-weight: 900;
+div.proof div.section {
+	padding: .6rem 1rem;
+}
+
+/* Remove content box */
+div.proof p.admonition-title::before {
+	content: none;
 }
 
 /*********************************************
@@ -47,7 +52,7 @@ div.theorem {
 	background-color: var(--note-title-color);
 }
 
-div.theorem-title {
+div.theorem p.admonition-title {
 	background-color: var(--note-title-color);
 }
 
@@ -59,7 +64,7 @@ div.axiom {
 	background-color: var(--hint-title-color);
 }
 
-div.axiom-title {
+div.axiom p.admonition-title {
 	background-color: var(--hint-title-color);
 }
 
@@ -71,7 +76,7 @@ div.criteria {
 	background-color: var(--caution-title-color);
 }
 
-div.criteria-title {
+div.criteria p.admonition-title {
 	background-color: var(--caution-title-color);
 }
 
@@ -83,7 +88,7 @@ div.exercise {
 	background-color: var(--note-title-color);
 }
 
-div.exercise-title {
+div.exercise p.admonition-title {
 	background-color: var(--note-title-color);
 }
 
@@ -95,7 +100,7 @@ div.lemma {
 	background-color: var(--hint-title-color);
 }
 
-div.lemma-title {
+div.lemma p.admonition-title {
 	background-color: var(--hint-title-color);
 }
 
@@ -107,7 +112,7 @@ div.definition {
 	background-color: var(--note-title-color);
 }
 
-div.definition-title {
+div.definition p.admonition-title {
 	background-color: var(--note-title-color);
 }
 
@@ -119,7 +124,7 @@ div.remark {
 	background-color: var(--warning-title-color);
 }
 
-div.remark-title {
+div.remark p.admonition-title {
 	background-color: var(--warning-title-color);
 }
 
@@ -131,7 +136,7 @@ div.conjecture {
 	background-color: var(--hint-title-color);
 }
 
-div.conjecture-title {
+div.conjecture p.admonition-title {
 	background-color: var(--hint-title-color);
 }
 
@@ -143,7 +148,7 @@ div.corollary {
 	background-color: var(--caution-title-color);
 }
 
-div.corollary-title {
+div.corollary p.admonition-title {
 	background-color: var(--caution-title-color);
 }
 
@@ -155,6 +160,6 @@ div.algorithm {
 	background-color: var(--grey-title-color);
 }
 
-div.algorithm-title {
+div.algorithm p.admonition-title {
 	background-color: var(--grey-title-color);
 }

@@ -25,37 +25,31 @@ class unenumerable_node(nodes.Admonition, nodes.Element):
 
 
 def visit_enumerable_node(self, node: Node) -> None:
-    typ = node.attributes.get("type", "")
-    title = node.attributes.get("title", "")
-    label = node.attributes.get("label", "")
-
     self.body.append(self.starttag(node, "div", CLASS="admonition"))
-    self.body.append(f'<div class="{typ}-title proof-title">')
-    self.add_fignumber(node)
-    self.body.append("</div>")
+
+
+def depart_enumerable_node(self, node: Node) -> None:
+    typ = node.attributes.get("type", "")
 
     # Find index in list of 'Proof #'
     number = get_node_number(self, node)
     idx = self.body.index(f"Proof {number} ")
-    self.body[idx] = f"{typ.title()} {number} {title}"
+    self.body[idx] = f"{typ.title()} {number} "
 
-
-def depart_enumerable_node(self, node: Node) -> None:
     self.body.append("</div>")
 
 
 def visit_unenumerable_node(self, node: Node) -> None:
-    typ = node.attributes.get("type", "")
-    title = node.attributes.get("title", "")
-    label = node.attributes.get("label", "")
-
     self.body.append(self.starttag(node, "div", CLASS="admonition"))
-    self.body.append(f'<div class="{typ}-title  proof-title">')
-    self.body.append(f"<span>{typ.title()} {title}</span>")
-    self.body.append("</div>")
 
 
 def depart_unenumerable_node(self, node: Node) -> None:
+    typ = node.attributes.get("type", "")
+    title = node.attributes.get("title", "")
+
+    idx = self.body.index(title)
+    element = f"<span>{typ.title()} </span>"
+    self.body.insert(idx, element)
     self.body.append("</div>")
 
 

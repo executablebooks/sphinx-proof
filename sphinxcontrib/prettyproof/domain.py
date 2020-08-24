@@ -73,6 +73,7 @@ class ProofDomain(Domain):
     label = "Proof Domain"
 
     roles = {"ref": ProofXRefRole()}
+
     indices = {ProofIndex}
 
     directives = {
