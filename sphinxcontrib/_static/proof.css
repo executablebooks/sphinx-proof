@@ -156,10 +156,17 @@ div.corollary p.admonition-title {
 * Algorithm *
 *********************************************/
 div.algorithm {
-	border-left: .2rem solid var(--grey-border-color);
-	background-color: var(--grey-title-color);
+	border: none;
+	background-color: none;
 }
 
 div.algorithm p.admonition-title {
-	background-color: var(--grey-title-color);
+	background-color: transparent;
+	border-top: .15rem solid var(--grey-border-color);
+	border-bottom: .15rem solid var(--grey-border-color);
+}
+
+div.algorithm div.section {
+	font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+	font-size: .85rem;
 }
