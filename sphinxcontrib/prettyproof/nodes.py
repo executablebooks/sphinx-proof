@@ -35,7 +35,6 @@ def depart_enumerable_node(self, node: Node) -> None:
     number = get_node_number(self, node)
     idx = self.body.index(f"Proof {number} ")
     self.body[idx] = f"{typ.title()} {number} "
-
     self.body.append("</div>")
 
 
@@ -46,8 +45,13 @@ def visit_unenumerable_node(self, node: Node) -> None:
 def depart_unenumerable_node(self, node: Node) -> None:
     typ = node.attributes.get("type", "")
     title = node.attributes.get("title", "")
+    _id = node.attributes.get("ids", [])[0]
 
-    idx = self.body.index(title)
+    if title == "":
+        idx = len(self.body) - self.body[-1::-1].index('<p class="admonition-title">')
+    else:
+        idx = self.body.index(title)
+
     element = f"<span>{typ.title()} </span>"
     self.body.insert(idx, element)
     self.body.append("</div>")
