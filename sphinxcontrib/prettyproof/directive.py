@@ -79,6 +79,7 @@ class ElementDirective(SphinxDirective):
         else:
             node = enumerable_node()
 
+        node.document = self.state.document
         node += nodes.title(title_text, "", *textnodes)
         node += section
 
@@ -104,17 +105,16 @@ class ElementDirective(SphinxDirective):
 class ProofDirective(SphinxDirective):
     """ A custom directive for proofs """
 
-    name = ""
+    name = "proof"
     has_content = True
     required_arguments = 0
-    optional_arguments = 1
+    optional_arguments = 0
     final_argument_whitespace = True
     option_spec = {
         "class": directives.class_option,
     }
 
     def run(self) -> List[Node]:
-        env = self.env
         content = ViewList()
         domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
 
@@ -124,17 +124,11 @@ class ProofDirective(SphinxDirective):
             classes.extend(class_name)
 
         section = nodes.admonition(classes=classes, ids=[typ])
-        emph = nodes.emphasis()
-
-        if self.arguments != []:
-            content.append(self.arguments[0], 0)
-            self.content.insert(0, content)
 
         self.content[0] = "{}. ".format(typ.title()) + self.content[0]
-        self.state.nested_parse(self.content, self.content_offset, emph)
+        self.state.nested_parse(self.content, 0, section)
 
         node = proof_node()
-        section += emph
         node += section
 
         return [node]
