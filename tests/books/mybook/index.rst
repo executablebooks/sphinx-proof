@@ -10,4 +10,7 @@ A Test Program!
    algorithm/_algo_numbered_reference
    algorithm/_algo_text_reference
    proof/_proof_with_classname
+   proof/_proof_with_labeled_math
    proof/_proof_no_classname
+   proof/_proof_with_unlabeled_math
+   proof/_proof_with_argument_content
