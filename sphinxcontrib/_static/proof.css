@@ -42,6 +42,7 @@ div#proof{
 	padding: .6rem .8rem !important;
 	border-left: .2rem solid var(--warning-border-color);
 	background-color: var(--warning-title-color);
+	font-style: italic;
 }
 
 /*********************************************
