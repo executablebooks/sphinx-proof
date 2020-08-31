@@ -72,10 +72,10 @@ A theorem directive can be included using the `proof:theorem` pattern. The direc
 
 	Turns off theorem auto numbering.
 
-```{math}
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
-```
+	```{math}
+	\DeclareMathOperator*{\argmax}{arg\,max}
+	\DeclareMathOperator*{\argmin}{arg\,min}
+	```
 
 **Example**
 
@@ -101,7 +101,7 @@ The vector $\hat y$ is called the **orthogonal projection** of $y$ onto $S$.
 
 **MyST Syntax**
 
-``````
+``````md
 ````{proof:theorem} Orthogonal-Projection-Theorem
 :label: my-theorem
 
@@ -153,7 +153,7 @@ Every Cauchy sequence on the real line is convergent.
 
 **MyST Syntax**
 
-``````
+``````md
 ```{proof:axiom} Completeness of $\mathbb{R}$
 :label: my-axiom
 
@@ -198,7 +198,7 @@ K(\hat F, \theta) = (\theta I - C'\hat P C)^{-1} C' \hat P  (A - B \hat F)
 
 **MyST Syntax**
 
-``````
+``````md
 ````{proof:lemma}
 :label: my-lemma
 
@@ -251,7 +251,7 @@ $$
 
 **MyST Syntax**
 
-``````
+``````md
 ````{proof:definition}
 :label: my-definition
 
@@ -289,7 +289,7 @@ A criteria directive can be included using the `proof:criteria` pattern. The dir
 **Example**
 
 ````{proof:criteria} Weyl's criterion
-:label: my-criteria
+:label: weyls-criteria
 
 Weyl's criterion states that the sequence $a_n$ is equidistributed modulo $1$ if
 and only if for all non-zero integers $m$,
@@ -301,9 +301,9 @@ and only if for all non-zero integers $m$,
 
 **MyST Syntax**
 
-``````
+``````md
 ````{proof:criteria} Weyl's criterion
-:label: my-criteria
+:label: weyls-criteria
 
 Weyl's criterion states that the sequence $a_n$ is equidistributed modulo $1$ if
 and only if for all non-zero integers $m$,
@@ -318,7 +318,7 @@ _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Equidistributed_sequence#Wey
 
 ### Referencing Criterion
 
-You can refer to a criteria using the `{proof:ref}` role like: ```{proof:ref}`my-criteria` ```, which will replace the reference with the criteria number like so: {proof:ref}`my-criteria`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a criteria using the `{proof:ref}` role like: ```{proof:ref}`weyls-criteria` ```, which will replace the reference with the criteria number like so: {proof:ref}`weyls-criteria`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Remarks
@@ -385,12 +385,16 @@ You can refer to a remark using the `{proof:ref}` role like: ```{proof:ref}`my-r
 
 **Example**
 
-```{proof:conjecture}
+```{proof:conjecture} Fake $\gamma$ conjecture
+This is a dummy conjecture to illustrate that one can use math in titles.
 ```
 
 **MyST Syntax**
 
-``````
+``````md
+```{proof:conjecture} Fake $\gamma$ conjecture
+This is a dummy conjecture to illustrate that one can use math in titles.
+```
 ``````
 
 _Source:_
@@ -550,8 +554,3 @@ _Source:_ [QuantEcon](https://python-programming.quantecon.org/functions.html#Ex
 ### Referencing Exercises
 
 You can refer to a exercises using the `{proof:ref}` role like: ```{proof:ref}`my-exercise` ```, which will replace the reference with the exercise number like so: {proof:ref}`my-exercise`. When an explicit text is provided, this caption will serve as the title of the reference.
-
----
-
-```{bibliography} references.bib
-```

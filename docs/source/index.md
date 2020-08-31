@@ -1,5 +1,13 @@
 # sphinxcontrib-prettyproof
 
+```{toctree}
+:hidden:
+
+install
+syntax
+zreferences
+```
+
 [![Documentation Status](https://readthedocs.org/projects/sphinxcontrib-prettyproof/badge/?version=latest)](https://sphinxcontrib-prettyproof.readthedocs.io/en/latest/?badge=latest)
 
 **A proof extension for Sphinx**.
@@ -17,14 +25,8 @@ sphinxcontrib-prettyproof `0.0.2` is in a development stage and may change rapid
 2. supports directive options such as `class`, `label`, and `nonumber`
 3. can easily be referenced through `proof:ref` role
 
-
-```{toctree}
-:hidden:
-
-syntax
-```
-
-## Get started
+(getting-started)=
+## Getting Started
 
 To get started with `sphinxcontrib-prettyproof`, first install it through `pip`:
 
@@ -32,7 +34,21 @@ To get started with `sphinxcontrib-prettyproof`, first install it through `pip`:
 pip install sphinxcontrib-prettyproof
 ```
 
-then, add `sphinxcontrib.prettyproof` to your sphinx `extensions` in the `conf.py`
+### JuputerBook Project
+
+Add `sphinxcontrib.prettyproof` to your [extra_extensions](https://jupyterbook.org/advanced/sphinx.html#custom-sphinx-extensions) config in `_config.yml`
+
+```yaml
+sphinx:
+  extra_extensions:
+    - sphinxcontrib.prettyproof
+```
+
+you may then use `jb build <project>` and the extension will be used by your `JupyterBook` project.
+
+### Sphinx Project
+
+Add `sphinxcontrib.prettyproof` to your sphinx `extensions` in the `conf.py`
 
 ```python
 ...
@@ -40,16 +56,4 @@ extensions = ["sphinxcontrib.prettyproof"]
 ...
 ```
 
-## Installation
-
-
-**Step 1:** To install the extension you need to clone the repository then run:
-
-```bash
-python setup.py install
-```
-
-**Step 2:** Add `sphinxcontrib.prettyproof` to your sphinx `extensions` in the `conf.py`
-
-**Step 3:** Build using ``make html``
-
+you may then build using `make html` and the extension will be used by your `Sphinx` project.
