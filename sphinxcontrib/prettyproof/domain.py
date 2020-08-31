@@ -86,8 +86,12 @@ class ProofDomain(Domain):
         "conjecture": ConjectureDirective,
         "corollary": CorollaryDirective,
         "algorithm": AlgorithmDirective,
-        "criteria": CriteriaDirective,
+        "criterion": CriterionDirective,
         "exercise": ExerciseDirective,
+        "example": ExampleDirective,
+        "property": PropertyDirective,
+        "observation": ObservationDirective,
+        "proposition": PropositionDirective,
     }
 
     def resolve_xref(
