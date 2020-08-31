@@ -34,6 +34,9 @@ def test_proof(tmpdir, file_regression):
     proof_list = [
         "_proof_with_classname.rst",
         "_proof_no_classname.rst",
+        "_proof_with_argument_content.rst",
+        "_proof_with_labeled_math.rst",
+        "_proof_with_unlabeled_math.rst",
     ]
 
     for idir in proof_list:
