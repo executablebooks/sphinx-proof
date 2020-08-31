@@ -13,7 +13,8 @@ zreferences
 **A proof extension for Sphinx**.
 
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
-for producing proof, theorem, axiom, lemma, definition, criteria, remark, conjecture, corollary, algorithm and exercise directives.
+for producing proof, theorem, axiom, lemma, definition, criterion, remark, conjecture,
+corollary, algorithm, exercise, example, property, observation and proposition directives.
 
 ```{warning}
 sphinxcontrib-prettyproof `0.0.2` is in a development stage and may change rapidly.
