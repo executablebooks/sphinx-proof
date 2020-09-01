@@ -1,6 +1,5 @@
 from pathlib import Path
 from subprocess import run
-import pytest
 import os
 
 
@@ -13,10 +12,10 @@ def test_build(capfd):
     # Clean build
     os.chdir(path_book)
 
-    run(f"make clean".split())
+    run("make clean".split())
     assert path_book.joinpath("conf.py").exists()
 
-    run(f"make html".split(), check=True)
+    run("make html".split(), check=True)
     out, err = capfd.readouterr()
 
     assert "WARNING: label 'foo' not found" in err
