@@ -9,62 +9,39 @@ path_book = path_tests.joinpath("books", "mybook")
 path_html = path_book.joinpath("build", "html")
 path_algo = path_html.joinpath("algorithm")
 
-
-def test_build(mybook):
+@pytest.mark.sphinx('html', testroot='mybook')
+def test_build(app, status, warning):
     """Test building the book template and a few test configs."""
-    assert mybook.joinpath("conf.py").exists()
+    app.builder.build_all()
+    assert (app.outdir / "index.html").exists()
+    assert (app.outdir / "algorithm").exists()
 
-    # Build the book
-    run(f"make html".split(), check=True)
-
-    build = mybook.joinpath("build")
-    html = buid.joinpath("html")
-
-    assert build.exists()
-    assert html.joinpath("index.html").exists()
-    assert build.joinpath("html","algorithm").exists()
-
-
-def test_algorithm(tmpdir, file_regression):
+@pytest.mark.sphinx('html', testroot="mybook")
+@pytest.mark.parametrize("idir",["_algo_labeled_titled_with_classname.html", "_algo_nonumber.html"])
+def test_algorithm(app, idir, file_regression):
     """Test algorithm directive markup."""
+    app.builder.build_all()
+    path_algo_directive = (app.outdir / "algorithm" / idir)
+    assert path_algo_directive.exists()
 
-    # assert each file exists in build
-    algo_list = [
-        "_algo_labeled_titled_with_classname.rst",
-        "_algo_nonumber.rst",
-    ]
+    # get content markup
+    soup = BeautifulSoup(
+        path_algo_directive.read_text(encoding="utf8"), "html.parser"
+    )
+    algo = soup.select("div.algorithm")[0]
+    file_regression.check(str(algo), basename=idir.split(".")[0], extension=".html")
 
-    for idir in algo_list:
-        fname = idir.split(".")[0] + ".html"
-        path_algo_directive = path_algo.joinpath(fname)
-        assert path_algo_directive.exists()
-
-        # get content markup
-        soup = BeautifulSoup(
-            path_algo_directive.read_text(encoding="utf8"), "html.parser"
-        )
-
-        algo = soup.select("div.algorithm")[0]
-        file_regression.check(str(algo), basename=idir.split(".")[0], extension=".html")
-
-
-def test_reference(tmpdir, file_regression):
+@pytest.mark.sphinx('html', testroot="mybook")
+@pytest.mark.parametrize("idir",["_algo_numbered_reference.html", "_algo_text_reference.html"])
+def test_reference(app,idir, file_regression):
     """Test algorithm ref role markup."""
+    app.builder.build_all()
+    path_algo_directive = (app.outdir / "algorithm" / idir)
+    assert path_algo_directive.exists()
+    # get content markup
+    soup = BeautifulSoup(
+        path_algo_directive.read_text(encoding="utf8"), "html.parser"
+    )
 
-    algo_list = [
-        "_algo_numbered_reference.rst",
-        "_algo_text_reference.rst",
-    ]
-
-    for idir in algo_list:
-        fname = idir.split(".")[0] + ".html"
-        path_algo_directive = path_algo.joinpath(fname)
-        assert path_algo_directive.exists()
-
-        # get content markup
-        soup = BeautifulSoup(
-            path_algo_directive.read_text(encoding="utf8"), "html.parser"
-        )
-
-        algo = soup.select("p")[0]
-        file_regression.check(str(algo), basename=idir.split(".")[0], extension=".html")
+    algo = soup.select("p")[0]
+    file_regression.check(str(algo), basename=idir.split(".")[0], extension=".html")
