@@ -40,8 +40,8 @@ div.proof p.admonition-title::before {
 *********************************************/
 div#proof{
 	padding: .6rem .8rem !important;
-	border-left: .2rem solid var(--warning-border-color);
-	background-color: var(--warning-title-color);
+	border-left: .2rem solid var(--grey-border-color);
+	background-color: none;
 	font-style: italic;
 }
 
