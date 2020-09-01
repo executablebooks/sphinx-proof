@@ -45,7 +45,6 @@ def visit_unenumerable_node(self, node: Node) -> None:
 def depart_unenumerable_node(self, node: Node) -> None:
     typ = node.attributes.get("type", "")
     title = node.attributes.get("title", "")
-    _id = node.attributes.get("ids", [])[0]
 
     if title == "":
         idx = len(self.body) - self.body[-1::-1].index('<p class="admonition-title">')

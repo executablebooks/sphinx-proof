@@ -1,6 +1,5 @@
 from pathlib import Path
-from subprocess import run, PIPE
-import pytest
+from subprocess import run
 import os
 
 path_tests = Path(__file__).parent.resolve()
@@ -14,11 +13,11 @@ def test_build_book(tmpdir):
     os.chdir(path_book)
 
     # Clean build
-    run(f"make clean".split())
+    run("make clean".split())
     assert path_book.joinpath("conf.py").exists()
 
     # Build the book
-    run(f"make html".split(), check=True)
+    run("make html".split(), check=True)
     path_html = path_book.joinpath("build", "html")
 
     assert path_book.joinpath("build").exists()

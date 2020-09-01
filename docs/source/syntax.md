@@ -272,24 +272,24 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/von_neumann_model.ht
 
 You can refer to a definition using the `{proof:ref}` role like: ```{proof:ref}`my-definition` ```, which will replace the reference with the definition number like so: {proof:ref}`my-definition`. When an explicit text is provided, this caption will serve as the title of the reference.
 
-## Criterion
+## Criteria
 
-A criteria directive can be included using the `proof:criteria` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A criterion directive can be included using the `proof:criterion` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your criteria that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your criterion that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the criteria’s class attribute which can be used to add custom CSS or JavaScript.
+	Value of the criterion’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off criteria auto numbering.
+	Turns off criterion auto numbering.
 
 **Example**
 
-````{proof:criteria} Weyl's criterion
-:label: weyls-criteria
+````{proof:criterion} Weyl's criterion
+:label: weyls-criterion
 
 Weyl's criterion states that the sequence $a_n$ is equidistributed modulo $1$ if
 and only if for all non-zero integers $m$,
@@ -302,8 +302,8 @@ and only if for all non-zero integers $m$,
 **MyST Syntax**
 
 ``````md
-````{proof:criteria} Weyl's criterion
-:label: weyls-criteria
+````{proof:criterion} Weyl's criterion
+:label: weyls-criterion
 
 Weyl's criterion states that the sequence $a_n$ is equidistributed modulo $1$ if
 and only if for all non-zero integers $m$,
@@ -316,9 +316,9 @@ and only if for all non-zero integers $m$,
 
 _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Equidistributed_sequence#Weyl's_criterion)
 
-### Referencing Criterion
+### Referencing Criteria
 
-You can refer to a criteria using the `{proof:ref}` role like: ```{proof:ref}`weyls-criteria` ```, which will replace the reference with the criteria number like so: {proof:ref}`weyls-criteria`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a criterion using the `{proof:ref}` role like: ```{proof:ref}`weyls-criterion` ```, which will replace the reference with the criterion number like so: {proof:ref}`weyls-criterion`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Remarks
@@ -355,7 +355,7 @@ This property is called **spherical symmetry** (see p 81. in Leamer
 
 **MyST Syntax**
 
-``````
+``````md
 ```{proof:remark}
 :label: my-remark
 
@@ -386,6 +386,8 @@ You can refer to a remark using the `{proof:ref}` role like: ```{proof:ref}`my-r
 **Example**
 
 ```{proof:conjecture} Fake $\gamma$ conjecture
+:label: my-conjecture
+
 This is a dummy conjecture to illustrate that one can use math in titles.
 ```
 
@@ -393,12 +395,15 @@ This is a dummy conjecture to illustrate that one can use math in titles.
 
 ``````md
 ```{proof:conjecture} Fake $\gamma$ conjecture
+:label: my-conjecture
+
 This is a dummy conjecture to illustrate that one can use math in titles.
 ```
 ``````
 
-_Source:_
+### Referencing Conjectures
 
+You can refer to a conjecture using the `{proof:ref}` role like: ```{proof:ref}`my-conjecture` ```, which will replace the reference with the conjecture number like so: {proof:ref}`my-conjecture`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 ## Corollaries
 
@@ -425,7 +430,7 @@ that $\vert \vert A \vert \vert < 1$.
 
 **MyST Syntax**
 
-``````
+``````md
 ```{proof:corollary}
 :label: my-corollary
 
@@ -477,7 +482,7 @@ An algorithm directive can be included using the `proof:algorithm` pattern. The 
 
 **MyST Syntax**
 
-``````
+``````md
 ```{proof:algorithm} Ford–Fulkerson
 :label: my-algorithm
 
@@ -503,7 +508,7 @@ _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algor
 
 You can refer to a algorithms using the `{proof:ref}` role like: ```{proof:ref}`my-algorithm` ```, which will replace the reference with the algorithm number like so: {proof:ref}`my-algorithm`. When an explicit text is provided, this caption will serve as the title of the reference.
 
-## Exercise
+## Exercises
 
 An exercise directive can be included using the `proof:exercise` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
@@ -534,7 +539,7 @@ for any positive integer $n$.
 
 **MyST Syntax**
 
-``````
+``````md
 ```{proof:exercise}
 :label: my-exercise
 
@@ -553,4 +558,182 @@ _Source:_ [QuantEcon](https://python-programming.quantecon.org/functions.html#Ex
 
 ### Referencing Exercises
 
-You can refer to a exercises using the `{proof:ref}` role like: ```{proof:ref}`my-exercise` ```, which will replace the reference with the exercise number like so: {proof:ref}`my-exercise`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to an exercise using the `{proof:ref}` role like: ```{proof:ref}`my-exercise` ```, which will replace the reference with the exercise number like so: {proof:ref}`my-exercise`. When an explicit text is provided, this caption will serve as the title of the reference.
+
+
+## Examples
+
+An example directive can be included using the `proof:example` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+
+* `label` : text
+
+	A unique identifier for your example that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+* `class` : text
+
+	Value of the example’s class attribute which can be used to add custom CSS or JavaScript.
+* `nonumber` : flag (empty)
+
+	Turns off example auto numbering.
+
+**Example**
+
+````{proof:example}
+:label: my-example
+
+Next, we shut down randomness in demand and assume that the demand shock
+$\nu_t$ follows a deterministic path:
+
+
+```{math}
+\nu_t = \alpha + \rho \nu_{t-1}
+```
+
+Again, we’ll compute and display outcomes in some figures
+
+```python
+ex2 = SmoothingExample(C2=[[0], [0]])
+
+x0 = [0, 1, 0]
+ex2.simulate(x0)
+```
+````
+
+**MyST Syntax**
+
+``````md
+````{proof:example}
+:label: my-example
+
+Next, we shut down randomness in demand and assume that the demand shock
+$\nu_t$ follows a deterministic path:
+
+
+```{math}
+\nu_t = \alpha + \rho \nu_{t-1}
+```
+
+Again, we’ll compute and display outcomes in some figures
+
+```python
+ex2 = SmoothingExample(C2=[[0], [0]])
+
+x0 = [0, 1, 0]
+ex2.simulate(x0)
+```
+````
+``````
+
+_Source:_ [QuantEcon](https://python.quantecon.org/lq_inventories.html#Example-2)
+
+### Referencing Examples
+
+You can refer to an example using the `{proof:ref}` role like: ```{proof:ref}`my-example` ```, which will replace the reference with the example number like so: {proof:ref}`my-example`. When an explicit text is provided, this caption will serve as the title of the reference.
+
+
+## Properties
+
+A property directive can be included using the `proof:property` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+
+* `label` : text
+
+	A unique identifier for your property that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+* `class` : text
+
+	Value of the property’s class attribute which can be used to add custom CSS or JavaScript.
+* `nonumber` : flag (empty)
+
+	Turns off property auto numbering.
+
+**Example**
+
+```{proof:property}
+:label: my-property
+
+This is a dummy property to illustrate the directive.
+```
+
+**MyST Syntax**
+
+``````md
+```{proof:property}
+:label: my-property
+
+This is a dummy property to illustrate the directive.
+```
+``````
+
+### Referencing Properties
+
+You can refer to a property using the `{proof:ref}` role like: ```{proof:ref}`my-property` ```, which will replace the reference with the property number like so: {proof:ref}`my-property`. When an explicit text is provided, this caption will serve as the title of the reference.
+
+## Observations
+
+An observation directive can be included using the `proof:observation` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+
+* `label` : text
+
+	A unique identifier for your observation that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+* `class` : text
+
+	Value of the observation’s class attribute which can be used to add custom CSS or JavaScript.
+* `nonumber` : flag (empty)
+
+	Turns off observation auto numbering.
+
+**Example**
+
+```{proof:observation}
+:label: my-observation
+
+This is a dummy observation directive.
+```
+
+**MyST Syntax**
+
+``````md
+```{proof:observation}
+:label: my-observation
+
+This is a dummy observation directive.
+```
+``````
+
+### Referencing Observations
+
+You can refer to an observation using the `{proof:ref}` role like: ```{proof:ref}`my-observation` ```, which will replace the reference with the observation number like so: {proof:ref}`my-observation`. When an explicit text is provided, this caption will serve as the title of the reference.
+
+## Propositions
+
+A proposition directive can be included using the `proof:proposition` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+
+* `label` : text
+
+	A unique identifier for your proposition that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+* `class` : text
+
+	Value of the proposition’s class attribute which can be used to add custom CSS or JavaScript.
+* `nonumber` : flag (empty)
+
+	Turns off proposition auto numbering.
+
+**Example**
+
+```{proof:proposition}
+:label: my-proposition
+
+This is a dummy proposition directive.
+```
+
+**MyST Syntax**
+
+``````md
+```{proof:proposition}
+:label: my-proposition
+
+This is a dummy proposition directive.
+```
+``````
+
+### Referencing Propositions
+
+You can refer to a proposition using the `{proof:ref}` role like: ```{proof:ref}`my-proposition` ```, which will replace the reference with the proposition number like so: {proof:ref}`my-proposition`. When an explicit text is provided, this caption will serve as the title of the reference.

@@ -53,10 +53,10 @@ class AlgorithmDirective(ElementDirective):
     name = "algorithm"
 
 
-class CriteriaDirective(ElementDirective):
+class CriterionDirective(ElementDirective):
     """A custom criteria directive."""
 
-    name = "criteria"
+    name = "criterion"
 
 
 class AxiomDirective(ElementDirective):
@@ -69,3 +69,45 @@ class ExerciseDirective(ElementDirective):
     """A custom exercise directive."""
 
     name = "exercise"
+
+
+class ExampleDirective(ElementDirective):
+    """A custom example directive."""
+
+    name = "example"
+
+
+class PropertyDirective(ElementDirective):
+    """A custom property directive."""
+
+    name = "property"
+
+
+class ObservationDirective(ElementDirective):
+    """A custom observation directive."""
+
+    name = "observation"
+
+
+class PropositionDirective(ElementDirective):
+    """A custom proposition directive."""
+
+    name = "proposition"
+
+
+PROOF_TYPES = {
+    "axiom": AxiomDirective,
+    "theorem": TheoremDirective,
+    "lemma": LemmaDirective,
+    "definition": DefinitionDirective,
+    "remark": RemarkDirective,
+    "conjecture": ConjectureDirective,
+    "corollary": CorollaryDirective,
+    "algorithm": AlgorithmDirective,
+    "criterion": CriterionDirective,
+    "exercise": ExerciseDirective,
+    "example": ExampleDirective,
+    "property": PropertyDirective,
+    "observation": ObservationDirective,
+    "proposition": PropositionDirective,
+}

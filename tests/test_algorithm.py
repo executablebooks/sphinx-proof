@@ -1,7 +1,6 @@
 from pathlib import Path
-from subprocess import run, PIPE
+from subprocess import run
 from bs4 import BeautifulSoup
-import pytest
 import os
 
 path_tests = Path(__file__).parent.resolve()
@@ -15,11 +14,11 @@ def test_build(tmpdir):
     os.chdir(path_book)
 
     # Clean build
-    run(f"make clean".split())
+    run("make clean".split())
     assert path_book.joinpath("conf.py").exists()
 
     # Build the book
-    run(f"make html".split(), check=True)
+    run("make html".split(), check=True)
 
     assert path_book.joinpath("build").exists()
     assert path_html.joinpath("index.html").exists()

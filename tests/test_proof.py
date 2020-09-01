@@ -1,5 +1,5 @@
 from pathlib import Path
-from subprocess import run, PIPE
+from subprocess import run
 from bs4 import BeautifulSoup
 import pytest
 import os
@@ -15,11 +15,11 @@ def test_build(tmpdir):
     os.chdir(path_book)
 
     # Clean build
-    run(f"make clean".split())
+    run("make clean".split())
     assert path_book.joinpath("conf.py").exists()
 
     # Build the book
-    run(f"make html".split(), check=True)
+    run("make html".split(), check=True)
 
     assert path_book.joinpath("build").exists()
     assert path_html.joinpath("index.html").exists()
@@ -34,6 +34,9 @@ def test_proof(tmpdir, file_regression):
     proof_list = [
         "_proof_with_classname.rst",
         "_proof_no_classname.rst",
+        "_proof_with_argument_content.rst",
+        "_proof_with_labeled_math.rst",
+        "_proof_with_unlabeled_math.rst",
     ]
 
     for idir in proof_list:
