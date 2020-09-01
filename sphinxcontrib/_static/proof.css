@@ -176,11 +176,11 @@ div.algorithm div.section {
 *********************************************/
 div.example {
 	border-left: .2rem solid var(--hint-border-color);
-	background-color: var(--hint-title-color);
+	background-color: none;
 }
 
 div.example p.admonition-title {
-	background-color: var(--caution-title-color);
+	background-color: transparent;
 }
 
 /*********************************************
