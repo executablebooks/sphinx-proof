@@ -1,25 +1,19 @@
 import shutil
-from pathlib import pathlib
+from pathlib import Path
 
 import pytest
 
-from click.testing import CliRunner
+from sphinx.testing.path import path
+
+pytest_plugins = 'sphinx.testing.fixtures'
 
 @pytest.fixture()
-def mybook(tmpdir):
-    src = Path(__file__).parent.resolve().joinpath("books","mybook").absolute()
-    dst = tmpdir.join("mybook")
+def rootdir(tmpdir):
+    src = path(__file__).parent.abspath() / "books"
+    dst = tmpdir.join("books")
     shutil.copytree(src, dst)
-    mybook = Path(dst)
-    yield mybook
+    books = path(dst)
+    yield books
     shutil.rmtree(dst)
-
-
-@pytest.fixture()
-def cli():
-    """Provides a click.testing CliRunner object for invoking CLI commands.
-    """
-    runner = CliRunner()
-    return runner
 
 
