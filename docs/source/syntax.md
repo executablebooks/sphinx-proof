@@ -4,6 +4,10 @@
 This documentation utilized the [Markedly Structured Text (MyST)](https://myst-parser.readthedocs.io/en/latest/index.html) syntax.
 ```
 
+```{proof:proof}
+This is a test directive.
+```
+
 ## Proofs
 
 A proof directive can be included using the `proof:proof` pattern. Unlike the other directives provided through this extension, a proof directive does not include any parameters nor does it require any arguments. A proof directive can easily be referenced through [targets](https://myst-parser.readthedocs.io/en/latest/using/syntax.html#targets-and-cross-referencing).
