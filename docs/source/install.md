@@ -1,5 +1,9 @@
 # Installation
 
+```{proof:proof}
+This is a test directive.
+```
+
 The **recommended** method of installation for most users is via `pip` as detailed
 in {ref}`getting-started`.
 
