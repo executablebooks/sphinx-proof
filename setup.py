@@ -13,10 +13,9 @@ directives.
 This project is maintained and supported by [najuzilu](https://github.com/najuzilu).
 """
 
-SHORT_DESCRIPTION = """A Sphinx extension for producing proofs, theorems, axioms, lemmas,
-definitions, criteria, remarks, conjectures, corollaries, algorithms, exercises,
-examples, properties, observations and propositions."""
+SHORT_DESCRIPTION = "A Sphinx extension for producing proofs, theorems, axioms, etc."
 
+URL = f"https://github.com/najuzilu/sphinxcontrib-prettyproof/archive/{VERSION}.tar.gz"
 
 setup(
     name="sphinxcontrib-prettyproof",
@@ -25,9 +24,7 @@ setup(
     author="QuantEcon",
     author_email="admin@quantecon.org",
     url="https://github.com/najuzilu/sphinxcontrib-prettyproof",
-    download_url=(
-        f"https://github.com/najuzilu/sphinxcontrib-prettyproof/archive/{VERSION}.tar.gz"
-    ),
+    download_url=URL,
     project_urls={
         "Source": "https://github.com/najuzilu/sphinxcontrib-prettyproof",
         "Tracker": "https://github.com/najuzilu/sphinxcontrib-prettyproof/issues",
@@ -40,7 +37,14 @@ setup(
     install_requires=["docutils>=0.15", "sphinx", "sphinx-book-theme"],
     extras_require={
         "code_style": ["flake8<3.8.0,>=3.7.0", "black", "pre-commit==1.17.0"],
-        "testing": ["coverage", "pytest>=3.6,<4", "pytest-cov", "pytest-regressions",],
+        "testing": [
+            "coverage",
+            "pytest>=3.6,<4",
+            "pytest-cov",
+            "pytest-regressions",
+            "beautifulsoup4",
+            "myst-parser",
+        ],
     },
     package_data={"sphinxcontrib": ["_static/*"]},
     include_package_data=True,
