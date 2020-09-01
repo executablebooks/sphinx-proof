@@ -22,3 +22,7 @@ then run:
 ```bash
 python setup.py install
 ```
+
+```{proof:proof}
+This is a test directive.
+```
