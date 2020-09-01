@@ -46,6 +46,12 @@ setup(
             "beautifulsoup4",
             "myst-parser",
         ],
+        "rtd": [
+            "sphinx>=3.0",
+            "sphinx-book-theme",
+            "myst-nb",
+            "sphinxcontrib-bibtex",
+        ],
     },
     package_data={"sphinxcontrib": ["_static/*"]},
     include_package_data=True,
