@@ -26,7 +26,7 @@ def test_build(tmpdir):
     assert path_proof.exists()
 
 
-@pytest.mark.usefixtures("file_regression")
+@pytest.fixture()
 def test_proof(tmpdir, file_regression):
     """Test proof directive markup."""
 

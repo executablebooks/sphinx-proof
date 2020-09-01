@@ -43,6 +43,8 @@ setup(
             "pytest>=3.6,<4",
             "pytest-cov",
             "pytest-regressions",
+            "beautifulsoup4",
+            "myst-parser",
         ],
     },
     package_data={"sphinxcontrib": ["_static/*"]},

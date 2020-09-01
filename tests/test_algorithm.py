@@ -1,6 +1,7 @@
 from pathlib import Path
 from subprocess import run
 from bs4 import BeautifulSoup
+import pytest
 import os
 
 path_tests = Path(__file__).parent.resolve()
@@ -25,6 +26,7 @@ def test_build(tmpdir):
     assert path_algo.exists()
 
 
+@pytest.fixture()
 def test_algorithm(tmpdir, file_regression):
     """Test algorithm directive markup."""
 
@@ -48,6 +50,7 @@ def test_algorithm(tmpdir, file_regression):
         file_regression.check(str(algo), basename=idir.split(".")[0], extension=".html")
 
 
+@pytest.fixture()
 def test_reference(tmpdir, file_regression):
     """Test algorithm ref role markup."""
 
