@@ -35,4 +35,3 @@ jobs:
       - name: Run pytest
         run: |
           pytest --duration=10
-
