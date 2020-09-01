@@ -13,7 +13,6 @@ from docutils.nodes import Node
 from sphinx.util import logging
 from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
-from docutils.statemachine import ViewList
 from .nodes import enumerable_node, unenumerable_node
 from .nodes import proof_node
 
@@ -115,7 +114,6 @@ class ProofDirective(SphinxDirective):
     }
 
     def run(self) -> List[Node]:
-        content = ViewList()
         domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
 
         # If class in options add to class array

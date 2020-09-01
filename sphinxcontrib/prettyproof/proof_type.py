@@ -93,3 +93,21 @@ class PropositionDirective(ElementDirective):
     """A custom proposition directive."""
 
     name = "proposition"
+
+
+PROOF_TYPES = {
+    "axiom": AxiomDirective,
+    "theorem": TheoremDirective,
+    "lemma": LemmaDirective,
+    "definition": DefinitionDirective,
+    "remark": RemarkDirective,
+    "conjecture": ConjectureDirective,
+    "corollary": CorollaryDirective,
+    "algorithm": AlgorithmDirective,
+    "criterion": CriterionDirective,
+    "exercise": ExerciseDirective,
+    "example": ExampleDirective,
+    "property": PropertyDirective,
+    "observation": ObservationDirective,
+    "proposition": PropositionDirective,
+}
