@@ -42,6 +42,12 @@ setup(
             "pytest>=3.6,<4",
             "pytest-cov",
             "pytest-regressions",
+        ],
+        "rtd": [
+            "sphinx>=3.0",
+            "sphinx-book-theme",
+            "sphinxcontrib-bibtex",
+            "sphinxcontrib.prettyproof",
             "beautifulsoup4",
             "myst-parser",
         ],
