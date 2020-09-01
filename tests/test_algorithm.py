@@ -10,20 +10,19 @@ path_html = path_book.joinpath("build", "html")
 path_algo = path_html.joinpath("algorithm")
 
 
-def test_build(tmpdir):
+def test_build(mybook):
     """Test building the book template and a few test configs."""
-    os.chdir(path_book)
-
-    # Clean build
-    run(f"make clean".split())
-    assert path_book.joinpath("conf.py").exists()
+    assert mybook.joinpath("conf.py").exists()
 
     # Build the book
     run(f"make html".split(), check=True)
 
-    assert path_book.joinpath("build").exists()
-    assert path_html.joinpath("index.html").exists()
-    assert path_algo.exists()
+    build = mybook.joinpath("build")
+    html = buid.joinpath("html")
+
+    assert build.exists()
+    assert html.joinpath("index.html").exists()
+    assert build.joinpath("html","algorithm").exists()
 
 
 def test_algorithm(tmpdir, file_regression):
