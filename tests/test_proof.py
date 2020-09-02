@@ -2,8 +2,6 @@ from bs4 import BeautifulSoup
 import pytest
 import os
 
-### just checking of path proof exists
-
 @pytest.mark.sphinx('html', testroot="mybook")
 @pytest.mark.parametrize("idir",[   
         "_proof_with_classname.html",

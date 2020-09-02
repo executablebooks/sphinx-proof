@@ -1,6 +1,4 @@
 import shutil
-from pathlib import Path
-
 import pytest
 
 from sphinx.testing.path import path
