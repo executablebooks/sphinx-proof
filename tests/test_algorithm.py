@@ -1,6 +1,5 @@
-from pathlib import Path
-from subprocess import run
 from bs4 import BeautifulSoup
+import pytest
 import os
 
 @pytest.mark.sphinx('html', testroot="mybook")
