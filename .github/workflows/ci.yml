@@ -39,6 +39,14 @@ jobs:
           pytest --duration=10 --cov=sphinxcontrib --cov-report=xml --cov-report=term-missing
       - name: Create cov
         run: coverage xml
+      - name: Upload to Codecov
+        if: matrix.python-version == 3.7 && matrix.sphinx == '>=3,<4' && github.repository == 'sphinxcontrib-prettyproof'
+        uses: codecov/codecov-action@v1
+        with:
+          name: sphinxcontrib-prettyproof-pytest-py3.7
+          flags: pytests
+          file: ./coverage.xml
+          fail_ci_if_error: true
 
 
   docs:
