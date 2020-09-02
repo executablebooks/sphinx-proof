@@ -6,3 +6,10 @@ __pycache__
 .vscode/
 build/
 dist/
+
+
+# Unit test / coverage reports
+
+.coverage
+coverage.*
+coverage.xml
