@@ -1,5 +1,4 @@
 import pytest
-import os
 
 @pytest.mark.sphinx('html', testroot='mybook')
 def test_build(app):

@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import pytest
-import os
 
 @pytest.mark.sphinx('html', testroot="mybook")
 @pytest.mark.parametrize("idir",["_algo_labeled_titled_with_classname.html", "_algo_nonumber.html"])
