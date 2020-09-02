@@ -21,7 +21,7 @@ def test_algorithm(app, idir, file_regression):
 
 @pytest.mark.sphinx('html', testroot="mybook")
 @pytest.mark.parametrize("idir",["_algo_numbered_reference.html", "_algo_text_reference.html"])
-def test_reference(app,idir, file_regression):
+def test_reference(app, idir, file_regression):
     """Test algorithm ref role markup."""
     app.builder.build_all()
     path_algo_directive = (app.outdir / "algorithm" / idir)
@@ -35,7 +35,6 @@ def test_reference(app,idir, file_regression):
     file_regression.check(str(algo), basename=idir.split(".")[0], extension=".html")
 
 @pytest.mark.sphinx('html', testroot='duplicatelabel')
-def test_duplicate_label(app, status, warning, capfd):
+def test_duplicate_label(app, warnings):
     app.build()
-    warning = app._warning.getvalue().strip()
-    assert "WARNING: duplicate algorithm label" in warning
+    assert "WARNING: duplicate algorithm label" in warnings(app)
