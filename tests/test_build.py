@@ -12,9 +12,8 @@ def test_build(app):
     assert (app.outdir / "proof").exists()
 
 
-@pytest.mark.sphinx('html', testroot='missingref')
-def test_missing_ref(app):
+@pytest.mark.sphinx('html' , testroot='missingref')
+def test_missing_ref(app, warnings):
     # Clean build
     app.build()
-    warning = app._warning.getvalue().strip()
-    assert "WARNING: label 'foo' not found" in warning
+    assert "WARNING: label 'foo' not found" in warnings(app)

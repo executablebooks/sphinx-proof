@@ -16,4 +16,9 @@ def rootdir(tmpdir):
     yield books
     shutil.rmtree(dst)
 
+@pytest.fixture
+def warnings():
+    def read(app):
+        return app._warning.getvalue().strip()
+    return read
 
