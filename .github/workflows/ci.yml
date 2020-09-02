@@ -22,7 +22,6 @@ jobs:
     strategy:
       matrix:
         python-version: [3.6, 3.7, 3.8]
-        sphinx: [">=3,<4"]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -32,7 +31,6 @@ jobs:
       - name: Install dependencies
         run : |
           python -m pip install --upgrade pip
-          pip install "sphinx${{ matrix.sphinx }}"
           pip install -e.[testing]
       - name: Run pytest
         run: |
@@ -40,11 +38,10 @@ jobs:
       - name: Create cov
         run: coverage xml
       - name: Upload to Codecov
-        if: matrix.python-version == 3.7 && matrix.sphinx == '>=3,<4' && github.repository == 'sphinxcontrib-prettyproof'
+        if: matrix.python-version == 3.7
         uses: codecov/codecov-action@v1
         with:
           name: sphinxcontrib-prettyproof-pytest-py3.7
-          token: ${{ secrets.CODECOV_TOKEN }}
           flags: pytests
           file: ./coverage.xml
           fail_ci_if_error: true
