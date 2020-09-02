@@ -38,7 +38,7 @@ jobs:
       - name: Create cov
         run: coverage xml
       - name: Upload to Codecov
-        if: matrix.python-version == 3.7
+        if: matrix.python-version == 3.7 && github.repository == 'sphinxcontrib-prettyproof'
         uses: codecov/codecov-action@v1
         with:
           name: sphinxcontrib-prettyproof-pytest-py3.7
