@@ -44,6 +44,7 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           name: sphinxcontrib-prettyproof-pytest-py3.7
+          token: ${{ secrets.CODECOV_TOKEN }}
           flags: pytests
           file: ./coverage.xml
           fail_ci_if_error: true
