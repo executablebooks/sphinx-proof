@@ -1,5 +1,5 @@
 sphinx>=3.0
 sphinx-book-theme
 myst-nb
-sphinxcontrib-prettyproof
 sphinxcontrib-bibtex
+sphinxcontrib.prettyproof

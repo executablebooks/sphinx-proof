@@ -20,8 +20,7 @@ from sphinx.util.nodes import make_refnode
 from sphinx.util import logging
 from docutils import nodes
 from .directive import ProofDirective
-from .proof_type import *
-
+from .proof_type import PROOF_TYPES
 
 logger = logging.getLogger(__name__)
 
@@ -76,23 +75,7 @@ class ProofDomain(Domain):
 
     indices = {ProofIndex}
 
-    directives = {
-        "proof": ProofDirective,
-        "axiom": AxiomDirective,
-        "theorem": TheoremDirective,
-        "lemma": LemmaDirective,
-        "definition": DefinitionDirective,
-        "remark": RemarkDirective,
-        "conjecture": ConjectureDirective,
-        "corollary": CorollaryDirective,
-        "algorithm": AlgorithmDirective,
-        "criterion": CriterionDirective,
-        "exercise": ExerciseDirective,
-        "example": ExampleDirective,
-        "property": PropertyDirective,
-        "observation": ObservationDirective,
-        "proposition": PropositionDirective,
-    }
+    directives = {**{"proof": ProofDirective}, **PROOF_TYPES}
 
     def resolve_xref(
         self,
@@ -107,7 +90,7 @@ class ProofDomain(Domain):
 
         try:
             match = env.proof_list[target]
-        except:
+        except Exception:
             path = self.env.doc2path(fromdocname)[:-3]
             msg = "label '{}' not found.".format(target)
             logger.warning(msg, location=path, color="red")
