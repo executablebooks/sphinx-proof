@@ -42,7 +42,6 @@ div#proof{
 	padding: .6rem .8rem !important;
 	border-left: .2rem solid var(--grey-border-color);
 	background-color: none;
-	font-style: italic;
 }
 
 /*********************************************
@@ -177,11 +176,11 @@ div.algorithm div.section {
 *********************************************/
 div.example {
 	border-left: .2rem solid var(--hint-border-color);
-	background-color: var(--hint-title-color);
+	background-color: none;
 }
 
 div.example p.admonition-title {
-	background-color: var(--caution-title-color);
+	background-color: transparent;
 }
 
 /*********************************************
