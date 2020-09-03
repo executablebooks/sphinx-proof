@@ -1,6 +1,6 @@
 # Testing
 
-For code tests, sphinxcontrib-prettyproof uses `pytest`. 
+For code tests, sphinxcontrib-prettyproof uses `pytest`.
 
 Run the tests with the following command:
 
@@ -13,7 +13,7 @@ Run the tests with the following command:
 
 The module `sphinx.testing` is used to run sphinx builds for tests, in a temporary directory.
 
-If creating a new source folder for test files, folder name should start with `test-`. 
+If creating a new source folder for test files, folder name should start with `test-`.
 Your folder should reside inside the `tests/books` directory, which has been set as the root directory for tests.
 
 The tests should start with:

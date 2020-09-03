@@ -1,6 +1,7 @@
 import pytest
 
-@pytest.mark.sphinx('html', testroot='mybook')
+
+@pytest.mark.sphinx("html", testroot="mybook")
 def test_build(app):
     """Test building the book template and a few test configs."""
     app.build()
@@ -9,7 +10,7 @@ def test_build(app):
     assert (app.outdir / "proof").exists()
 
 
-@pytest.mark.sphinx('html' , testroot='missingref')
+@pytest.mark.sphinx("html", testroot="missingref")
 def test_missing_ref(app, warnings):
     # Clean build
     app.build()
