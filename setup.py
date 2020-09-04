@@ -22,7 +22,7 @@ extras = {
     "code_style": ["flake8<3.8.0,>=3.7.0", "black", "pre-commit==1.17.0"],
     "testing": [
         "coverage",
-        "pytest>=4.6",
+        "pytest>=3.6,<4",
         "pytest-cov",
         "pytest-regressions",
         "beautifulsoup4",
