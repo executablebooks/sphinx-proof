@@ -6,7 +6,6 @@ __pycache__
 .vscode/
 build/
 dist/
-<<<<<<< HEAD
 
 # Unit test / coverage reports
 
