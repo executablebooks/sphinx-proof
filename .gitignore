@@ -12,3 +12,4 @@ dist/
 .coverage
 coverage.*
 coverage.xml
+.tox/
