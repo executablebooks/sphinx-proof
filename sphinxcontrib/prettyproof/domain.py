@@ -19,7 +19,7 @@ from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_refnode
 from sphinx.util import logging
 from docutils import nodes
-from .directive import ProofDirective
+from .directive import ProofDirective, SolutionDirective
 from .proof_type import PROOF_TYPES
 
 logger = logging.getLogger(__name__)
@@ -75,7 +75,11 @@ class ProofDomain(Domain):
 
     indices = {ProofIndex}
 
-    directives = {**{"proof": ProofDirective}, **PROOF_TYPES}
+    directives = {
+        **{"proof": ProofDirective},
+        **{"solution": SolutionDirective},
+        **PROOF_TYPES,
+    }
 
     def resolve_xref(
         self,

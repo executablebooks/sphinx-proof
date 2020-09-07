@@ -1,5 +1,10 @@
 # Testing
 
+```{proof:solution} my-exercise2
+blabla bla bla.
+bla bla bla bla.
+```
+
 For code tests, sphinxcontrib-prettyproof uses `pytest`.
 
 Run the tests with the following command:

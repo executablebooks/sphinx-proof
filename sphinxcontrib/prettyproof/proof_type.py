@@ -95,15 +95,6 @@ class PropositionDirective(ElementDirective):
     name = "proposition"
 
 
-class SolutionDirective(ElementDirective):
-    """A custom solution directive."""
-
-    name = "solution"
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = False
-
-
 PROOF_TYPES = {
     "axiom": AxiomDirective,
     "theorem": TheoremDirective,
@@ -119,5 +110,4 @@ PROOF_TYPES = {
     "property": PropertyDirective,
     "observation": ObservationDirective,
     "proposition": PropositionDirective,
-    "solution": SolutionDirective,
 }

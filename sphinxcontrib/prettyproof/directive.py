@@ -41,9 +41,6 @@ class ElementDirective(SphinxDirective):
         if not hasattr(env, "proof_list"):
             env.proof_list = {}
 
-        # if typ == "solution":
-        #     option_spec["nonumber"] = True
-
         # If class in options add to class array
         classes, class_name = [domain_name, typ], self.options.get("class", [])
         if class_name:
@@ -131,5 +128,83 @@ class ProofDirective(SphinxDirective):
 
         node = proof_node()
         node += section
+
+        return [node]
+
+
+class SolutionDirective(ElementDirective):
+    """A custom solution directive."""
+
+    name = "solution"
+    has_content = True
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = False
+    option_spec = {
+        "label": directives.unchanged_required,
+        "class": directives.class_option,
+    }
+
+    def run(self) -> List[Node]:
+        env = self.env
+        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
+        serial_no = env.new_serialno()
+
+        if not hasattr(env, "proof_list"):
+            env.proof_list = {}
+
+        if typ == "solution":
+            self.options["nonumber"] = True
+
+        # If class in options add to class array
+        classes, class_name = [domain_name, typ], self.options.get("class", [])
+        if class_name:
+            classes.extend(class_name)
+
+        label = self.options.get("label", "")
+        # If label
+        if label:
+            self.options["noindex"] = False
+            node_id = f"{label}"
+        else:
+            self.options["noindex"] = True
+            label = f"{typ}-{serial_no}"
+            node_id = f"{typ}-{serial_no}"
+        ids = [node_id]
+
+        # Duplicate label warning
+        if not label == "" and label in env.proof_list.keys():
+            path = env.doc2path(env.docname)[:-3]
+            other_path = env.doc2path(env.proof_list[label]["docname"])
+            msg = f"duplicate {typ} label '{label}', other instance in {other_path}"
+            logger.warning(msg, location=path, color="red")
+
+        title_text = self.arguments[0]
+
+        section = nodes.section(classes=[f"{typ}-content"], ids=["proof-content"])
+        self.state.nested_parse(self.content, self.content_offset, section)
+
+        node = unenumerable_node()
+
+        node.document = self.state.document
+        node += section
+
+        # Set node attributes
+        node["ids"].extend(ids)
+        node["classes"].extend(classes)
+        node["title"] = title_text
+        node["label"] = label
+        node["type"] = typ
+
+        env.proof_list[label] = {
+            "docname": env.docname,
+            "type": typ,
+            "ids": ids,
+            "label": label,
+            "prio": 0,
+            "nonumber": True if "nonumber" in self.options else False,
+        }
+
+        # import pdb; pdb.set_trace()
 
         return [node]
