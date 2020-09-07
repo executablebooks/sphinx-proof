@@ -41,6 +41,9 @@ class ElementDirective(SphinxDirective):
         if not hasattr(env, "proof_list"):
             env.proof_list = {}
 
+        # if typ == "solution":
+        #     option_spec["nonumber"] = True
+
         # If class in options add to class array
         classes, class_name = [domain_name, typ], self.options.get("class", [])
         if class_name:

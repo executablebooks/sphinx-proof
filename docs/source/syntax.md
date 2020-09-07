@@ -3,6 +3,8 @@
 ```{note}
 This documentation utilized the [Markedly Structured Text (MyST)](https://myst-parser.readthedocs.io/en/latest/index.html) syntax.
 ```
+```{proof:solution} my-exercise
+```
 
 ## Proofs
 
