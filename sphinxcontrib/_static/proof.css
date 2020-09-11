@@ -218,3 +218,21 @@ div.proposition {
 div.proposition p.admonition-title {
 	background-color: var(--note-title-color);
 }
+
+/*********************************************
+* Solution *
+*********************************************/
+div.solution{
+	padding: .6rem .8rem !important;
+	border-left: .2rem solid var(--grey-border-color);
+	background-color: none;
+}
+
+div.solution p.admonition-title {
+	background-color: transparent;
+	text-decoration: none;
+}
+
+div.solution p.admonition-title a{
+	color: #333 !important;
+}
