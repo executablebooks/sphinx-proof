@@ -1,5 +1,5 @@
-content 1
-=========
+_algo_labeled_titled_with_classname
+===================================
 
 .. proof:algorithm:: Test algorithm directive
 	:class: test-algo

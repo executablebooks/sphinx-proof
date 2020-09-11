@@ -1,4 +1,4 @@
-content 3
-=========
+_algo_numbered_reference
+========================
 
 referencing with number :proof:ref:`test-algo-label`.
