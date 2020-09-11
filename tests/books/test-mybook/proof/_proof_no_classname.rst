@@ -1,5 +1,5 @@
-content 2
-=========
+_proof_no_classname
+===================
 
 .. proof:proof::
 

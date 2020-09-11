@@ -1,5 +1,5 @@
-content 3
-=========
+_proof_with_unlabeled_math
+==========================
 
 .. proof:proof::
 

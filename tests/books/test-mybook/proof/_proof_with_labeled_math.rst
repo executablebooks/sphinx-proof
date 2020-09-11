@@ -1,5 +1,5 @@
-content 4
-=========
+_proof_with_labeled_math
+========================
 
 .. proof:proof::
 

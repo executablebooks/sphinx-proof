@@ -1,5 +1,5 @@
-content 1
-=========
+_proof_with_classname
+=====================
 
 .. proof:proof::
     :class: test-proof

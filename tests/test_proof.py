@@ -11,6 +11,7 @@ import pytest
         "_proof_with_argument_content.html",
         "_proof_with_labeled_math.html",
         "_proof_with_unlabeled_math.html",
+        "_proof_inline_math_argument.html",
     ],
 )
 def test_proof(app, idir, file_regression):
