@@ -19,7 +19,7 @@ from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_refnode
 from sphinx.util import logging
 from docutils import nodes
-from .directive import ProofDirective, SolutionDirective
+from .directive import ProofDirective
 from .proof_type import PROOF_TYPES
 
 logger = logging.getLogger(__name__)
@@ -77,7 +77,6 @@ class ProofDomain(Domain):
 
     directives = {
         **{"proof": ProofDirective},
-        **{"solution": SolutionDirective},
         **PROOF_TYPES,
     }
 
@@ -92,23 +91,66 @@ class ProofDomain(Domain):
         contnode: Element,
     ) -> Element:
 
+        # If target exists
         try:
             match = env.proof_list[target]
         except Exception:
-            path = self.env.doc2path(fromdocname)[:-3]
+            docpath = self.env.doc2path(fromdocname)
+            path = docpath[: docpath.rfind(".")]
             msg = "label '{}' not found.".format(target)
             logger.warning(msg, location=path, color="red")
             return None
 
-        todocname = match["docname"]
+        todocname = match.get("docname", "")
         title = contnode[0]
 
+        # If label referenced with no additional text
         if target in contnode[0]:
+
             number = ""
-            if not env.proof_list[target]["nonumber"]:
-                number = ".".join(
-                    map(str, env.toc_fignumbers[todocname]["proof"][target])
+            nonumber = env.proof_list.get(target, {}).get("nonumber", bool)
+
+            # If numbered directive, update title
+            if not nonumber:
+                _ = (
+                    env.toc_fignumbers.get(todocname, {})
+                    .get("proof", {})
+                    .get(target, ())
                 )
-            title = nodes.Text(f"{match['type'].title()} {number}")
+                number = ".".join(map(str, _))
+                new_title = match.get("type", "").title()
+
+            # If match type is solution directive
+            if match.get("type", "") == "solution":
+                ref_label = match.get("title", "")
+
+                # If label of solution's exercise doesn't exist
+                try:
+                    ref_match = env.proof_list.get(ref_label, {})
+                except Exception:
+                    return None
+
+                docname = ref_match.get("docname", "")
+
+                # If exercise directive has nonumber
+                if not ref_match.get("nonumber", bool):
+                    _ = (
+                        env.toc_fignumbers.get(docname, {})
+                        .get("proof", {})
+                        .get(ref_label, ())
+                    )
+                    number = ".".join(map(str, _))
+                    new_title = f"solution to {ref_match.get('type','').title()}"
+                else:
+                    if ref_match.get("title", "") == "":
+                        new_title = f"Solution to {ref_match.get('type','').title()}"
+                    else:
+                        # TODO: if title contains LaTeX
+                        new_title = f"Solution to {ref_match.get('title','')}"
+
+            if number == "":
+                title = nodes.Text(f"{new_title}")
+            else:
+                title = nodes.Text(f"{new_title} {number}")
         # builder, fromdocname, todocname, targetid, child, title=None
         return make_refnode(builder, fromdocname, todocname, target, title)
