@@ -36,7 +36,7 @@ def depart_enumerable_node(self, node: Node) -> None:
     ids = node.attributes.get("ids", [])[0]
 
     # Find index in list of 'Proof #'
-    number = get_node_number(self, node, ids)
+    number = get_node_number(self, ids)
     idx = self.body.index(f"Proof {number} ")
     self.body[idx] = f"{typ.title()} {number} "
     self.body.append("</div>")
@@ -45,41 +45,44 @@ def depart_enumerable_node(self, node: Node) -> None:
 def visit_unenumerable_node(self, node: Node) -> None:
     self.body.append(self.starttag(node, "div", CLASS="admonition"))
 
+    if node.get("type", "") == "solution":
+        self.body.append('<p class="admonition-title">')
+
 
 def depart_unenumerable_node(self, node: Node) -> None:
     typ = node.attributes.get("type", "")
     title = node.attributes.get("title", "")
-    node_id = node.attributes.get("ids", [])[0]
+
+    idx = len(self.body) - self.body[-1::-1].index('<p class="admonition-title">')
 
     if typ == "solution":
-        idx = [
-            ii for ii in range(len(self.body) - 1, -1, -1) if node_id in self.body[ii]
-        ][0] + 1
+        exc_label = title
         env = self.builder.env
-
-        if title in env.proof_list.keys():
-            # IF NONUMBER? If NONTITLE?
-            number = get_node_number(self, node, title)
-            title = (
-                f'<a href="#{title}">Solution to Exercise {number}</a>'  # add target
-            )
+        if exc_label in env.proof_list.keys():
+            # If nonumber check if title
+            if env.proof_list[exc_label].get("nonumber", bool):
+                node_title = env.proof_list[exc_label].get("title", "")
+                if node_title == "":
+                    new_title = f'<a href="#{exc_label}">Solution to Exercise</a></p>'
+                else:
+                    # TODO: if title contains LaTeX
+                    new_title = (
+                        f'<a href="#{exc_label}">Solution to {node_title}</a></p>'
+                    )
+            else:
+                number = get_node_number(self, title)
+                new_title = f'<a href="#{title}">Solution to Exercise {number}</a></p>'
         else:
             # If label of exercise referenced in solution not found
-            path = env.doc2path(self.builder.current_docname)
+            docpath = env.doc2path(self.builder.current_docname)
+            path = docpath[: docpath.rfind(".")]
             msg = "label '{}' not found.".format(title)
             logger.warning(msg, location=path, color="red")
-            title = "Solution to Exercise"
-
+            new_title = "Solution to Exercise"
     else:
-        title = typ.title()
-        if title == "":
-            idx = len(self.body) - self.body[-1::-1].index(
-                '<p class="admonition-title">'
-            )
-        else:
-            idx = self.body.index(title)
+        new_title = typ.title()
 
-    element = f"<span>{title} </span>"
+    element = f"<span>{new_title} </span>"
     self.body.insert(idx, element)
     self.body.append("</div>")
 
@@ -92,7 +95,7 @@ def depart_proof_node(self, node: Node) -> None:
     pass
 
 
-def get_node_number(self: HTMLTranslator, node: Node, attr: str) -> str:
+def get_node_number(self: HTMLTranslator, attr: str) -> str:
     key = "proof"
     number = self.builder.fignumbers.get(key, {}).get(attr, ())
     return ".".join(map(str, number))

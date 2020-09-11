@@ -8,6 +8,7 @@ List of proof-type directives
 :licences: see LICENSE for details
 """
 
+from docutils.parsers.rst import directives
 from .directive import ElementDirective
 
 
@@ -95,6 +96,19 @@ class PropositionDirective(ElementDirective):
     name = "proposition"
 
 
+class SolutionDirective(ElementDirective):
+    """A custom solution directive."""
+
+    name = "solution"
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = False
+    option_spec = {
+        "label": directives.unchanged_required,
+        "class": directives.class_option,
+    }
+
+
 PROOF_TYPES = {
     "axiom": AxiomDirective,
     "theorem": TheoremDirective,
@@ -110,4 +124,5 @@ PROOF_TYPES = {
     "property": PropertyDirective,
     "observation": ObservationDirective,
     "proposition": PropositionDirective,
+    "solution": SolutionDirective,
 }
