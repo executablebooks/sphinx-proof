@@ -29,3 +29,23 @@ Sphinx Application API is available as a parameter to all the test functions:
 @pytest.mark.sphinx('html', testroot="mybook")
 def mytest(app):
 ```
+
+## Code Style
+
+Code is formatted using [black](https://github.com/ambv/black) and code style is tested using [flake8](http://flake8.pycqa.org) with style configuration set in `.flake8`.
+
+Installing using `[code style]` will make the [pre-commit](https://pre-commit.com/) package available which will make sure the style is met before your commits are submitted. In addition, it will reformat for any lint errors.
+
+To install `pre-commit` run the following
+
+```bash
+cd sphinxcontrib-prettyproof
+pre-commit install
+```
+
+`black` and `flake8` can be run separately:
+
+```shell
+>>> black .
+>>> flake8 .
+```
