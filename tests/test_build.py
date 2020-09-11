@@ -8,6 +8,7 @@ def test_build(app):
     assert (app.outdir / "index.html").exists()
     assert (app.outdir / "algorithm").exists()
     assert (app.outdir / "proof").exists()
+    assert (app.outdir / "solution").exists()
 
 
 @pytest.mark.sphinx("html", testroot="missingref")
