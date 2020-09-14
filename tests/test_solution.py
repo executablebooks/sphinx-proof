@@ -3,6 +3,14 @@ import pytest
 
 
 @pytest.mark.sphinx("html", testroot="mybook")
+def test_warnings(app, warnings):
+    app.build()
+    assert "WARNING: label 'foobar' not found" in warnings(app)
+    assert "WARNING: label 'wrong-ex-label' not found" in warnings(app)
+    assert 'WARNING: Error in "proof:solution" directive' in warnings(app)
+
+
+@pytest.mark.sphinx("html", testroot="mybook")
 @pytest.mark.parametrize(
     "idir",
     [
@@ -23,6 +31,7 @@ def test_solution(app, idir, file_regression):
     soup = BeautifulSoup(
         path_solution_directive.read_text(encoding="utf8"), "html.parser"
     )
+
     sol = soup.select("div.solution")[0]
     file_regression.check(str(sol), basename=idir.split(".")[0], extension=".html")
 
@@ -31,9 +40,11 @@ def test_solution(app, idir, file_regression):
 @pytest.mark.parametrize(
     "idir",
     [
-        "",
-        "",
-        "",
+        "_solution_ref_with_nonumber_notitle.html",
+        "_solution_ref_with_nonumber_title.html",
+        # "_solution_ref_with_nonumber_title_inlinemath",
+        "_solution_ref_with_number.html",
+        "_solution_ref_wrong_solution_ref.html",
     ],
 )
 def test_reference(app, idir, file_regression):
@@ -46,13 +57,8 @@ def test_reference(app, idir, file_regression):
         path_solution_directive.read_text(encoding="utf8"), "html.parser"
     )
 
-    sol = soup.select("p")[0]
-    file_regression.check(str(sol), basename=idir.split(".")[0], extension=".html")
-
-
-@pytest.mark.sphinx("html", testroot="mybook")
-def test_warnings(app, warnings):
-    app.build()
-    assert "WARNING: label 'foobar' not found" in warnings(app)
-    assert "WARNING: label 'wrong-ex-label' not found." in warnings(app)
-    assert 'WARNING: Error in "proof:solution" directive' in warnings(app)
+    if idir == "_solution_ref_wrong_solution_ref.html":
+        sol = str(soup.select("p")[0])
+    else:
+        sol = f'{soup.select("p")[0]}\n{soup.select("p")[1]}'
+    file_regression.check(sol, basename=idir.split(".")[0], extension=".html")
