@@ -19,10 +19,6 @@ def test_algorithm(app, idir, file_regression):
     path_algo_directive = app.outdir / "algorithm" / idir
     assert path_algo_directive.exists()
 
-    import pdb
-
-    pdb.set_trace()
-
     # get content markup
     soup = BeautifulSoup(path_algo_directive.read_text(encoding="utf8"), "html.parser")
     algo = soup.select("div.algorithm")[0]
