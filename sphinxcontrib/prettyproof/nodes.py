@@ -46,44 +46,47 @@ def visit_unenumerable_node(self, node: Node) -> None:
     self.body.append(self.starttag(node, "div", CLASS="admonition"))
 
     if node.get("type", "") == "solution":
+        env = self.builder.env
+        exercise_label = node.attributes.get("title", "")
         self.body.append('<p class="admonition-title">')
 
+        # Check to see if exercise label exists
+        if exercise_label in env.proof_list.keys():
 
-def depart_unenumerable_node(self, node: Node) -> None:
-    typ = node.attributes.get("type", "")
-    title = node.attributes.get("title", "")
-
-    idx = len(self.body) - self.body[-1::-1].index('<p class="admonition-title">')
-
-    if typ == "solution":
-        exc_label = title
-        env = self.builder.env
-        if exc_label in env.proof_list.keys():
-            # If nonumber check if title
-            if env.proof_list[exc_label].get("nonumber", bool):
-                node_title = env.proof_list[exc_label].get("title", "")
-                if node_title == "":
-                    new_title = f'<a href="#{exc_label}">Solution to Exercise</a></p>'
+            # Check to see if exercise has nonumber
+            if env.proof_list[exercise_label].get("nonumber", bool):
+                # Check if title string in exercise is nonempty
+                exercise_title = env.proof_list[exercise_label].get("title", "")
+                if exercise_title == "":
+                    title = f'<a href="#{exercise_label}">Solution to Exercise</a>'
                 else:
-                    # TODO: if title contains LaTeX
-                    new_title = (
-                        f'<a href="#{exc_label}">Solution to {node_title}</a></p>'
+                    title = (
+                        f'<a href="#{exercise_label}">Solution to {exercise_title}</a>'
                     )
             else:
-                number = get_node_number(self, title)
-                new_title = f'<a href="#{title}">Solution to Exercise {number}</a></p>'
+                # Exercise is an enumerable node
+                number = get_node_number(self, exercise_label)
+                title = f'<a href="#{exercise_label}">Solution to Exercise {number}</a>'
         else:
             # If label of exercise referenced in solution not found
             docpath = env.doc2path(self.builder.current_docname)
             path = docpath[: docpath.rfind(".")]
-            msg = "label '{}' not found.".format(title)
+            msg = f"label '{exercise_label}' not found"
             logger.warning(msg, location=path, color="red")
-            new_title = "Solution to Exercise"
-    else:
-        new_title = typ.title()
+            title = "Solution to Exercise"
 
-    element = f"<span>{new_title} </span>"
-    self.body.insert(idx, element)
+        self.body.append(f"<span>{title}</span>")
+        self.body.append("</p>")
+
+
+def depart_unenumerable_node(self, node: Node) -> None:
+    typ = node.attributes.get("type", "")
+    idx = len(self.body) - self.body[-1::-1].index('<p class="admonition-title">')
+
+    if typ != "solution":
+        element = f"<span>{typ.title()} </span>"
+        self.body.insert(idx, element)
+
     self.body.append("</div>")
 
 
