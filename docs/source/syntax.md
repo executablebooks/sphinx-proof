@@ -8,6 +8,12 @@ This documentation utilized the [Markedly Structured Text (MyST)](https://myst-p
 
 A proof directive can be included using the `proof:proof` pattern. Unlike the other directives provided through this extension, a proof directive does not include any parameters nor does it require any arguments. A proof directive can easily be referenced through [targets](https://myst-parser.readthedocs.io/en/latest/using/syntax.html#targets-and-cross-referencing).
 
+The following option is supported:
+
+* `class` : text
+
+	Value of the proof’s class attribute which can be used to add custom CSS or JavaScript.
+
 
 **Example**
 
