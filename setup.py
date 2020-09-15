@@ -57,7 +57,6 @@ setup(
     packages=find_packages(),
     install_requires=["docutils>=0.15", "sphinx", "sphinx-book-theme"],
     extras_require=extras,
-    package_data={"sphinxcontrib": ["_static/*"]},
     include_package_data=True,
     namespace_packages=["sphinxcontrib"],
 )
