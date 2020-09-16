@@ -1,9 +1,12 @@
 from bs4 import BeautifulSoup
 import pytest
+import shutil
 
 
 @pytest.mark.sphinx("html", testroot="mybook")
 def test_warnings(app, warnings):
+    build_path = app.srcdir.joinpath("_build")
+    shutil.rmtree(build_path)
     app.build()
     assert "WARNING: label 'foobar' not found" in warnings(app)
     assert "WARNING: label 'wrong-ex-label' not found" in warnings(app)
@@ -16,7 +19,7 @@ def test_warnings(app, warnings):
     [
         "_solution_with_exercise_nonumber_notitle.html",
         "_solution_with_exercise_nonumber_title.html",
-        # "_solution_with_exercise_nonumber_title_inlinemath.html",
+        "_solution_with_exercise_nonumber_title_inlinemath.html",
         "_solution_with_exercise_number.html",
         "_solution_with_label_and_class.html",
     ],
