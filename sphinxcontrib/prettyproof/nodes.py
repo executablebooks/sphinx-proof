@@ -8,6 +8,7 @@ Enumerable and unenumerable nodes
 :licences: see LICENSE for details
 """
 from sphinx.builders.html import HTMLTranslator
+from docutils.utils.math import math2html
 from sphinx.util import logging
 from docutils import nodes
 from docutils.nodes import Node
@@ -60,6 +61,23 @@ def visit_unenumerable_node(self, node: Node) -> None:
                 if exercise_title == "":
                     title = f'<a href="#{exercise_label}">Solution to Exercise</a>'
                 else:
+                    # Solution 1 - math2html
+                    exercise_node = env.proof_list[exercise_label].get("node")
+                    exercise_node_title = exercise_node[0]
+
+                    exercise_title = ""
+                    for jj in range(len(exercise_node_title)):
+                        item = exercise_node_title[jj].astext()
+                        if type(exercise_node_title[jj]) == nodes.math:
+                            exercise_title += math2html.math2html(item)
+                            continue
+                        exercise_title += item
+
+                    right_idx, left_idx = (
+                        exercise_title.rfind(")"),
+                        exercise_title.find("(") + 1,
+                    )
+                    exercise_title = exercise_title[left_idx:right_idx]
                     title = (
                         f'<a href="#{exercise_label}">Solution to {exercise_title}</a>'
                     )
@@ -86,6 +104,9 @@ def depart_unenumerable_node(self, node: Node) -> None:
     if typ != "solution":
         element = f"<span>{typ.title()} </span>"
         self.body.insert(idx, element)
+    else:
+        # import pdb; pdb.set_trace()
+        pass
 
     self.body.append("</div>")
 

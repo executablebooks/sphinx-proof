@@ -17,6 +17,7 @@ from collections import defaultdict
 from sphinx.domains import Domain, Index
 from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_refnode
+from docutils.utils.math import math2html
 from sphinx.util import logging
 from docutils import nodes
 from .directive import ProofDirective
@@ -140,13 +141,29 @@ class ProofDomain(Domain):
                         .get(ref_label, ())
                     )
                     number = ".".join(map(str, _))
-                    new_title = f"solution to {ref_match.get('type','').title()}"
+                    new_title = f"Solution to {ref_match.get('type','').title()}"
                 else:
                     if ref_match.get("title", "") == "":
                         new_title = f"Solution to {ref_match.get('type','').title()}"
                     else:
-                        # TODO: if title contains LaTeX
-                        new_title = f"Solution to {ref_match.get('title','')}"
+                        # Solution 1 - math2html
+                        exercise_node = env.proof_list[ref_label].get("node")
+                        exercise_node_title = exercise_node[0]
+
+                        exercise_title = ""
+                        for jj in range(len(exercise_node_title)):
+                            item = exercise_node_title[jj].astext()
+                            if type(exercise_node_title[jj]) == nodes.math:
+                                exercise_title += math2html.math2html(item)
+                                continue
+                            exercise_title += item
+
+                        right_idx, left_idx = (
+                            exercise_title.rfind(")"),
+                            exercise_title.find("(") + 1,
+                        )
+                        exercise_title = exercise_title[left_idx:right_idx]
+                        new_title = f"Solution to {exercise_title}"
 
             if number == "":
                 title = nodes.Text(f"{new_title}")
