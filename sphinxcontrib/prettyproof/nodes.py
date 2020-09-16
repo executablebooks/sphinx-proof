@@ -8,7 +8,6 @@ Enumerable and unenumerable nodes
 :licences: see LICENSE for details
 """
 from sphinx.builders.html import HTMLTranslator
-from docutils.utils.math import math2html
 from sphinx.util import logging
 from docutils import nodes
 from docutils.nodes import Node
@@ -60,31 +59,63 @@ def visit_unenumerable_node(self, node: Node) -> None:
                 exercise_title = env.proof_list[exercise_label].get("title", "")
                 if exercise_title == "":
                     title = f'<a href="#{exercise_label}">Solution to Exercise</a>'
+                    self.body.append(f"<span>{title}</span>")
                 else:
-                    # Solution 1 - math2html
-                    exercise_node = env.proof_list[exercise_label].get("node")
-                    exercise_node_title = exercise_node[0]
+                    # Retrieve exercise title
+                    atts = {}
+                    exercise_title = env.proof_list[exercise_label].get("node")[0]
+                    atts["href"] = "#" + exercise_label
 
-                    exercise_title = ""
-                    for jj in range(len(exercise_node_title)):
-                        item = exercise_node_title[jj].astext()
-                        if type(exercise_node_title[jj]) == nodes.math:
-                            exercise_title += math2html.math2html(item)
-                            continue
-                        exercise_title += item
+                    if len(exercise_title) == 1:
+                        # Retreive text item
+                        item = exercise_title[0]
+                        # Find and remove "(", ")" from title
+                        item_txt = item.astext()[
+                            item.astext().find("(") + 1 : item.astext().rfind(")")
+                        ]
+                        # Replace
+                        exercise_title.replace(item, nodes.Text(item_txt))
+                    else:
+                        # Retreive first text item
+                        first_item, last_item = exercise_title[0], exercise_title[-1]
+                        # Find and remove "(" and ")" from title
+                        first_txt = first_item.astext()[
+                            first_item.astext().find("(") + 1 :
+                        ]
+                        last_txt = last_item.astext()[: last_item.rfind(")")]
+                        # Replace
+                        exercise_title.replace(first_item, nodes.Text(first_txt))
+                        exercise_title.replace(last_item, nodes.Text(last_txt))
 
-                    right_idx, left_idx = (
-                        exercise_title.rfind(")"),
-                        exercise_title.find("(") + 1,
+                    self.body.append(
+                        self.starttag(exercise_title, "a", "Solution to ", **atts)
                     )
-                    exercise_title = exercise_title[left_idx:right_idx]
-                    title = (
-                        f'<a href="#{exercise_label}">Solution to {exercise_title}</a>'
-                    )
+
+                    for item in exercise_title:
+                        if type(item) == nodes.math:
+                            # https://fossies.org/linux/Sphinx/sphinx/ext/mathjax.py
+                            self.body.append(
+                                self.starttag(
+                                    item,
+                                    "span",
+                                    "",
+                                    CLASS="math notranslate nohighlight",
+                                )
+                            )
+                            self.body.append(
+                                self.builder.config.mathjax_inline[0]
+                                + self.encode(item.astext())
+                                + self.builder.config.mathjax_inline[1]
+                                + "</span>"
+                            )
+                        else:
+                            self.body.append(item.astext())
+                    self.body.append("</a>")
             else:
                 # Exercise is an enumerable node
                 number = get_node_number(self, exercise_label)
                 title = f'<a href="#{exercise_label}">Solution to Exercise {number}</a>'
+                self.body.append(f"<span>{title}</span>")
         else:
             # If label of exercise referenced in solution not found
             docpath = env.doc2path(self.builder.current_docname)
@@ -92,8 +123,8 @@ def visit_unenumerable_node(self, node: Node) -> None:
             msg = f"label '{exercise_label}' not found"
             logger.warning(msg, location=path, color="red")
             title = "Solution to Exercise"
+            self.body.append(f"<span>{title}</span>")
 
-        self.body.append(f"<span>{title}</span>")
         self.body.append("</p>")
 
 
@@ -104,9 +135,6 @@ def depart_unenumerable_node(self, node: Node) -> None:
     if typ != "solution":
         element = f"<span>{typ.title()} </span>"
         self.body.insert(idx, element)
-    else:
-        # import pdb; pdb.set_trace()
-        pass
 
     self.body.append("</div>")
 
