@@ -18,6 +18,7 @@ A Test Program!
    proof/_proof_with_unlabeled_math
    proof/_proof_with_argument_content
    proof/_proof_inline_math_argument
+   solution/_solution_with_duplicate_label
    solution/_solution_missing_arg
    solution/_solution_ref_with_nonumber_notitle
    solution/_solution_ref_with_nonumber_title

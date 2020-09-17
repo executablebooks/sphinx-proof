@@ -11,6 +11,7 @@ def test_warnings(app, warnings):
     assert "WARNING: label 'foobar' not found" in warnings(app)
     assert "WARNING: label 'wrong-ex-label' not found" in warnings(app)
     assert 'WARNING: Error in "proof:solution" directive' in warnings(app)
+    assert "WARNING: duplicate solution label 'sol-duplicate-label'" in warnings(app)
 
 
 @pytest.mark.sphinx("html", testroot="mybook")
