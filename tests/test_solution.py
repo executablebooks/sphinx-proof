@@ -20,6 +20,7 @@ def test_warnings(app, warnings):
         "_solution_with_exercise_nonumber_notitle.html",
         "_solution_with_exercise_nonumber_title.html",
         "_solution_with_exercise_nonumber_title_inlinemath.html",
+        "_solution_with_exercise_nonumber_title_inlinemath2.html",
         "_solution_with_exercise_number.html",
         "_solution_with_label_and_class.html",
     ],
@@ -45,7 +46,8 @@ def test_solution(app, idir, file_regression):
     [
         "_solution_ref_with_nonumber_notitle.html",
         "_solution_ref_with_nonumber_title.html",
-        # "_solution_ref_with_nonumber_title_inlinemath",
+        "_solution_ref_with_nonumber_title_inlinemath.html",
+        "_solution_ref_with_nonumber_title_inlinemath2.html",
         "_solution_ref_with_number.html",
         "_solution_ref_wrong_solution_ref.html",
     ],

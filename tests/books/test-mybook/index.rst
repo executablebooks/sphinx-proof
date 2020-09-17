@@ -22,11 +22,13 @@ A Test Program!
    solution/_solution_ref_with_nonumber_notitle
    solution/_solution_ref_with_nonumber_title
    solution/_solution_ref_with_nonumber_title_inlinemath
+   solution/_solution_ref_with_nonumber_title_inlinemath2
    solution/_solution_ref_with_number
    solution/_solution_ref_wrong_solution_ref
    solution/_solution_with_exercise_nonumber_notitle
    solution/_solution_with_exercise_nonumber_title
    solution/_solution_with_exercise_nonumber_title_inlinemath
+   solution/_solution_with_exercise_nonumber_title_inlinemath2
    solution/_solution_with_exercise_number
    solution/_solution_with_label_and_class
    solution/_solution_with_wrong_exlabel
