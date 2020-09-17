@@ -17,13 +17,71 @@ from collections import defaultdict
 from sphinx.domains import Domain, Index
 from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_refnode
-from docutils.utils.math import math2html
 from sphinx.util import logging
 from docutils import nodes
 from .directive import ProofDirective
 from .proof_type import PROOF_TYPES
 
 logger = logging.getLogger(__name__)
+
+
+def get_solution_title(env, typ, match):
+    # Get exercise label
+    exercise_label = match.get("title", "")
+
+    # If exercise label doesn't exist; exception has already been thrown
+    try:
+        label_match = env.proof_list.get(exercise_label, {})
+    except Exception:
+        return None
+
+    # Get document name of label match
+    docname = label_match.get("docname", "")
+
+    # If exercise directive is enumerable
+    if not label_match.get("nonumber", bool):
+        _ = env.toc_fignumbers.get(docname, {}).get("proof", {}).get(exercise_label, ())
+        number = ".".join(map(str, _))
+        title_text = f"{typ.title()} to {label_match.get('type', '').title()} {number}"
+        title = nodes.Text(title_text, title_text)
+    else:
+        # If exercise directive is unenumerable and has no title
+        if label_match.get("title", "") == "":
+            title_text = f"{typ.title()} to {label_match.get('type', '').title()}"
+            title = nodes.Text(title_text, title_text)
+        else:
+            # If exercise directive is unenumerable but has title
+            # Extract title
+            exercise_title = env.proof_list[exercise_label].get("node")[0]
+
+            if len(exercise_title) == 1:
+                # Retrieve text item
+                item = exercise_title[0]
+                # Remove parantheses from title
+                item_text = (
+                    typ.title()
+                    + " to "
+                    + item.astext()[
+                        item.astext().find("(") + 1 : item.astext().rfind(")")
+                    ]
+                )
+                # Create new title as text node
+                title = nodes.Text(item_text, item_text)
+            else:
+                # Retrieve first and last item
+                first_item, last_item = exercise_title[0], exercise_title[-1]
+                # Remove parantheses from title
+                first_text = first_item.astext()[first_item.astext().find("(") + 1 :]
+                last_text = last_item.astext()[: last_item.astext().rfind(")")]
+                # Replace
+                exercise_title.replace(first_item, nodes.Text(first_text))
+                exercise_title.replace(last_item, nodes.Text(last_text))
+                # Create new title as text node
+                title = nodes.inline(text="Solution to ")
+                # Loop through elements
+                for item in exercise_title:
+                    title.append(item)
+    return title
 
 
 class ProofIndex(Index):
@@ -98,17 +156,16 @@ class ProofDomain(Domain):
         except Exception:
             docpath = self.env.doc2path(fromdocname)
             path = docpath[: docpath.rfind(".")]
-            msg = "label '{}' not found.".format(target)
+            msg = f"label '{target}' not found"
             logger.warning(msg, location=path, color="red")
             return None
 
         todocname = match.get("docname", "")
-        title = contnode[0]
+        typ = match.get("type", "")
+        text = contnode[0]
 
-        # If label referenced with no additional text
-        if target in contnode[0]:
-
-            number = ""
+        # If label reference with no additional text
+        if target in text:
             nonumber = env.proof_list.get(target, {}).get("nonumber", bool)
 
             # If numbered directive, update title
@@ -119,55 +176,13 @@ class ProofDomain(Domain):
                     .get(target, ())
                 )
                 number = ".".join(map(str, _))
-                new_title = match.get("type", "").title()
+                title_text = f"{match.get('type', '').title()} {number}"
+                title = nodes.Text(title_text, title_text)
 
-            # If match type is solution directive
-            if match.get("type", "") == "solution":
-                ref_label = match.get("title", "")
-
-                # If label of solution's exercise doesn't exist
-                try:
-                    ref_match = env.proof_list.get(ref_label, {})
-                except Exception:
-                    return None
-
-                docname = ref_match.get("docname", "")
-
-                # If exercise directive has nonumber
-                if not ref_match.get("nonumber", bool):
-                    _ = (
-                        env.toc_fignumbers.get(docname, {})
-                        .get("proof", {})
-                        .get(ref_label, ())
-                    )
-                    number = ".".join(map(str, _))
-                    new_title = f"Solution to {ref_match.get('type','').title()}"
-                else:
-                    if ref_match.get("title", "") == "":
-                        new_title = f"Solution to {ref_match.get('type','').title()}"
-                    else:
-                        # Solution 1 - math2html
-                        exercise_node = env.proof_list[ref_label].get("node")
-                        exercise_node_title = exercise_node[0]
-
-                        exercise_title = ""
-                        for jj in range(len(exercise_node_title)):
-                            item = exercise_node_title[jj].astext()
-                            if type(exercise_node_title[jj]) == nodes.math:
-                                exercise_title += math2html.math2html(item)
-                                continue
-                            exercise_title += item
-
-                        right_idx, left_idx = (
-                            exercise_title.rfind(")"),
-                            exercise_title.find("(") + 1,
-                        )
-                        exercise_title = exercise_title[left_idx:right_idx]
-                        new_title = f"Solution to {exercise_title}"
-
-            if number == "":
-                title = nodes.Text(f"{new_title}")
-            else:
-                title = nodes.Text(f"{new_title} {number}")
+            # If match type is a solution directive
+            if typ == "solution":
+                title = get_solution_title(env, typ, match)
+        else:
+            title = nodes.Text(text, text)
         # builder, fromdocname, todocname, targetid, child, title=None
         return make_refnode(builder, fromdocname, todocname, target, title)
