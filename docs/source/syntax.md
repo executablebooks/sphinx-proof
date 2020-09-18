@@ -64,18 +64,18 @@ A theorem directive can be included using the `proof:theorem` pattern. The direc
 
 * `label` : text
 
-	A unique identifier for your theorem that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your theorem that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the theorem’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the theorem’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off theorem auto numbering.
+    Turns off theorem auto numbering.
 
-	```{math}
-	\DeclareMathOperator*{\argmax}{arg\,max}
-	\DeclareMathOperator*{\argmin}{arg\,min}
-	```
+    ```{math}
+    \DeclareMathOperator*{\argmax}{arg\,max}
+    \DeclareMathOperator*{\argmin}{arg\,min}
+    ```
 
 **Example**
 
@@ -135,13 +135,13 @@ An axiom directive can be included using the `proof:theorem` pattern. The direct
 
 * `label` : text
 
-	A unique identifier for your axiom that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your axiom that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the axiom’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the axiom’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off axiom auto numbering.
+    Turns off axiom auto numbering.
 
 **Example**
 
@@ -174,13 +174,13 @@ A lemma directive can be included using the `proof:lemma` pattern. The directive
 
 * `label` : text
 
-	A unique identifier for your lemma that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your lemma that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the lemma’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the lemma’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off lemma auto numbering.
+    Turns off lemma auto numbering.
 
 **Example**
 
@@ -225,13 +225,13 @@ A definition directive can be included using the `proof:definition` pattern. The
 
 * `label` : text
 
-	A unique identifier for your definition that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your definition that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the definition’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the definition’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off definition auto numbering.
+    Turns off definition auto numbering.
 
 **Example**
 
@@ -278,13 +278,13 @@ A criterion directive can be included using the `proof:criterion` pattern. The d
 
 * `label` : text
 
-	A unique identifier for your criterion that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your criterion that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the criterion’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the criterion’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off criterion auto numbering.
+    Turns off criterion auto numbering.
 
 **Example**
 
@@ -327,13 +327,13 @@ A remark directive can be included using the `proof:remark` pattern. The directi
 
 * `label` : text
 
-	A unique identifier for your remark that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your remark that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the remark’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the remark’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off remark auto numbering.
+    Turns off remark auto numbering.
 
 **Example**
 
@@ -411,13 +411,13 @@ A corollary directive can be included using the `proof:corollary` pattern. The d
 
 * `label` : text
 
-	A unique identifier for your corollary that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your corollary that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the corollary’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the corollary’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off corollary auto numbering.
+    Turns off corollary auto numbering.
 
 **Example**
 
@@ -453,13 +453,13 @@ An algorithm directive can be included using the `proof:algorithm` pattern. The 
 
 * `label` : text
 
-	A unique identifier for your algorithm that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your algorithm that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the algorithm’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the algorithm’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off algorithm auto numbering.
+    Turns off algorithm auto numbering.
 
 **Example**
 
@@ -473,11 +473,11 @@ An algorithm directive can be included using the `proof:algorithm` pattern. The 
 1. $f(u, v) \leftarrow 0$ for all edges $(u,v)$
 2. While there is a path $p$ from $s$ to $t$ in $G_{f}$ such that $c_{f}(u,v)>0$ for all edges $(u,v) \in p$:
 
-	1. Find $c_{f}(p)= \min \{c_{f}(u,v):(u,v)\in p\}$
-	2. For each edge $(u,v) \in p$
+    1. Find $c_{f}(p)= \min \{c_{f}(u,v):(u,v)\in p\}$
+    2. For each edge $(u,v) \in p$
 
-		1. $f(u,v) \leftarrow f(u,v) + c_{f}(p)$ *(Send flow along the path)*
-		2. $f(u,v) \leftarrow f(u,v) - c_{f}(p)$ *(The flow might be "returned" later)*
+        1. $f(u,v) \leftarrow f(u,v) + c_{f}(p)$ *(Send flow along the path)*
+        2. $f(u,v) \leftarrow f(u,v) - c_{f}(p)$ *(The flow might be "returned" later)*
 ```
 
 **MyST Syntax**
@@ -492,13 +492,13 @@ An algorithm directive can be included using the `proof:algorithm` pattern. The 
 
 1. $f(u, v) \leftarrow 0$ for all edges $(u,v)$
 2. While there is a path $p$ from $s$ to $t$ in $G_{f}$ such that $c_{f}(u,v)>0$
-	for all edges $(u,v) \in p$:
+    for all edges $(u,v) \in p$:
 
-	1. Find $c_{f}(p)= \min \{c_{f}(u,v):(u,v)\in p\}$
-	2. For each edge $(u,v) \in p$
+    1. Find $c_{f}(p)= \min \{c_{f}(u,v):(u,v)\in p\}$
+    2. For each edge $(u,v) \in p$
 
-		1. $f(u,v) \leftarrow f(u,v) + c_{f}(p)$ *(Send flow along the path)*
-		2. $f(u,v) \leftarrow f(u,v) - c_{f}(p)$ *(The flow might be "returned" later)*
+        1. $f(u,v) \leftarrow f(u,v) + c_{f}(p)$ *(Send flow along the path)*
+        2. $f(u,v) \leftarrow f(u,v) - c_{f}(p)$ *(The flow might be "returned" later)*
 ```
 ``````
 
@@ -514,13 +514,13 @@ An exercise directive can be included using the `proof:exercise` pattern. The di
 
 * `label` : text
 
-	A unique identifier for your exercise that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your exercise that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the exercise’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the exercise’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off exercise auto numbering.
+    Turns off exercise auto numbering.
 
 **Example**
 
@@ -561,19 +561,136 @@ _Source:_ [QuantEcon](https://python-programming.quantecon.org/functions.html#Ex
 You can refer to an exercise using the `{proof:ref}` role like: ```{proof:ref}`my-exercise` ```, which will replace the reference with the exercise number like so: {proof:ref}`my-exercise`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+## Solutions
+
+A solution directive can be included using the `proof:solution` pattern. It takes in the label of the directive it wants to link to as a required argument. Unlike other directives, which support enumerability and unenumerability (with the exception of the `proof` directive), the solution directive is unenumerable. The following options are also supported:
+
+* `label` : text
+
+    A unique identifier for your solution that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+* `class` : text
+
+    Value of the solution’s class attribute which can be used to add custom CSS or JavaScript.
+
+```{note}
+The title of the solution directive links directly to the referred directive. Furthermore, while the examples below link a solution to an exercise directive, any directive which specifies a `label` option can be referred. It is the discretion of the user to utilize the solution directive as they see fit.
+```
+
+**Example**
+
+````{proof:solution} my-exercise
+:label: my-solution
+
+Here's one solution.
+
+```{code-block} python
+def factorial(n):
+    k = 1
+    for i in range(n):
+        k = k * (i + 1)
+    return k
+
+factorial(4)
+```
+````
+
+**MyST Syntax**
+
+``````md
+````{proof:solution} my-exercise
+:label: my-solution
+
+Here's one solution.
+
+```{code-block} python
+def factorial(n):
+    k = 1
+    for i in range(n):
+        k = k * (i + 1)
+    return k
+
+factorial(4)
+```
+````
+``````
+
+_Source:_ [QuantEcon](https://python-programming.quantecon.org/functions.html#Exercise-1)
+
+### Referencing Solutions
+
+You can refer to a solution using the `{proof:ref}` role like: ```{proof:ref}`my-solution` ``` the output of which depends on the attributes of the linked directive. If the linked directive is enumerable, the role will replace the solution reference with the linked directive type and its appropriate number like so: {proof:ref}`my-solution`.
+
+In the event that the directive being referenced is unenumerable, the reference will display its title, for example, {proof:ref}`nfactorial-solution`. Click the toggle on the right to find the supporting directives.
+
+````{toggle}
+```{proof:exercise} $n!$ Factorial
+:label: nfactorial
+:nonumber:
+
+Write a function `factorial` such that `factorial(int n)` returns $n!$
+for any positive integer $n$.
+```
+
+```{proof:solution} nfactorial
+:label: nfactorial-solution
+
+Here's a solution in Java.
+
+```{code-block} java
+static int factorial(int n){
+    if (n == 0)
+        return 1;
+    else {
+        return(n * factorial(n-1));
+    }
+}
+```
+````
+
+If the referenced directive is nameless, then the reference will default to the type of the directive being referenced like so: {proof:ref}`nfactorial2-solution`. The toggle on the right includes the supporting directives for this example.
+
+
+````{toggle}
+```{proof:exercise}
+:label: nfactorial2
+:nonumber:
+
+Write a function `factorial` such that `factorial(int n)` returns $n!$
+for any positive integer $n$.
+```
+
+```{proof:solution} nfactorial2
+:label: nfactorial2-solution
+
+Here's a solution in Java.
+
+```{code-block} java
+static int factorial(int n){
+    if (n == 0)
+        return 1;
+    else {
+        return(n * factorial(n-1));
+    }
+}
+```
+````
+
+Lastly, when an explicit text is provided, this caption will serve as the title of the reference.
+
+
 ## Examples
 
 An example directive can be included using the `proof:example` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your example that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your example that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the example’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the example’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off example auto numbering.
+    Turns off example auto numbering.
 
 **Example**
 
@@ -636,13 +753,13 @@ A property directive can be included using the `proof:property` pattern. The dir
 
 * `label` : text
 
-	A unique identifier for your property that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your property that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the property’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the property’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off property auto numbering.
+    Turns off property auto numbering.
 
 **Example**
 
@@ -672,13 +789,13 @@ An observation directive can be included using the `proof:observation` pattern. 
 
 * `label` : text
 
-	A unique identifier for your observation that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your observation that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the observation’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the observation’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off observation auto numbering.
+    Turns off observation auto numbering.
 
 **Example**
 
@@ -708,13 +825,13 @@ A proposition directive can be included using the `proof:proposition` pattern. T
 
 * `label` : text
 
-	A unique identifier for your proposition that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+    A unique identifier for your proposition that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
-	Value of the proposition’s class attribute which can be used to add custom CSS or JavaScript.
+    Value of the proposition’s class attribute which can be used to add custom CSS or JavaScript.
 * `nonumber` : flag (empty)
 
-	Turns off proposition auto numbering.
+    Turns off proposition auto numbering.
 
 **Example**
 
