@@ -52,13 +52,14 @@ def visit_unenumerable_node(self, node: Node) -> None:
 
         # Check to see if exercise label exists
         if exercise_label in env.proof_list.keys():
+            typ = env.proof_list[exercise_label].get("type", "")
 
             # Check to see if exercise has nonumber
             if env.proof_list[exercise_label].get("nonumber", bool):
                 # Check if title string in exercise is nonempty
                 exercise_title = env.proof_list[exercise_label].get("title", "")
                 if exercise_title == "":
-                    title = f'<a href="#{exercise_label}">Solution to Exercise</a>'
+                    title = f'<a href="#{exercise_label}">Solution to {typ.title()}</a>'
                     self.body.append(f"<span>{title}</span>")
                 else:
                     # Retrieve exercise title
@@ -114,7 +115,8 @@ def visit_unenumerable_node(self, node: Node) -> None:
             else:
                 # Exercise is an enumerable node
                 number = get_node_number(self, exercise_label)
-                title = f'<a href="#{exercise_label}">Solution to Exercise {number}</a>'
+                ref_node_title = f"{typ.title()} {number}"
+                title = f'<a href="#{exercise_label}">Solution to {ref_node_title}</a>'
                 self.body.append(f"<span>{title}</span>")
         else:
             # If label of exercise referenced in solution not found
@@ -122,7 +124,7 @@ def visit_unenumerable_node(self, node: Node) -> None:
             path = docpath[: docpath.rfind(".")]
             msg = f"label '{exercise_label}' not found"
             logger.warning(msg, location=path, color="red")
-            title = "Solution to Exercise"
+            title = f"Solution to {exercise_label}"
             self.body.append(f"<span>{title}</span>")
 
         self.body.append("</p>")
