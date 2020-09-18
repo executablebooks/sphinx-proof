@@ -32,7 +32,7 @@ extras = {
         "sphinx>=3.0",
         "sphinx-book-theme",
         "sphinxcontrib-bibtex",
-        "myst-parser",
+        "myst-nb",
     ],
 }
 
