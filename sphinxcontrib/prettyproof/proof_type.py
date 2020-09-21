@@ -8,8 +8,7 @@ List of proof-type directives
 :licences: see LICENSE for details
 """
 
-from docutils.parsers.rst import directives
-from .directive import ElementDirective
+from .directive import ElementDirective, LinkedDirective
 
 
 class TheoremDirective(ElementDirective):
@@ -96,17 +95,10 @@ class PropositionDirective(ElementDirective):
     name = "proposition"
 
 
-class SolutionDirective(ElementDirective):
+class SolutionDirective(LinkedDirective):
     """A custom solution directive."""
 
     name = "solution"
-    required_arguments = 1
-    optional_arguments = 0
-    final_argument_whitespace = False
-    option_spec = {
-        "label": directives.unchanged_required,
-        "class": directives.class_option,
-    }
 
 
 PROOF_TYPES = {

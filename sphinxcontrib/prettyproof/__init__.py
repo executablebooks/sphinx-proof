@@ -12,9 +12,7 @@ from typing import Any, Dict, Set, Union
 from sphinx.config import Config
 from sphinx.application import Sphinx
 from sphinx.environment import BuildEnvironment
-from .nodes import enumerable_node, visit_enumerable_node, depart_enumerable_node
-from .nodes import unenumerable_node, visit_unenumerable_node, depart_unenumerable_node
-from .nodes import proof_node, visit_proof_node, depart_proof_node
+from .nodes import nodes_collection
 from .domain import ProofDomain
 from sphinx.util import logging
 from sphinx.util.fileutil import copy_asset
@@ -77,21 +75,26 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_domain(ProofDomain)
     app.add_node(
-        proof_node,
-        singlehtml=(visit_proof_node, depart_proof_node),
-        html=(visit_proof_node, depart_proof_node),
+        nodes_collection["default"][0],
+        singlehtml=nodes_collection["default"][1],
+        html=nodes_collection["default"][1],
     )
     app.add_node(
-        unenumerable_node,
-        singlehtml=(visit_unenumerable_node, depart_unenumerable_node),
-        html=(visit_unenumerable_node, depart_unenumerable_node),
+        nodes_collection["linked"][0],
+        singlehtml=nodes_collection["linked"][1],
+        html=nodes_collection["linked"][1],
+    )
+    app.add_node(
+        nodes_collection["unenumerable"][0],
+        singlehtml=nodes_collection["unenumerable"][1],
+        html=nodes_collection["unenumerable"][1],
     )
     app.add_enumerable_node(
-        enumerable_node,
+        nodes_collection["enumerable"][0],
         "proof",
         None,
-        singlehtml=(visit_enumerable_node, depart_enumerable_node),
-        html=(visit_enumerable_node, depart_enumerable_node),
+        singlehtml=nodes_collection["enumerable"][1],
+        html=nodes_collection["enumerable"][1],
     )
 
     return {

@@ -25,22 +25,23 @@ from .proof_type import PROOF_TYPES
 logger = logging.getLogger(__name__)
 
 
-def get_solution_title(env, typ, match):
-    # Get exercise label
-    exercise_label = match.get("title", "")
+def get_linked_node_title(env, typ, match):
+    linked_node_label = match.get("title", "")
 
-    # If exercise label doesn't exist; exception has already been thrown
     try:
-        label_match = env.proof_list.get(exercise_label, {})
+        label_match = env.proof_list.get(linked_node_label, {})
     except Exception:
         return None
 
-    # Get document name of label match
     docname = label_match.get("docname", "")
 
     # If exercise directive is enumerable
     if not label_match.get("nonumber", bool):
-        _ = env.toc_fignumbers.get(docname, {}).get("proof", {}).get(exercise_label, ())
+        _ = (
+            env.toc_fignumbers.get(docname, {})
+            .get("proof", {})
+            .get(linked_node_label, ())
+        )
         number = ".".join(map(str, _))
         title_text = f"{typ.title()} to {label_match.get('type', '').title()} {number}"
         title = nodes.Text(title_text, title_text)
@@ -52,36 +53,35 @@ def get_solution_title(env, typ, match):
         else:
             # If exercise directive is unenumerable but has title
             # Extract title
-            exercise_title = env.proof_list[exercise_label].get("node")[0]
+            linked_node_title = env.proof_list[linked_node_label].get("node")[0]
 
-            if len(exercise_title) == 1:
-                # Retrieve text item
-                item = exercise_title[0]
-                # Remove parantheses from title
-                item_text = (
-                    typ.title()
-                    + " to "
-                    + item.astext()[
-                        item.astext().find("(") + 1 : item.astext().rfind(")")
-                    ]
-                )
-                # Create new title as text node
-                title = nodes.Text(item_text, item_text)
-            else:
-                # Retrieve first and last item
-                first_item, last_item = exercise_title[0], exercise_title[-1]
-                # Remove parantheses from title
-                first_text = first_item.astext()[first_item.astext().find("(") + 1 :]
-                last_text = last_item.astext()[: last_item.astext().rfind(")")]
-                # Replace
-                exercise_title.replace(first_item, nodes.Text(first_text))
-                exercise_title.replace(last_item, nodes.Text(last_text))
-                # Create new title as text node
-                title = nodes.inline(text="Solution to ")
-                # Loop through elements
-                for item in exercise_title:
-                    title.append(item)
+            title = nodes.inline(text=f"{typ.title()} to ")
+            items = remove_parantheses(linked_node_title)
+
+            for element in items:
+                linked_node_title.replace(element[0], nodes.Text(element[1]))
+
+            for ttl in linked_node_title:
+                title.append(ttl)
     return title
+
+
+def remove_parantheses(title: str) -> List[Tuple[str, str]]:
+    updated_items = []
+    if len(title) == 1:
+        # Retrieve text item
+        item = title[0]
+        text = item.astext()[item.astext().find("(") + 1 : item.astext().rfind(")")]
+        updated_items.append((item, text))
+    else:
+        # Retrieve first and last test item
+        first_item, last_item = title[0], title[-1]
+        # Find and remove "(" and ")" from title
+        first_text = first_item.astext()[first_item.astext().find("(") + 1 :]
+        last_text = last_item.astext()[: last_item.rfind(")")]
+        updated_items.append((first_item, first_text))
+        updated_items.append((last_item, last_text))
+    return updated_items
 
 
 class ProofIndex(Index):
@@ -139,6 +139,8 @@ class ProofDomain(Domain):
         **PROOF_TYPES,
     }
 
+    linked_directives = ("solution",)
+
     def resolve_xref(
         self,
         env: BuildEnvironment,
@@ -179,9 +181,9 @@ class ProofDomain(Domain):
                 title_text = f"{match.get('type', '').title()} {number}"
                 title = nodes.Text(title_text, title_text)
 
-            # If match type is a solution directive
-            if typ == "solution":
-                title = get_solution_title(env, typ, match)
+            # If match type is in linked_directives
+            if typ in self.linked_directives:
+                title = get_linked_node_title(env, typ, match)
         else:
             title = nodes.Text(text, text)
         # builder, fromdocname, todocname, targetid, child, title=None
