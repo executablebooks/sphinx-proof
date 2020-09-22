@@ -15,7 +15,8 @@ This project is maintained and supported by [najuzilu](https://github.com/najuzi
 
 SHORT_DESCRIPTION = "A Sphinx extension for producing proofs, theorems, axioms, etc."
 
-URL = f"https://github.com/executablebooks/sphinxcontrib-prettyproof/archive/{VERSION}.tar.gz"
+BASE_URL = "https://github.com/executablebooks/sphinxcontrib-prettyproof"
+URL = f"{BASE_URL}/archive/{VERSION}.tar.gz"
 
 # Define all extras
 extras = {
@@ -44,11 +45,11 @@ setup(
     python_requires=">=3.6",
     author="QuantEcon",
     author_email="admin@quantecon.org",
-    url="https://github.com/executablebooks/sphinxcontrib-prettyproof",
+    url=BASE_URL,
     download_url=URL,
     project_urls={
-        "Source": "https://github.com/executablebooks/sphinxcontrib-prettyproof",
-        "Tracker": "https://github.com/executablebooks/sphinxcontrib-prettyproof/issues",
+        "Source": BASE_URL,
+        "Tracker": f"{BASE_URL}/issues",
     },
     description=SHORT_DESCRIPTION,
     long_description=LONG_DESCRIPTION,
