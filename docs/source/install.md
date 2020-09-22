@@ -10,7 +10,7 @@ You can also install directly from the repository to get the latest `development
 You can clone the repository:
 
 ```bash
-git clone https://github.com/najuzilu/sphinxcontrib-prettyproof
+git clone https://github.com/executablebooks/sphinxcontrib-prettyproof
 ```
 
 then run:
@@ -24,7 +24,7 @@ python setup.py install
 To install `sphinxcontrib-prettyproof` for package development:
 
 ```bash
-git clone https://github.com/najuzilu/sphinxcontrib-prettyproof
+git clone https://github.com/executablebooks/sphinxcontrib-prettyproof
 cd sphinxcontrib-prettyproof
 git checkout master
 pip install -e .[all]
