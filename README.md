@@ -40,7 +40,7 @@ We welcome all contributions! See the [EBP Contributing Guide](https://executabl
 
 [rtd-badge]: https://readthedocs.org/projects/sphinxcontrib-prettyproof/badge/?version=latest
 [rtd-link]: https://sphinxcontrib-prettyproof.readthedocs.io/en/latest/?badge=latest
-[github-ci]: https://github.com/najuzilu/sphinxcontrib-prettyproof/workflows/continuous-integration/badge.svg?branch=master
-[github-link]: https://github.com/najuzilu/sphinxcontrib-prettyproof
+[github-ci]: https://github.com/executablebooks/sphinxcontrib-prettyproof/workflows/continuous-integration/badge.svg?branch=master
+[github-link]: https://github.com/executablebooks/sphinxcontrib-prettyproof
 [codecov-badge]: https://codecov.io/gh/najuzilu/sphinxcontrib-prettyproof/branch/master/graph/badge.svg
 [codecov-link]: https://codecov.io/gh/najuzilu/sphinxcontrib-prettyproof
