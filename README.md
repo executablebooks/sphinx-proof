@@ -8,7 +8,7 @@
 
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
 for producing proof, theorem, axiom, lemma, definition, criterion, remark, conjecture,
-corollary, algorithm, exercise, example, property, observation and proposition directives.
+corollary, algorithm, example, property, observation and proposition directives.
 
 
 ## Get started

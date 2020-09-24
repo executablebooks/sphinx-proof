@@ -514,58 +514,6 @@ _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algor
 
 You can refer to a algorithms using the `{proof:ref}` role like: ```{proof:ref}`my-algorithm` ```, which will replace the reference with the algorithm number like so: {proof:ref}`my-algorithm`. When an explicit text is provided, this caption will serve as the title of the reference.
 
-## Exercises
-
-An exercise directive can be included using the `proof:exercise` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
-
-* `label` : text
-
-	A unique identifier for your exercise that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
-* `class` : text
-
-	Value of the exercise’s class attribute which can be used to add custom CSS or JavaScript.
-* `nonumber` : flag (empty)
-
-	Turns off exercise auto numbering.
-
-**Example**
-
-```{proof:exercise}
-:label: my-exercise
-
-Recall that $n!$ is read as "$n$ factorial" and defined as
-$n! = n \times (n - 1) \times \cdots \times 2 \times 1$.
-
-There are functions to compute this in various modules, but let's
-write our own version as an exercise.
-
-In particular, write a function `factorial` such that `factorial(n)` returns $n!$
-for any positive integer $n$.
-```
-
-**MyST Syntax**
-
-``````md
-```{proof:exercise}
-:label: my-exercise
-
-Recall that $n!$ is read as "$n$ factorial" and defined as
-$n! = n \times (n - 1) \times \cdots \times 2 \times 1$.
-
-There are functions to compute this in various modules, but let's
-write our own version as an exercise.
-
-In particular, write a function `factorial` such that `factorial(n)` returns $n!$
-for any positive integer $n$.
-```
-``````
-
-_Source:_ [QuantEcon](https://python-programming.quantecon.org/functions.html#Exercise-1)
-
-### Referencing Exercises
-
-You can refer to an exercise using the `{proof:ref}` role like: ```{proof:ref}`my-exercise` ```, which will replace the reference with the exercise number like so: {proof:ref}`my-exercise`. When an explicit text is provided, this caption will serve as the title of the reference.
-
 
 ## Examples
 

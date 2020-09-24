@@ -65,12 +65,6 @@ class AxiomDirective(ElementDirective):
     name = "axiom"
 
 
-class ExerciseDirective(ElementDirective):
-    """A custom exercise directive."""
-
-    name = "exercise"
-
-
 class ExampleDirective(ElementDirective):
     """A custom example directive."""
 
@@ -105,7 +99,6 @@ PROOF_TYPES = {
     "corollary": CorollaryDirective,
     "algorithm": AlgorithmDirective,
     "criterion": CriterionDirective,
-    "exercise": ExerciseDirective,
     "example": ExampleDirective,
     "property": PropertyDirective,
     "observation": ObservationDirective,
