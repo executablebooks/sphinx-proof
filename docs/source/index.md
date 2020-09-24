@@ -21,7 +21,7 @@ corollary, algorithm, example, property, observation and proposition directives.
 
 
 ```{warning}
-sphinx-proof `0.0.2` is in a development stage and may change rapidly.
+sphinxcontrib-proof `0.0.3` is in a development stage and may change rapidly.
 ```
 
 **Features**:
@@ -39,7 +39,7 @@ To get started with `sphinx-proof`, first install it through `pip`:
 pip install sphinx-proof
 ```
 
-### JuputerBook Project
+### Juputer-Book Project
 
 Add `sphinx_proof` to your [extra_extensions](https://jupyterbook.org/advanced/sphinx.html#custom-sphinx-extensions) config in `_config.yml`
 
