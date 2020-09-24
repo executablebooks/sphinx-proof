@@ -4,6 +4,8 @@
 This documentation utilized the [Markedly Structured Text (MyST)](https://myst-parser.readthedocs.io/en/latest/index.html) syntax.
 ```
 
+This package utilizes a [Sphinx domain](https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html) - named "proof" - to describe and link typeset markup objects (theorems, proofs, corollaries, etc.) which we think belong together. All directives follow the pattern `{<domain_name>:<typeset>}` while all the roles follow the pattern `{<domain_name>:ref}`. To utilize any directive in the `proof` domain follow the pattern `{proof:<typeset>}`. To reference any directive follow the pattern `{proof:ref}`.
+
 ## Proofs
 
 A proof directive can be included using the `proof:proof` pattern. Unlike the other directives provided through this extension, a proof directive does not include any parameters nor does it require any arguments. A proof directive can easily be referenced through [targets](https://myst-parser.readthedocs.io/en/latest/using/syntax.html#targets-and-cross-referencing).
