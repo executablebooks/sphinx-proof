@@ -2,4 +2,3 @@ sphinx>=3.0
 sphinx-book-theme
 myst-nb
 sphinxcontrib-bibtex
-sphinxcontrib.prettyproof
