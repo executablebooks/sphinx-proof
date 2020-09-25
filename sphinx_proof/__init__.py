@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    sphinxcontrib.prettyproof
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~
-    This package is a namespace package that contains all extensions
-    distributed in the ``sphinx-contrib`` distribution.
-    :copyright: Copyright 2007-2009 by the Sphinx team, see AUTHORS.
-    :license: BSD, see LICENSE for details.
+    sphinx_proof
+    ~~~~~~~~~~~~
+
+    A Sphinx extension for producing proofs, theorems, lemmas, etc.
 """
 from pathlib import Path
 from typing import Any, Dict, Set, Union
@@ -57,9 +55,7 @@ def init_numfig(app: Sphinx, config: Config) -> None:
 
 
 def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
-    static_path = (
-        Path(__file__).parent.parent.joinpath("_static", "proof.css").absolute()
-    )
+    static_path = Path(__file__).parent.joinpath("_static", "proof.css").absolute()
     asset_files = [str(static_path)]
 
     if exc is None:

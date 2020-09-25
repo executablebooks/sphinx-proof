@@ -14,7 +14,7 @@ This project is maintained and supported by [najuzilu](https://github.com/najuzi
 
 SHORT_DESCRIPTION = "A Sphinx extension for producing proofs, theorems, axioms, etc."
 
-BASE_URL = "https://github.com/executablebooks/sphinxcontrib-prettyproof"
+BASE_URL = "https://github.com/executablebooks/sphinx-proof"
 URL = f"{BASE_URL}/archive/{VERSION}.tar.gz"
 
 # Define all extras
@@ -39,7 +39,7 @@ extras = {
 extras["all"] = set(ii for jj in extras.values() for ii in jj)
 
 setup(
-    name="sphinxcontrib-prettyproof",
+    name="sphinx-proof",
     version=VERSION,
     python_requires=">=3.6",
     author="QuantEcon",
@@ -58,5 +58,4 @@ setup(
     install_requires=["docutils>=0.15", "sphinx", "sphinx-book-theme"],
     extras_require=extras,
     include_package_data=True,
-    namespace_packages=["sphinxcontrib"],
 )

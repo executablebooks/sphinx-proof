@@ -34,14 +34,14 @@ jobs:
           pip install -e.[testing]
       - name: Run pytest
         run: |
-          pytest --duration=10 --cov=sphinxcontrib --cov-report=xml --cov-report=term-missing
+          pytest --duration=10 --cov=sphinx_proof --cov-report=xml --cov-report=term-missing
       - name: Create cov
         run: coverage xml
       - name: Upload to Codecov
         if: matrix.python-version == 3.7
         uses: codecov/codecov-action@v1
         with:
-          name: sphinxcontrib-prettyproof-pytest-py3.7
+          name: sphinx-proof-pytest-py3.7
           flags: pytests
           file: ./coverage.xml
           fail_ci_if_error: true

@@ -1,11 +1,11 @@
 # Testing
 
-For code tests, `sphinxcontrib-prettyproof` uses [pytest](https://docs.pytest.org/).
+For code tests, `sphinx-proof` uses [pytest](https://docs.pytest.org/).
 
 Run the tests with the following command:
 
 ```shell
->> cd sphinxcontrib-prettyproof
+>> cd sphinx-proof
 >> pip install -e .[testing]
 >> pytest
 ```
@@ -13,21 +13,21 @@ Run the tests with the following command:
 To run the tests in multiple isolated environments, you can also run [tox](https://tox.readthedocs.io/)
 
 ```shell
->> cd sphinxcontrib-prettyproof
+>> cd sphinx-proof
 >> tox
 ```
 
 To test the build of documentation run
 
 ```shell
->> cd sphinxcontrib-prettyproof
+>> cd sphinx-proof
 >> tox docs-update
 ```
 
 or
 
 ```shell
->> cd sphinxcontrib-prettyproof/docs
+>> cd sphinx-proof/docs
 >> make clean
 >> make html
 ```
@@ -39,7 +39,7 @@ We use [pytest](https://docs.pytest.org/en/latest/) for testing, [pytest-regress
 To run tests with coverage and an html coverage report:
 
 ```bash
-pytest -v --cov=sphinxcontrib --cov-report=html
+pytest -v --cov=sphinx_proof --cov-report=html
 ```
 
 ## Writing Tests
@@ -72,7 +72,7 @@ Installing using `[code style]` will make the [pre-commit](https://pre-commit.co
 To install `pre-commit` run the following
 
 ```bash
-cd sphinxcontrib-prettyproof
+cd sphinx-proof
 pre-commit install
 ```
 

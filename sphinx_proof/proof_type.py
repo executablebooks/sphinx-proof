@@ -1,6 +1,6 @@
 """
-sphinxcontrib.prettyproof.proof_type
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sphinx_proof.proof_type
+~~~~~~~~~~~~~~~~~~~~~~~
 
 List of proof-type directives
 

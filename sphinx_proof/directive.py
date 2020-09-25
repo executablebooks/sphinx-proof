@@ -1,6 +1,6 @@
 """
-sphinxcontrib.prettyproof.directive
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sphinx_proof.directive
+~~~~~~~~~~~~~~~~~~~~~~
 
 A custom Sphinx Directive
 

@@ -1,6 +1,6 @@
 """
-sphinxcontrib.prettyproof.domain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sphinx_proof.domain
+~~~~~~~~~~~~~~~~~~~
 
 A Proof Sphinx Domain
 

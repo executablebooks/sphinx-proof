@@ -1,6 +1,6 @@
 """
-sphinxcontrib.prettyproof.nodes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sphinx_proof.nodes
+~~~~~~~~~~~~~~~~~~
 
 Enumerable and unenumerable nodes
 
