@@ -4,11 +4,11 @@
 This documentation utilized the [Markedly Structured Text (MyST)](https://myst-parser.readthedocs.io/en/latest/index.html) syntax.
 ```
 
-This package utilizes a [Sphinx domain](https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html) - named "proof" - to describe and link typeset markup objects (theorems, proofs, corollaries, etc.) which we think belong together. All directives follow the pattern `{<domain_name>:<typeset>}` while all the roles follow the pattern `{<domain_name>:ref}`. To utilize any directive in the `proof` domain follow the pattern `{proof:<typeset>}`. To reference any directive follow the pattern `{proof:ref}`.
+This package utilizes a [Sphinx domain](https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html) - named "proof" - to describe and link typeset markup objects (theorems, proofs, corollaries, etc.) which we think belong together. All directives follow the pattern `{<domain_name>:<typeset>}` while all the roles follow the pattern `{<domain_name>:ref}`. To utilize any directive in the `proof` domain follow the pattern `{prf:<typeset>}`. To reference any directive follow the pattern `{prf:ref}`.
 
 ## Proofs
 
-A proof directive can be included using the `proof:proof` pattern. Unlike the other directives provided through this extension, a proof directive does not include any parameters nor does it require any arguments. A proof directive can easily be referenced through [targets](https://myst-parser.readthedocs.io/en/latest/using/syntax.html#targets-and-cross-referencing).
+A proof directive can be included using the `prf:proof` pattern. Unlike the other directives provided through this extension, a proof directive does not include any parameters nor does it require any arguments. A proof directive can easily be referenced through [targets](https://myst-parser.readthedocs.io/en/latest/using/syntax.html#targets-and-cross-referencing).
 
 The following option is supported:
 
@@ -19,7 +19,7 @@ The following option is supported:
 
 **Example**
 
-````{proof:proof}
+````{prf:proof}
 We'll omit the full proof.
 
 But we will prove sufficiency of the asserted conditions.
@@ -42,7 +42,7 @@ Hence $\| y - z \| \geq \| y - \hat y \|$, which completes the proof.
 **MyST Syntax**
 
 ``````md
-````{proof:proof}
+````{prf:proof}
 We'll omit the full proof.
 
 But we will prove sufficiency of the asserted conditions.
@@ -68,11 +68,11 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/orth_proj.html#The-O
 
 ## Theorems
 
-A theorem directive can be included using the `proof:theorem` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A theorem directive can be included using the `prf:theorem` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your theorem that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your theorem that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the theorem’s class attribute which can be used to add custom CSS or JavaScript.
@@ -87,7 +87,7 @@ A theorem directive can be included using the `proof:theorem` pattern. The direc
 
 **Example**
 
-````{proof:theorem} Orthogonal-Projection-Theorem
+````{prf:theorem} Orthogonal-Projection-Theorem
 :label: my-theorem
 
 Given $y \in \mathbb R^n$ and linear subspace $S \subset \mathbb R^n$,
@@ -110,7 +110,7 @@ The vector $\hat y$ is called the **orthogonal projection** of $y$ onto $S$.
 **MyST Syntax**
 
 ``````md
-````{proof:theorem} Orthogonal-Projection-Theorem
+````{prf:theorem} Orthogonal-Projection-Theorem
 :label: my-theorem
 
 Given $y \in \mathbb R^n$ and linear subspace $S \subset \mathbb R^n$,
@@ -135,15 +135,15 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/orth_proj.html#The-O
 
 ### Referencing Theorems
 
-You can refer to a theorem using the `{proof:ref}` role like: ```{proof:ref}`my-theorem` ```, which will replace the reference with the theorem number like so: {proof:ref}`my-theorem`. When an explicit text is provided, this caption will serve as the title of the reference. For example, ```{proof:ref}`Orthogonal-Projection-Theorem <my-theorem>` ``` will produce: {proof:ref}`Orthogonal-Projection-Theorem <my-theorem>`.
+You can refer to a theorem using the `{prf:ref}` role like: ```{prf:ref}`my-theorem` ```, which will replace the reference with the theorem number like so: {prf:ref}`my-theorem`. When an explicit text is provided, this caption will serve as the title of the reference. For example, ```{prf:ref}`Orthogonal-Projection-Theorem <my-theorem>` ``` will produce: {prf:ref}`Orthogonal-Projection-Theorem <my-theorem>`.
 
 ## Axioms
 
-An axiom directive can be included using the `proof:theorem` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+An axiom directive can be included using the `prf:theorem` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your axiom that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your axiom that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the axiom’s class attribute which can be used to add custom CSS or JavaScript.
@@ -153,7 +153,7 @@ An axiom directive can be included using the `proof:theorem` pattern. The direct
 
 **Example**
 
-```{proof:axiom} Completeness of $\mathbb{R}$
+```{prf:axiom} Completeness of $\mathbb{R}$
 :label: my-axiom
 
 Every Cauchy sequence on the real line is convergent.
@@ -162,7 +162,7 @@ Every Cauchy sequence on the real line is convergent.
 **MyST Syntax**
 
 ``````md
-```{proof:axiom} Completeness of $\mathbb{R}$
+```{prf:axiom} Completeness of $\mathbb{R}$
 :label: my-axiom
 
 Every Cauchy sequence on the real line is convergent.
@@ -173,16 +173,16 @@ _Source:_ {cite}`economic-dynamics-book`
 
 ### Referencing Axioms
 
-You can refer to an axiom using the `{proof:ref}` role like: ```{proof:ref}`my-axiom` ```, which will replace the reference with the axiom number like so: {proof:ref}`my-axiom`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to an axiom using the `{prf:ref}` role like: ```{prf:ref}`my-axiom` ```, which will replace the reference with the axiom number like so: {prf:ref}`my-axiom`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Lemmas
 
-A lemma directive can be included using the `proof:lemma` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A lemma directive can be included using the `prf:lemma` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your lemma that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your lemma that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the lemma’s class attribute which can be used to add custom CSS or JavaScript.
@@ -192,7 +192,7 @@ A lemma directive can be included using the `proof:lemma` pattern. The directive
 
 **Example**
 
-````{proof:lemma}
+````{prf:lemma}
 :label: my-lemma
 
 If $\hat P$ is the fixed point of the map $\mathcal B \circ \mathcal D$ and $\hat F$ is the robust policy as given in [(7)](https://python-advanced.quantecon.org/robustness.html#equation-rb-oc-ih), then
@@ -207,7 +207,7 @@ K(\hat F, \theta) = (\theta I - C'\hat P C)^{-1} C' \hat P  (A - B \hat F)
 **MyST Syntax**
 
 ``````md
-````{proof:lemma}
+````{prf:lemma}
 :label: my-lemma
 
 If $\hat P$ is the fixed point of the map $\mathcal B \circ \mathcal D$ and $\hat F$ is the robust policy as given in [(7)](https://python-advanced.quantecon.org/robustness.html#equation-rb-oc-ih), then
@@ -224,16 +224,16 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/robustness.html#Appe
 
 ### Referencing Lemmas
 
-You can refer to a lemma using the `{proof:ref}` role like: ```{proof:ref}`my-lemma` ```, which will replace the reference with the lemma number like so: {proof:ref}`my-lemma`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a lemma using the `{prf:ref}` role like: ```{prf:ref}`my-lemma` ```, which will replace the reference with the lemma number like so: {prf:ref}`my-lemma`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Definitions
 
-A definition directive can be included using the `proof:definition` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A definition directive can be included using the `prf:definition` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your definition that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your definition that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the definition’s class attribute which can be used to add custom CSS or JavaScript.
@@ -243,7 +243,7 @@ A definition directive can be included using the `proof:definition` pattern. The
 
 **Example**
 
-````{proof:definition}
+````{prf:definition}
 :label: my-definition
 
 The *economical expansion problem* (EEP) for
@@ -260,7 +260,7 @@ $$
 **MyST Syntax**
 
 ``````md
-````{proof:definition}
+````{prf:definition}
 :label: my-definition
 
 The *economical expansion problem* (EEP) for
@@ -278,15 +278,15 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/von_neumann_model.ht
 
 ### Referencing Definitions
 
-You can refer to a definition using the `{proof:ref}` role like: ```{proof:ref}`my-definition` ```, which will replace the reference with the definition number like so: {proof:ref}`my-definition`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a definition using the `{prf:ref}` role like: ```{prf:ref}`my-definition` ```, which will replace the reference with the definition number like so: {prf:ref}`my-definition`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 ## Criteria
 
-A criterion directive can be included using the `proof:criterion` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A criterion directive can be included using the `prf:criterion` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your criterion that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your criterion that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the criterion’s class attribute which can be used to add custom CSS or JavaScript.
@@ -296,7 +296,7 @@ A criterion directive can be included using the `proof:criterion` pattern. The d
 
 **Example**
 
-````{proof:criterion} Weyl's criterion
+````{prf:criterion} Weyl's criterion
 :label: weyls-criterion
 
 Weyl's criterion states that the sequence $a_n$ is equidistributed modulo $1$ if
@@ -310,7 +310,7 @@ and only if for all non-zero integers $m$,
 **MyST Syntax**
 
 ``````md
-````{proof:criterion} Weyl's criterion
+````{prf:criterion} Weyl's criterion
 :label: weyls-criterion
 
 Weyl's criterion states that the sequence $a_n$ is equidistributed modulo $1$ if
@@ -326,16 +326,16 @@ _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Equidistributed_sequence#Wey
 
 ### Referencing Criteria
 
-You can refer to a criterion using the `{proof:ref}` role like: ```{proof:ref}`weyls-criterion` ```, which will replace the reference with the criterion number like so: {proof:ref}`weyls-criterion`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a criterion using the `{prf:ref}` role like: ```{prf:ref}`weyls-criterion` ```, which will replace the reference with the criterion number like so: {prf:ref}`weyls-criterion`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Remarks
 
-A remark directive can be included using the `proof:remark` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A remark directive can be included using the `prf:remark` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your remark that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your remark that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the remark’s class attribute which can be used to add custom CSS or JavaScript.
@@ -345,7 +345,7 @@ A remark directive can be included using the `proof:remark` pattern. The directi
 
 **Example**
 
-```{proof:remark}
+```{prf:remark}
 :label: my-remark
 
 More generally there is a class of density functions
@@ -364,7 +364,7 @@ This property is called **spherical symmetry** (see p 81. in Leamer
 **MyST Syntax**
 
 ``````md
-```{proof:remark}
+```{prf:remark}
 :label: my-remark
 
 More generally there is a class of density functions
@@ -386,14 +386,14 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/black_litterman.html
 
 ### Referencing Remarks
 
-You can refer to a remark using the `{proof:ref}` role like: ```{proof:ref}`my-remark` ```, which will replace the reference with the remark number like so: {proof:ref}`my-remark`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a remark using the `{prf:ref}` role like: ```{prf:ref}`my-remark` ```, which will replace the reference with the remark number like so: {prf:ref}`my-remark`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Conjectures
 
 **Example**
 
-```{proof:conjecture} Fake $\gamma$ conjecture
+```{prf:conjecture} Fake $\gamma$ conjecture
 :label: my-conjecture
 
 This is a dummy conjecture to illustrate that one can use math in titles.
@@ -402,7 +402,7 @@ This is a dummy conjecture to illustrate that one can use math in titles.
 **MyST Syntax**
 
 ``````md
-```{proof:conjecture} Fake $\gamma$ conjecture
+```{prf:conjecture} Fake $\gamma$ conjecture
 :label: my-conjecture
 
 This is a dummy conjecture to illustrate that one can use math in titles.
@@ -411,15 +411,15 @@ This is a dummy conjecture to illustrate that one can use math in titles.
 
 ### Referencing Conjectures
 
-You can refer to a conjecture using the `{proof:ref}` role like: ```{proof:ref}`my-conjecture` ```, which will replace the reference with the conjecture number like so: {proof:ref}`my-conjecture`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a conjecture using the `{prf:ref}` role like: ```{prf:ref}`my-conjecture` ```, which will replace the reference with the conjecture number like so: {prf:ref}`my-conjecture`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 ## Corollaries
 
-A corollary directive can be included using the `proof:corollary` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A corollary directive can be included using the `prf:corollary` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your corollary that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your corollary that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the corollary’s class attribute which can be used to add custom CSS or JavaScript.
@@ -429,7 +429,7 @@ A corollary directive can be included using the `proof:corollary` pattern. The d
 
 **Example**
 
-```{proof:corollary}
+```{prf:corollary}
 :label: my-corollary
 
 If $A$ is a convergent matrix, then there exists a matrix norm such
@@ -439,7 +439,7 @@ that $\vert \vert A \vert \vert < 1$.
 **MyST Syntax**
 
 ``````md
-```{proof:corollary}
+```{prf:corollary}
 :label: my-corollary
 
 If $A$ is a convergent matrix, then there exists a matrix norm such
@@ -451,17 +451,17 @@ _Source:_ [QuantEcon](https://python-intro.quantecon.org/_static/lecture_specifi
 
 ### Referencing Corollaries
 
-You can refer to a corollary using the `{proof:ref}` role like: ```{proof:ref}`my-corollary` ```, which will replace the reference with the corollary number like so: {proof:ref}`my-corollary`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a corollary using the `{prf:ref}` role like: ```{prf:ref}`my-corollary` ```, which will replace the reference with the corollary number like so: {prf:ref}`my-corollary`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Algorithms
 
 
-An algorithm directive can be included using the `proof:algorithm` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+An algorithm directive can be included using the `prf:algorithm` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your algorithm that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your algorithm that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the algorithm’s class attribute which can be used to add custom CSS or JavaScript.
@@ -471,7 +471,7 @@ An algorithm directive can be included using the `proof:algorithm` pattern. The 
 
 **Example**
 
-```{proof:algorithm} Ford–Fulkerson
+```{prf:algorithm} Ford–Fulkerson
 :label: my-algorithm
 
 **Inputs** Given a Network $G=(V,E)$ with flow capacity $c$, a source node $s$, and a sink node $t$
@@ -491,7 +491,7 @@ An algorithm directive can be included using the `proof:algorithm` pattern. The 
 **MyST Syntax**
 
 ``````md
-```{proof:algorithm} Ford–Fulkerson
+```{prf:algorithm} Ford–Fulkerson
 :label: my-algorithm
 
 **Inputs** Given a Network $G=(V,E)$ with flow capacity $c$, a source node $s$, and a sink node $t$
@@ -514,16 +514,16 @@ _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algor
 
 ### Referencing Algorithms
 
-You can refer to a algorithms using the `{proof:ref}` role like: ```{proof:ref}`my-algorithm` ```, which will replace the reference with the algorithm number like so: {proof:ref}`my-algorithm`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a algorithms using the `{prf:ref}` role like: ```{prf:ref}`my-algorithm` ```, which will replace the reference with the algorithm number like so: {prf:ref}`my-algorithm`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Examples
 
-An example directive can be included using the `proof:example` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+An example directive can be included using the `prf:example` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your example that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your example that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the example’s class attribute which can be used to add custom CSS or JavaScript.
@@ -533,7 +533,7 @@ An example directive can be included using the `proof:example` pattern. The dire
 
 **Example**
 
-````{proof:example}
+````{prf:example}
 :label: my-example
 
 Next, we shut down randomness in demand and assume that the demand shock
@@ -557,7 +557,7 @@ ex2.simulate(x0)
 **MyST Syntax**
 
 ``````md
-````{proof:example}
+````{prf:example}
 :label: my-example
 
 Next, we shut down randomness in demand and assume that the demand shock
@@ -583,16 +583,16 @@ _Source:_ [QuantEcon](https://python.quantecon.org/lq_inventories.html#Example-2
 
 ### Referencing Examples
 
-You can refer to an example using the `{proof:ref}` role like: ```{proof:ref}`my-example` ```, which will replace the reference with the example number like so: {proof:ref}`my-example`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to an example using the `{prf:ref}` role like: ```{prf:ref}`my-example` ```, which will replace the reference with the example number like so: {prf:ref}`my-example`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
 ## Properties
 
-A property directive can be included using the `proof:property` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A property directive can be included using the `prf:property` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your property that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your property that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the property’s class attribute which can be used to add custom CSS or JavaScript.
@@ -602,7 +602,7 @@ A property directive can be included using the `proof:property` pattern. The dir
 
 **Example**
 
-```{proof:property}
+```{prf:property}
 :label: my-property
 
 This is a dummy property to illustrate the directive.
@@ -611,7 +611,7 @@ This is a dummy property to illustrate the directive.
 **MyST Syntax**
 
 ``````md
-```{proof:property}
+```{prf:property}
 :label: my-property
 
 This is a dummy property to illustrate the directive.
@@ -620,15 +620,15 @@ This is a dummy property to illustrate the directive.
 
 ### Referencing Properties
 
-You can refer to a property using the `{proof:ref}` role like: ```{proof:ref}`my-property` ```, which will replace the reference with the property number like so: {proof:ref}`my-property`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a property using the `{prf:ref}` role like: ```{prf:ref}`my-property` ```, which will replace the reference with the property number like so: {prf:ref}`my-property`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 ## Observations
 
-An observation directive can be included using the `proof:observation` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+An observation directive can be included using the `prf:observation` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your observation that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your observation that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the observation’s class attribute which can be used to add custom CSS or JavaScript.
@@ -638,7 +638,7 @@ An observation directive can be included using the `proof:observation` pattern. 
 
 **Example**
 
-```{proof:observation}
+```{prf:observation}
 :label: my-observation
 
 This is a dummy observation directive.
@@ -647,7 +647,7 @@ This is a dummy observation directive.
 **MyST Syntax**
 
 ``````md
-```{proof:observation}
+```{prf:observation}
 :label: my-observation
 
 This is a dummy observation directive.
@@ -656,15 +656,15 @@ This is a dummy observation directive.
 
 ### Referencing Observations
 
-You can refer to an observation using the `{proof:ref}` role like: ```{proof:ref}`my-observation` ```, which will replace the reference with the observation number like so: {proof:ref}`my-observation`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to an observation using the `{prf:ref}` role like: ```{prf:ref}`my-observation` ```, which will replace the reference with the observation number like so: {prf:ref}`my-observation`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 ## Propositions
 
-A proposition directive can be included using the `proof:proposition` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+A proposition directive can be included using the `prf:proposition` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
-	A unique identifier for your proposition that you can use to reference it with `{proof:ref}`. Cannot contain spaces or special characters.
+	A unique identifier for your proposition that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
 * `class` : text
 
 	Value of the proposition’s class attribute which can be used to add custom CSS or JavaScript.
@@ -674,7 +674,7 @@ A proposition directive can be included using the `proof:proposition` pattern. T
 
 **Example**
 
-```{proof:proposition}
+```{prf:proposition}
 :label: my-proposition
 
 This is a dummy proposition directive.
@@ -683,7 +683,7 @@ This is a dummy proposition directive.
 **MyST Syntax**
 
 ``````md
-```{proof:proposition}
+```{prf:proposition}
 :label: my-proposition
 
 This is a dummy proposition directive.
@@ -692,4 +692,4 @@ This is a dummy proposition directive.
 
 ### Referencing Propositions
 
-You can refer to a proposition using the `{proof:ref}` role like: ```{proof:ref}`my-proposition` ```, which will replace the reference with the proposition number like so: {proof:ref}`my-proposition`. When an explicit text is provided, this caption will serve as the title of the reference.
+You can refer to a proposition using the `{prf:ref}` role like: ```{prf:ref}`my-proposition` ```, which will replace the reference with the proposition number like so: {prf:ref}`my-proposition`. When an explicit text is provided, this caption will serve as the title of the reference.

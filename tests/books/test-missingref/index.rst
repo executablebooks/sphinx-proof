@@ -1,4 +1,4 @@
 index
 =====
 
-This is a missing ref :proof:ref:`foo`.
+This is a missing ref :prf:ref:`foo`.

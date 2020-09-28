@@ -1,7 +1,7 @@
 content 1
 =========
 
-.. proof:algorithm:: Test algorithm directive
+.. prf:algorithm:: Test algorithm directive
 	:class: test-algo
 	:label: test-algo-label
 
