@@ -7,5 +7,5 @@ include LICENSE
 include MANIFEST.in
 include README.md
 
-recursive-include sphinxcontrib *.js
-recursive-include sphinxcontrib *.css
+recursive-include sphinx_proof *.js
+recursive-include sphinx_proof *.css

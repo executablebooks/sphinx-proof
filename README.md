@@ -1,4 +1,4 @@
-# sphinxcontrib-prettyproof
+# sphinx-proof
 
 [![Documentation Status][rtd-badge]][rtd-link]
 [![Github-CI][github-ci]][github-link]
@@ -13,34 +13,34 @@ corollary, algorithm, example, property, observation and proposition directives.
 
 ## Get started
 
-To get started with `sphinxcontrib-prettyproof`, first install it through `pip`:
+To get started with `sphinx-proof`, first install it through `pip`:
 
 ```
-pip install sphinxcontrib-prettyproof
+pip install sphinx-proof
 ```
 
-then, add `sphinxcontrib.prettyproof` to your sphinx `extensions` in the `conf.py`
+then, add `sphinx_proof` to your sphinx `extensions` in the `conf.py`
 
 ```python
 ...
-extensions = ["sphinxcontrib.prettyproof"]
+extensions = ["sphinx_proof"]
 ...
 ```
 
 
 ## Documentation
 
-See the [Sphinxcontrib Pretty Proof documentation](https://sphinxcontrib-prettyproof.readthedocs.io/en/latest/) for more information.
+See the [Sphinx Proof documentation](https://sphinx-proof.readthedocs.io/en/latest/) for more information.
 
 
 ## Contributing
 
-We welcome all contributions! See the [EBP Contributing Guide](https://executablebooks.org/en/latest/contributing.html) for general details, and below for guidance specific to sphinxcontrib-prettyproof.
+We welcome all contributions! See the [EBP Contributing Guide](https://executablebooks.org/en/latest/contributing.html) for general details, and below for guidance specific to sphinx-proof.
 
 
-[rtd-badge]: https://readthedocs.org/projects/sphinxcontrib-prettyproof/badge/?version=latest
-[rtd-link]: https://sphinxcontrib-prettyproof.readthedocs.io/en/latest/?badge=latest
-[github-ci]: https://github.com/executablebooks/sphinxcontrib-prettyproof/workflows/continuous-integration/badge.svg?branch=master
-[github-link]: https://github.com/executablebooks/sphinxcontrib-prettyproof
-[codecov-badge]: https://codecov.io/gh/executablebooks/sphinxcontrib-prettyproof/branch/master/graph/badge.svg
-[codecov-link]: https://codecov.io/gh/executablebooks/sphinxcontrib-prettyproof
+[rtd-badge]: https://readthedocs.org/projects/sphinx-proof/badge/?version=latest
+[rtd-link]: https://sphinx-proof.readthedocs.io/en/latest/?badge=latest
+[github-ci]: https://github.com/executablebooks/sphinx-proof/workflows/continuous-integration/badge.svg?branch=master
+[github-link]: https://github.com/executablebooks/sphinx-proof
+[codecov-badge]: https://codecov.io/gh/executablebooks/sphinx-proof/branch/master/graph/badge.svg
+[codecov-link]: https://codecov.io/gh/executablebooks/sphinx-proof

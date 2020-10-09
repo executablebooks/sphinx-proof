@@ -1,4 +1,4 @@
-# sphinxcontrib-prettyproof
+# sphinx-proof
 
 ```{toctree}
 :hidden:
@@ -21,7 +21,7 @@ corollary, algorithm, example, property, observation and proposition directives.
 
 
 ```{warning}
-sphinxcontrib-prettyproof `0.0.2` is in a development stage and may change rapidly.
+sphinx-proof `0.0.2` is in a development stage and may change rapidly.
 ```
 
 **Features**:
@@ -33,40 +33,40 @@ sphinxcontrib-prettyproof `0.0.2` is in a development stage and may change rapid
 (getting-started)=
 ## Getting Started
 
-To get started with `sphinxcontrib-prettyproof`, first install it through `pip`:
+To get started with `sphinx-proof`, first install it through `pip`:
 
 ```bash
-pip install sphinxcontrib-prettyproof
+pip install sphinx-proof
 ```
 
 ### JuputerBook Project
 
-Add `sphinxcontrib.prettyproof` to your [extra_extensions](https://jupyterbook.org/advanced/sphinx.html#custom-sphinx-extensions) config in `_config.yml`
+Add `sphinx_proof` to your [extra_extensions](https://jupyterbook.org/advanced/sphinx.html#custom-sphinx-extensions) config in `_config.yml`
 
 ```yaml
 sphinx:
   extra_extensions:
-    - sphinxcontrib.prettyproof
+    - sphinx_proof
 ```
 
 you may then use `jb build <project>` and the extension will be used by your `JupyterBook` project.
 
 ### Sphinx Project
 
-Add `sphinxcontrib.prettyproof` to your sphinx `extensions` in the `conf.py`
+Add `sphinx_proof` to your sphinx `extensions` in the `conf.py`
 
 ```python
 ...
-extensions = ["sphinxcontrib.prettyproof"]
+extensions = ["sphinx_proof"]
 ...
 ```
 
 you may then build using `make html` and the extension will be used by your `Sphinx` project.
 
 
-[rtd-badge]: https://readthedocs.org/projects/sphinxcontrib-prettyproof/badge/?version=latest
-[rtd-link]: https://sphinxcontrib-prettyproof.readthedocs.io/en/latest/?badge=latest
-[github-ci]: https://github.com/executablebooks/sphinxcontrib-prettyproof/workflows/continuous-integration/badge.svg?branch=master
-[github-link]: https://github.com/executablebooks/sphinxcontrib-prettyproof
-[codecov-badge]: https://codecov.io/gh/executablebooks/sphinxcontrib-prettyproof/branch/master/graph/badge.svg
-[codecov-link]: https://codecov.io/gh/executablebooks/sphinxcontrib-prettyproof
+[rtd-badge]: https://readthedocs.org/projects/sphinx-proof/badge/?version=latest
+[rtd-link]: https://sphinx-proof.readthedocs.io/en/latest/?badge=latest
+[github-ci]: https://github.com/executablebooks/sphinx-proof/workflows/continuous-integration/badge.svg?branch=master
+[github-link]: https://github.com/executablebooks/sphinx-proof
+[codecov-badge]: https://codecov.io/gh/executablebooks/sphinx-proof/branch/master/graph/badge.svg
+[codecov-link]: https://codecov.io/gh/executablebooks/sphinx-proof
