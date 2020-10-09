@@ -21,7 +21,7 @@ corollary, algorithm, example, property, observation and proposition directives.
 
 
 ```{warning}
-sphinxcontrib-proof `0.0.3` is in a development stage and may change rapidly.
+sphinx-proof `0.0.3` is in a development stage and may change rapidly.
 ```
 
 **Features**:
