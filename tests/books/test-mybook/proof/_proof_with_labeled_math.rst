@@ -1,7 +1,7 @@
 content 4
 =========
 
-.. proof:proof::
+.. prf:proof::
 
    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 

@@ -35,14 +35,14 @@ class ElementDirective(SphinxDirective):
 
     def run(self) -> List[Node]:
         env = self.env
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
+        typ = self.name.split(":")[1]
         serial_no = env.new_serialno()
 
         if not hasattr(env, "proof_list"):
             env.proof_list = {}
 
         # If class in options add to class array
-        classes, class_name = [domain_name, typ], self.options.get("class", [])
+        classes, class_name = ["proof", typ], self.options.get("class", [])
         if class_name:
             classes.extend(class_name)
 
@@ -114,10 +114,10 @@ class ProofDirective(SphinxDirective):
     }
 
     def run(self) -> List[Node]:
-        domain_name, typ = self.name.split(":")[0], self.name.split(":")[1]
+        typ = self.name.split(":")[1]
 
         # If class in options add to class array
-        classes, class_name = [domain_name, typ], self.options.get("class", [])
+        classes, class_name = ["proof", typ], self.options.get("class", [])
         if class_name:
             classes.extend(class_name)
 

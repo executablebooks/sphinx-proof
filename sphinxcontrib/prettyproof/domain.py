@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 class ProofIndex(Index):
 
-    name = "proof"
+    name = "prf"
     localname = "Proof Index"
     shortname = "Proof"
 
@@ -62,13 +62,13 @@ class ProofXRefRole(XRefRole):
         self, document: document, env: BuildEnvironment, node: Element, is_ref: bool
     ) -> Tuple[List[Node], List[system_message]]:
 
-        node["refdomain"] = "proof"
+        node["refdomain"] = "prf"
         return [node], []
 
 
 class ProofDomain(Domain):
 
-    name = "proof"
+    name = "prf"
     label = "Proof Domain"
 
     roles = {"ref": ProofXRefRole()}

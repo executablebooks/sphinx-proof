@@ -1,4 +1,4 @@
 content 3
 =========
 
-referencing with number :proof:ref:`test-algo-label`.
+referencing with number :prf:ref:`test-algo-label`.

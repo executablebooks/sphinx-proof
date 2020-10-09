@@ -28,7 +28,7 @@ sphinxcontrib-prettyproof `0.0.2` is in a development stage and may change rapid
 
 1. directives are automatically numbered
 2. supports directive options such as `class`, `label`, and `nonumber`
-3. can easily be referenced through `proof:ref` role
+3. can easily be referenced through `prf:ref` role
 
 (getting-started)=
 ## Getting Started
