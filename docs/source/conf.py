@@ -11,7 +11,12 @@ master_doc = "index"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named "sphinx.ext.*") or your custom
 # ones.
-extensions = ["sphinx_proof", "myst_parser", "sphinxcontrib.bibtex"]
+extensions = [
+    "sphinx_proof",
+    "myst_parser",
+    "sphinxcontrib.bibtex",
+    "sphinx_togglebutton",
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
