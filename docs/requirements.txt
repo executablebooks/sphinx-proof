@@ -1,4 +1,5 @@
 sphinx>=3.0
 sphinx-book-theme
-myst-nb
+myst-parser
 sphinxcontrib-bibtex
+sphinx_togglebutton

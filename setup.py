@@ -33,6 +33,7 @@ extras = {
         "sphinx-book-theme",
         "sphinxcontrib-bibtex",
         "myst-parser",
+        "sphinx_togglebutton",
     ],
 }
 
