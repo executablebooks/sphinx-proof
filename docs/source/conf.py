@@ -14,7 +14,7 @@ master_doc = "index"
 extensions = [
     "sphinx_proof",
     "myst_parser",
-    "sphinxcontrib.bibtex==1.0.0",
+    "sphinxcontrib.bibtex",
     "sphinx_togglebutton",
 ]
 
