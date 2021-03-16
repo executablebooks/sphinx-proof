@@ -31,7 +31,7 @@ extras = {
     "rtd": [
         "sphinx>=3.0",
         "sphinx-book-theme",
-        "sphinxcontrib-bibtex",
+        "sphinxcontrib-bibtex~=2.1.0",
         "myst-parser",
         "sphinx_togglebutton",
     ],
