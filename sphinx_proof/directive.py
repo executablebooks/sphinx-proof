@@ -97,7 +97,7 @@ class ElementDirective(SphinxDirective):
             "prio": 0,
             "nonumber": True if "nonumber" in self.options else False,
         }
-
+        
         return [node]
 
 
