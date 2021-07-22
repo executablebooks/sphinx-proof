@@ -31,6 +31,8 @@ class unenumerable_node(nodes.Admonition, nodes.Element):
 
 def visit_enumerable_node(self, node: Node) -> None:
     if isinstance(self, LaTeXTranslator):
+        docname = find_parent(self.builder.env, node, "section")
+        self.body.append("\\label{" + f"{docname}:{node.attributes['label']}" + "}")
         self.body.append(latex_admonition_start)
     else:
         self.body.append(self.starttag(node, "div", CLASS="admonition"))
@@ -53,6 +55,8 @@ def depart_enumerable_node(self, node: Node) -> None:
 
 def visit_unenumerable_node(self, node: Node) -> None:
     if isinstance(self, LaTeXTranslator):
+        docname = find_parent(self.builder.env, node, "section")
+        self.body.append("\\label{" + f"{docname}:{node.attributes['label']}" + "}")
         self.body.append(latex_admonition_start)
     else:
         self.body.append(self.starttag(node, "div", CLASS="admonition"))
