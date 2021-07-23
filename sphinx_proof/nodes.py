@@ -7,7 +7,6 @@ Enumerable and unenumerable nodes
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
-from sphinx.builders.html import HTMLTranslator
 from docutils import nodes
 from docutils.nodes import Node
 from sphinx.writers.latex import LaTeXTranslator
@@ -41,7 +40,7 @@ def visit_enumerable_node(self, node: Node) -> None:
 def depart_enumerable_node(self, node: Node) -> None:
     typ = node.attributes.get("type", "")
     if isinstance(self, LaTeXTranslator):
-        number = get_node_number_latex(self, node)
+        number = get_node_number(self, node)
         idx = list_rindex(self.body, latex_admonition_start) + 2
         self.body.insert(idx, f"{typ.title()} {number}")
         self.body.append(latex_admonition_end)
@@ -87,6 +86,21 @@ def depart_proof_node(self, node: Node) -> None:
     pass
 
 
+def get_node_number(self, node: Node) -> str:
+    """Get the number for the directive node for HTML."""
+    key = "proof"
+    ids = node.attributes.get("ids", [])[0]
+    if isinstance(self, LaTeXTranslator):
+        docname = find_parent(self.builder.env, node, "section")
+        fignumbers = self.builder.env.toc_fignumbers.get(
+            docname, {}
+        )  # Latex does not have builder.fignumbers
+    else:
+        fignumbers = self.builder.fignumbers
+    number = fignumbers.get(key, {}).get(ids, ())
+    return ".".join(map(str, number))
+
+
 def find_parent(env, node, parent_tag):
     """Find the nearest parent node with the given tagname."""
     while True:
@@ -105,26 +119,6 @@ def find_parent(env, node, parent_tag):
         return node.attributes["docname"]
 
     return None
-
-
-def get_node_number(self: HTMLTranslator, node: Node) -> str:
-    """Get the number for the directive node for HTML."""
-    key = "proof"
-    ids = node.attributes.get("ids", [])[0]
-    number = self.builder.fignumbers.get(key, {}).get(ids, ())
-    return ".".join(map(str, number))
-
-
-def get_node_number_latex(self: LaTeXTranslator, node: Node) -> str:
-    """Get the number for the directive node for LaTeX."""
-    key = "proof"
-    docname = find_parent(self.builder.env, node, "section")
-    ids = node.attributes.get("ids", [])[0]
-    fignumbers = self.builder.env.toc_fignumbers.get(
-        docname, {}
-    )  # Latex does not have builder.fignumbers
-    number = fignumbers.get(key, {}).get(ids, ())
-    return ".".join(map(str, number))
 
 
 def list_rindex(li, x) -> int:

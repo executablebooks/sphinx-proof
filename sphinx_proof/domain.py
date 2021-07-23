@@ -38,8 +38,6 @@ class ProofIndex(Index):
         if not hasattr(self.domain.env, "proof_list"):
             return content, True
 
-        # import pdb;
-        # pdb.set_trace()
         proofs = self.domain.env.proof_list
         # {'theorem-0': {'docname': 'start/overview', 'type': 'theorem', 'ids': ['theorem-0'], 'label': 'theorem-0', 'prio': 0, 'nonumber': False}} # noqa: E501
 
