@@ -19,11 +19,6 @@ This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
 for producing proof, theorem, axiom, lemma, definition, criterion, remark, conjecture,
 corollary, algorithm, example, property, observation and proposition directives.
 
-
-```{warning}
-sphinx-proof `0.0.3` is in a development stage and may change rapidly.
-```
-
 **Features**:
 
 1. directives are automatically numbered

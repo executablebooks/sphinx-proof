@@ -17,7 +17,6 @@ from .domain import ProofDomain
 from sphinx.util import logging
 from sphinx.util.fileutil import copy_asset
 
-
 logger = logging.getLogger(__name__)
 
 
