@@ -2,6 +2,14 @@ from bs4 import BeautifulSoup
 import pytest
 
 
+@pytest.mark.sphinx("html", testroot="missingref")
+def test_missing_ref(app, warnings):
+    # Clean build
+    app.build()
+    assert "WARNING: label 'foo' not found" in warnings(app)
+
+
+# Tests for algorithms
 @pytest.mark.sphinx("html", testroot="mybook")
 @pytest.mark.parametrize(
     "idir", ["_algo_labeled_titled_with_classname.html", "_algo_nonumber.html"]
@@ -38,3 +46,28 @@ def test_reference(app, idir, file_regression):
 def test_duplicate_label(app, warnings):
     app.build()
     assert "WARNING: duplicate algorithm label" in warnings(app)
+
+
+# Tests for Proofs
+@pytest.mark.sphinx("html", testroot="mybook")
+@pytest.mark.parametrize(
+    "idir",
+    [
+        "_proof_with_classname.html",
+        "_proof_no_classname.html",
+        "_proof_with_argument_content.html",
+        "_proof_with_labeled_math.html",
+        "_proof_with_unlabeled_math.html",
+    ],
+)
+def test_proof(app, idir, file_regression):
+    """Test proof directive markup."""
+    app.build()
+    path_proof_directive = app.outdir / "proof" / idir
+    assert path_proof_directive.exists()
+
+    # get content markup
+    soup = BeautifulSoup(path_proof_directive.read_text(encoding="utf8"), "html.parser")
+
+    proof = soup.select("div.proof")[0]
+    file_regression.check(str(proof), basename=idir.split(".")[0], extension=".html")
