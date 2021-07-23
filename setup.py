@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = "v0.0.3"
+import sphinx_proof.__version__ as VERSION
 
 LONG_DESCRIPTION = """
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
