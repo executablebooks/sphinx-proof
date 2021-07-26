@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-VERSION = "v0.0.3"
+VERSION = "v0.1.0"
 
 LONG_DESCRIPTION = """
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
@@ -27,6 +27,7 @@ extras = {
         "pytest-regressions",
         "beautifulsoup4",
         "myst-parser",
+        "texsoup",
     ],
     "rtd": [
         "sphinx>=3.0",

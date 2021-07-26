@@ -17,7 +17,6 @@ from .domain import ProofDomain
 from sphinx.util import logging
 from sphinx.util.fileutil import copy_asset
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -76,11 +75,13 @@ def setup(app: Sphinx) -> Dict[str, Any]:
         proof_node,
         singlehtml=(visit_proof_node, depart_proof_node),
         html=(visit_proof_node, depart_proof_node),
+        latex=(visit_proof_node, depart_proof_node),
     )
     app.add_node(
         unenumerable_node,
         singlehtml=(visit_unenumerable_node, depart_unenumerable_node),
         html=(visit_unenumerable_node, depart_unenumerable_node),
+        latex=(visit_unenumerable_node, depart_unenumerable_node),
     )
     app.add_enumerable_node(
         enumerable_node,
@@ -88,6 +89,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
         None,
         singlehtml=(visit_enumerable_node, depart_enumerable_node),
         html=(visit_enumerable_node, depart_enumerable_node),
+        latex=(visit_enumerable_node, depart_enumerable_node),
     )
 
     return {

@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.1.0](https://github.com/executablebooks/sphinx-proof/tree/release-0.1) (2021-07-23)
+
+### NEW ✨
+
+Implemented Latex output of all the directives in this repository.
+
+### Improved 👌
+
+Proper handling of directives which do not have a title specified. For this, added an `enumerable_nodes` dict to ProofDomain.
+
 ## [v0.0.3](https://github.com/executablebooks/sphinx-proof/tree/v0.0.3) (2020-10-09)
 
 [Full Changelog](https://github.com/executablebooks/sphinx-proof/compare/v0.0.2...v0.0.3)
