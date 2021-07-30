@@ -141,7 +141,7 @@ You can refer to a theorem using the `{prf:ref}` role like: ```{prf:ref}`my-theo
 
 ### Axioms
 
-An axiom directive can be included using the `prf:theorem` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+An axiom directive can be included using the `prf:axiom` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
 
 * `label` : text
 
