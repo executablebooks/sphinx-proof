@@ -20,12 +20,36 @@ class proof_node(nodes.Admonition, nodes.Element):
     pass
 
 
+class axiom_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class theorem_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class lemma_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class algorithm_node(nodes.Admonition, nodes.Element):
+    pass
+
+
 class enumerable_node(nodes.Admonition, nodes.Element):
     pass
 
 
 class unenumerable_node(nodes.Admonition, nodes.Element):
     pass
+
+
+NODE_TYPES = {
+    "axiom": axiom_node,
+    "theorem": theorem_node,
+    "lemma": lemma_node,
+    "algorithm": algorithm_node,
+}
 
 
 def visit_enumerable_node(self, node: Node) -> None:
@@ -40,13 +64,16 @@ def visit_enumerable_node(self, node: Node) -> None:
 def depart_enumerable_node(self, node: Node) -> None:
     typ = node.attributes.get("type", "")
     if isinstance(self, LaTeXTranslator):
-        number = get_node_number(self, node)
+        number = get_node_number(self, node, typ)
         idx = list_rindex(self.body, latex_admonition_start) + 2
         self.body.insert(idx, f"{typ.title()} {number}")
         self.body.append(latex_admonition_end)
     else:
         # Find index in list of 'Proof #'
-        number = get_node_number(self, node)
+        number = get_node_number(self, node, typ)
+        import pdb
+
+        pdb.set_trace()
         idx = self.body.index(f"Proof {number} ")
         self.body[idx] = f"{typ.title()} {number} "
         self.body.append("</div>")
@@ -86,9 +113,8 @@ def depart_proof_node(self, node: Node) -> None:
     pass
 
 
-def get_node_number(self, node: Node) -> str:
+def get_node_number(self, node: Node, typ) -> str:
     """Get the number for the directive node for HTML."""
-    key = "proof"
     ids = node.attributes.get("ids", [])[0]
     if isinstance(self, LaTeXTranslator):
         docname = find_parent(self.builder.env, node, "section")
@@ -97,7 +123,7 @@ def get_node_number(self, node: Node) -> str:
         )  # Latex does not have builder.fignumbers
     else:
         fignumbers = self.builder.fignumbers
-    number = fignumbers.get(key, {}).get(ids, ())
+    number = fignumbers.get(typ, {}).get(ids, ())
     return ".".join(map(str, number))
 
 

@@ -119,6 +119,9 @@ class ProofDomain(Domain):
 
         todocname = match["docname"]
         title = contnode[0]
+        import pdb
+
+        pdb.set_trace()
         if target in contnode[0]:
             number = ""
             if not env.proof_list[target]["nonumber"]:
