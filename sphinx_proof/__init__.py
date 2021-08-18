@@ -10,10 +10,16 @@ from typing import Any, Dict, Set, Union
 from sphinx.config import Config
 from sphinx.application import Sphinx
 from sphinx.environment import BuildEnvironment
-from .nodes import enumerable_node, visit_enumerable_node, depart_enumerable_node
-from .nodes import unenumerable_node, visit_unenumerable_node, depart_unenumerable_node
+from .nodes import visit_enumerable_node, depart_enumerable_node
+from .nodes import (
+    NODE_TYPES,
+    unenumerable_node,
+    visit_unenumerable_node,
+    depart_unenumerable_node,
+)
 from .nodes import proof_node, visit_proof_node, depart_proof_node
 from .domain import ProofDomain
+from .proof_type import PROOF_TYPES
 from sphinx.util import logging
 from sphinx.util.fileutil import copy_asset
 
@@ -46,9 +52,9 @@ def merge_proofs(
 def init_numfig(app: Sphinx, config: Config) -> None:
     """Initialize proof numfig format."""
     config["numfig"] = True
-    numfig_format = {
-        "proof": "Proof %s",
-    }
+    numfig_format = {}
+    for typ in NODE_TYPES.keys():
+        numfig_format[typ] = typ + " %s"
     numfig_format.update(config.numfig_format)
     config.numfig_format = numfig_format
 
@@ -83,14 +89,15 @@ def setup(app: Sphinx) -> Dict[str, Any]:
         html=(visit_unenumerable_node, depart_unenumerable_node),
         latex=(visit_unenumerable_node, depart_unenumerable_node),
     )
-    app.add_enumerable_node(
-        enumerable_node,
-        "proof",
-        None,
-        singlehtml=(visit_enumerable_node, depart_enumerable_node),
-        html=(visit_enumerable_node, depart_enumerable_node),
-        latex=(visit_enumerable_node, depart_enumerable_node),
-    )
+    for node in PROOF_TYPES.keys():
+        app.add_enumerable_node(
+            NODE_TYPES[node],
+            node,
+            None,
+            singlehtml=(visit_enumerable_node, depart_enumerable_node),
+            html=(visit_enumerable_node, depart_enumerable_node),
+            latex=(visit_enumerable_node, depart_enumerable_node),
+        )
 
     return {
         "version": "builtin",

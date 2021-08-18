@@ -13,7 +13,7 @@ from docutils.nodes import Node
 from sphinx.util import logging
 from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
-from .nodes import enumerable_node, unenumerable_node
+from .nodes import unenumerable_node, NODE_TYPES
 from .nodes import proof_node
 
 logger = logging.getLogger(__name__)
@@ -37,7 +37,6 @@ class ElementDirective(SphinxDirective):
         env = self.env
         typ = self.name.split(":")[1]
         serial_no = env.new_serialno()
-
         if not hasattr(env, "proof_list"):
             env.proof_list = {}
 
@@ -76,7 +75,8 @@ class ElementDirective(SphinxDirective):
         if "nonumber" in self.options:
             node = unenumerable_node()
         else:
-            node = enumerable_node()
+            node_type = NODE_TYPES[typ]
+            node = node_type()
 
         node.document = self.state.document
         node += nodes.title(title_text, "", *textnodes)
