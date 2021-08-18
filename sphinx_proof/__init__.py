@@ -25,22 +25,6 @@ from sphinx.util.fileutil import copy_asset
 
 logger = logging.getLogger(__name__)
 
-NUMFIG_TYPES = {
-    "axiom": "axiom ",
-    "theorem": "theorem ",
-    "lemma": "lemma ",
-    "algorithm": "algorithm ",
-    "definition": "definition ",
-    "remark": "remark ",
-    "conjecture": "conjecture ",
-    "corollary": "corollary ",
-    "criterion": "criterion ",
-    "example": "example ",
-    "property": "property ",
-    "observation": "observation ",
-    "proposition": "proposition ",
-}
-
 
 def purge_proofs(app: Sphinx, env: BuildEnvironment, docname: str) -> None:
     if not hasattr(env, "proof_list"):
@@ -69,8 +53,8 @@ def init_numfig(app: Sphinx, config: Config) -> None:
     """Initialize proof numfig format."""
     config["numfig"] = True
     numfig_format = {}
-    for typ, val in NUMFIG_TYPES.items():
-        numfig_format[typ] = val + "%s"
+    for typ in NODE_TYPES.keys():
+        numfig_format[typ] = typ + " %s"
     numfig_format.update(config.numfig_format)
     config.numfig_format = numfig_format
 
