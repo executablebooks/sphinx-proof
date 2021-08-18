@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.1 (2021-08-18)
+
+### Improved 👌
+
+Resetting directive numbering between different directives
+
 ## [v0.1.0](https://github.com/executablebooks/sphinx-proof/tree/release-0.1) (2021-07-23)
 
 ### NEW ✨
