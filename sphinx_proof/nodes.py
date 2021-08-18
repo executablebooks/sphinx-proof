@@ -16,42 +16,6 @@ latex_admonition_start = CR + "\\begin{sphinxadmonition}{note}"
 latex_admonition_end = "\\end{sphinxadmonition}" + CR
 
 
-class proof_node(nodes.Admonition, nodes.Element):
-    pass
-
-
-class axiom_node(nodes.Admonition, nodes.Element):
-    pass
-
-
-class theorem_node(nodes.Admonition, nodes.Element):
-    pass
-
-
-class lemma_node(nodes.Admonition, nodes.Element):
-    pass
-
-
-class algorithm_node(nodes.Admonition, nodes.Element):
-    pass
-
-
-class enumerable_node(nodes.Admonition, nodes.Element):
-    pass
-
-
-class unenumerable_node(nodes.Admonition, nodes.Element):
-    pass
-
-
-NODE_TYPES = {
-    "axiom": axiom_node,
-    "theorem": theorem_node,
-    "lemma": lemma_node,
-    "algorithm": algorithm_node,
-}
-
-
 def visit_enumerable_node(self, node: Node) -> None:
     if isinstance(self, LaTeXTranslator):
         docname = find_parent(self.builder.env, node, "section")
@@ -71,10 +35,7 @@ def depart_enumerable_node(self, node: Node) -> None:
     else:
         # Find index in list of 'Proof #'
         number = get_node_number(self, node, typ)
-        import pdb
-
-        pdb.set_trace()
-        idx = self.body.index(f"Proof {number} ")
+        idx = self.body.index(f"{typ} {number} ")
         self.body[idx] = f"{typ.title()} {number} "
         self.body.append("</div>")
 
@@ -153,3 +114,80 @@ def list_rindex(li, x) -> int:
         if li[i] == x:
             return i
     raise ValueError("{} is not in list".format(x))
+
+
+class proof_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class axiom_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class theorem_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class lemma_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class algorithm_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class definition_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class remark_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class conjecture_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class corollary_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class criterion_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class example_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class property_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class observation_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class proposition_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+class unenumerable_node(nodes.Admonition, nodes.Element):
+    pass
+
+
+NODE_TYPES = {
+    "axiom": axiom_node,
+    "theorem": theorem_node,
+    "lemma": lemma_node,
+    "algorithm": algorithm_node,
+    "definition": definition_node,
+    "remark": remark_node,
+    "conjecture": conjecture_node,
+    "corollary": corollary_node,
+    "criterion": criterion_node,
+    "example": example_node,
+    "property": property_node,
+    "observation": observation_node,
+    "proposition": proposition_node,
+}

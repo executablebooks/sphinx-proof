@@ -119,15 +119,12 @@ class ProofDomain(Domain):
 
         todocname = match["docname"]
         title = contnode[0]
-        import pdb
 
-        pdb.set_trace()
         if target in contnode[0]:
             number = ""
             if not env.proof_list[target]["nonumber"]:
-                number = ".".join(
-                    map(str, env.toc_fignumbers[todocname]["proof"][target])
-                )
+                typ = env.proof_list[target]["type"]
+                number = ".".join(map(str, env.toc_fignumbers[todocname][typ][target]))
             title = nodes.Text(f"{match['type'].title()} {number}")
         # builder, fromdocname, todocname, targetid, child, title=None
         return make_refnode(builder, fromdocname, todocname, target, title)
