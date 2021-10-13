@@ -77,6 +77,7 @@ def depart_proof_node(self, node: Node) -> None:
 def get_node_number(self, node: Node, typ) -> str:
     """Get the number for the directive node for HTML."""
     ids = node.attributes.get("ids", [])[0]
+    key = typ
     if isinstance(self, LaTeXTranslator):
         docname = find_parent(self.builder.env, node, "section")
         fignumbers = self.builder.env.toc_fignumbers.get(
@@ -84,7 +85,9 @@ def get_node_number(self, node: Node, typ) -> str:
         )  # Latex does not have builder.fignumbers
     else:
         fignumbers = self.builder.fignumbers
-    number = fignumbers.get(typ, {}).get(ids, ())
+        if self.builder.name == "singlehtml":
+            key = "%s/%s" % (self.docnames[-1], typ)
+    number = fignumbers.get(key, {}).get(ids, ())
     return ".".join(map(str, number))
 
 
