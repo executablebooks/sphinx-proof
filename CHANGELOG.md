@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.3 (2021-10-14)
+
+### Fixes 🐛
+
+Resolving reference error. See: https://github.com/executablebooks/sphinx-proof/pull/68
+
 ## v0.1.2 (2021-10-13)
 
 ### Fixes 🐛
