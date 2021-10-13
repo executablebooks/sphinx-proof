@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.2 (2021-10-13)
+
+### Fixes 🐛
+
+Making singlehtml builder error free. See: https://github.com/executablebooks/sphinx-proof/issues/65
+
 ## v0.1.1 (2021-08-18)
 
 ### Improved 👌
