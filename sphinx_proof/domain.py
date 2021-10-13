@@ -109,22 +109,27 @@ class ProofDomain(Domain):
         and if that yields no resolution, replaced by contnode.The method can also raise
         sphinx.environment.NoUri to suppress the missing-reference event being emitted.
         """
-        try:
-            match = env.proof_list[target]
-        except Exception:
-            path = self.env.doc2path(fromdocname)[:-3]
-            msg = "label '{}' not found.".format(target)
-            logger.warning(msg, location=path, color="red")
+        if node.attributes.get("refdomain", "") == self.name:
+            try:
+                match = env.proof_list[target]
+            except Exception:
+                path = self.env.doc2path(fromdocname)[:-3]
+                msg = "label '{}' not found.".format(target)
+                logger.warning(msg, location=path, color="red")
+                return None
+
+            todocname = match["docname"]
+            title = contnode[0]
+
+            if target in contnode[0]:
+                number = ""
+                if not env.proof_list[target]["nonumber"]:
+                    typ = env.proof_list[target]["type"]
+                    number = ".".join(
+                        map(str, env.toc_fignumbers[todocname][typ][target])
+                    )
+                title = nodes.Text(f"{match['type'].title()} {number}")
+            # builder, fromdocname, todocname, targetid, child, title=None
+            return make_refnode(builder, fromdocname, todocname, target, title)
+        else:
             return None
-
-        todocname = match["docname"]
-        title = contnode[0]
-
-        if target in contnode[0]:
-            number = ""
-            if not env.proof_list[target]["nonumber"]:
-                typ = env.proof_list[target]["type"]
-                number = ".".join(map(str, env.toc_fignumbers[todocname][typ][target]))
-            title = nodes.Text(f"{match['type'].title()} {number}")
-        # builder, fromdocname, todocname, targetid, child, title=None
-        return make_refnode(builder, fromdocname, todocname, target, title)
