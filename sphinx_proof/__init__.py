@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any, Dict, Set, Union
 from sphinx.config import Config
 from sphinx.application import Sphinx
+from sphinx.locale import get_translation
 from sphinx.environment import BuildEnvironment
 from .nodes import visit_enumerable_node, depart_enumerable_node
 from .nodes import (
