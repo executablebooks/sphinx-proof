@@ -9,3 +9,5 @@ include README.md
 
 recursive-include sphinx_proof *.js
 recursive-include sphinx_proof *.css
+
+recursive-include *.pot *.po *.mo
