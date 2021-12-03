@@ -10,7 +10,10 @@ Enumerable and unenumerable nodes
 from docutils import nodes
 from docutils.nodes import Node
 from sphinx.writers.latex import LaTeXTranslator
-from . import _
+from sphinx.locale import get_translation
+
+MESSAGE_CATALOG_NAME = "proof"
+_ = get_translation(MESSAGE_CATALOG_NAME)
 
 CR = "\n"
 latex_admonition_start = CR + "\\begin{sphinxadmonition}{note}"
