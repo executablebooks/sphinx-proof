@@ -5,10 +5,12 @@
 
     A Sphinx extension for producing proofs, theorems, lemmas, etc.
 """
+import os
 from pathlib import Path
 from typing import Any, Dict, Set, Union
 from sphinx.config import Config
 from sphinx.application import Sphinx
+from sphinx.locale import get_translation
 from sphinx.environment import BuildEnvironment
 from .nodes import visit_enumerable_node, depart_enumerable_node
 from .nodes import (
@@ -24,6 +26,8 @@ from sphinx.util import logging
 from sphinx.util.fileutil import copy_asset
 
 logger = logging.getLogger(__name__)
+MESSAGE_CATALOG_NAME = "proof"
+_ = get_translation(MESSAGE_CATALOG_NAME)
 
 
 def purge_proofs(app: Sphinx, env: BuildEnvironment, docname: str) -> None:
@@ -75,6 +79,11 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.connect("config-inited", init_numfig)
     app.connect("env-purge-doc", purge_proofs)
     app.connect("env-merge-info", merge_proofs)
+
+    # add translations
+    package_dir = os.path.abspath(os.path.dirname(__file__))
+    locale_dir = os.path.join(package_dir, "translations", "locales")
+    app.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
 
     app.add_domain(ProofDomain)
     app.add_node(

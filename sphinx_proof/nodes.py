@@ -10,6 +10,10 @@ Enumerable and unenumerable nodes
 from docutils import nodes
 from docutils.nodes import Node
 from sphinx.writers.latex import LaTeXTranslator
+from sphinx.locale import get_translation
+
+MESSAGE_CATALOG_NAME = "proof"
+_ = get_translation(MESSAGE_CATALOG_NAME)
 
 CR = "\n"
 latex_admonition_start = CR + "\\begin{sphinxadmonition}{note}"
@@ -36,7 +40,7 @@ def depart_enumerable_node(self, node: Node) -> None:
         # Find index in list of 'Proof #'
         number = get_node_number(self, node, typ)
         idx = self.body.index(f"{typ} {number} ")
-        self.body[idx] = f"{typ.title()} {number} "
+        self.body[idx] = f"{_(typ.title())} {number} "
         self.body.append("</div>")
 
 
@@ -61,7 +65,7 @@ def depart_unenumerable_node(self, node: Node) -> None:
             idx = list_rindex(self.body, '<p class="admonition-title">') + 1
         else:
             idx = list_rindex(self.body, title)
-        element = f"<span>{typ.title()} </span>"
+        element = f"<span>{_(typ.title())} </span>"
         self.body.insert(idx, element)
         self.body.append("</div>")
 
