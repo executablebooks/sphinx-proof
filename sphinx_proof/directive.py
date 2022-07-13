@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 class ElementDirective(SphinxDirective):
-    """ A custom Sphinx Directive """
+    """A custom Sphinx Directive"""
 
     name = ""
     has_content = True
@@ -102,7 +102,7 @@ class ElementDirective(SphinxDirective):
 
 
 class ProofDirective(SphinxDirective):
-    """ A custom directive for proofs """
+    """A custom directive for proofs"""
 
     name = "proof"
     has_content = True

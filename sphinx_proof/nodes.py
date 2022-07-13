@@ -182,6 +182,7 @@ class proposition_node(nodes.Admonition, nodes.Element):
 class unenumerable_node(nodes.Admonition, nodes.Element):
     pass
 
+
 class assumption_node(nodes.Admonition, nodes.Element):
     pass
 

@@ -88,12 +88,11 @@ class PropositionDirective(ElementDirective):
 
     name = "proposition"
 
+
 class AssumptionDirective(ElementDirective):
     """A custom assumption directive."""
 
     name = "assumption"
-
-
 
 
 PROOF_TYPES = {
@@ -110,5 +109,5 @@ PROOF_TYPES = {
     "property": PropertyDirective,
     "observation": ObservationDirective,
     "proposition": PropositionDirective,
-    "assumption" : AssumptionDirective
+    "assumption": AssumptionDirective,
 }
