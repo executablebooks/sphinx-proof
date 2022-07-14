@@ -696,6 +696,43 @@ This is a dummy proposition directive.
 
 You can refer to a proposition using the `{prf:ref}` role like: ```{prf:ref}`my-proposition` ```, which will replace the reference with the proposition number like so: {prf:ref}`my-proposition`. When an explicit text is provided, this caption will serve as the title of the reference.
 
+
+### Assumptions
+
+An assumption directive can be included using the `prf:assumption` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+
+* `label` : text
+
+	A unique identifier for your assumption that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
+* `class` : text
+
+	Value of the assumption’s class attribute which can be used to add custom CSS or JavaScript.
+* `nonumber` : flag (empty)
+
+	Turns off assumption auto numbering.
+
+**Example**
+
+```{prf:assumption}
+:label: my-assumption
+
+This is a dummy assumption directive.
+```
+
+**MyST Syntax**
+
+``````md
+```{prf:assumption}
+:label: my-assumption
+
+This is a dummy assumption directive.
+```
+``````
+
+#### Referencing Assumptions
+
+You can refer to an assumption using the `{prf:ref}` role like: ```{prf:ref}`my-assumption` ```, which will replace the reference with the assumption number like so: {prf:ref}`my-assumption`. When an explicit text is provided, this caption will serve as the title of the reference.
+
 ## How to Hide Content
 
 Directive content can be hidden using the `dropdown` class which is available through [sphinx-togglebutton](https://sphinx-togglebutton.readthedocs.io/en/latest/). If your project utilizes the [MyST-NB](https://myst-nb.readthedocs.io/en/latest/) extension, there is no need to activate `sphinx-togglebutton` since it is already bundled with `MyST-NB`.
