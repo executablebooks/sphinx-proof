@@ -34,7 +34,7 @@ msgstr ""
 """
                 out_path.write_text(header)
 
-            with out_path.open("a") as f:
+            with out_path.open("a", encoding = "utf8") as f:
                 f.write("\n")
                 f.write(f'msgid "{english}"\n')
                 text = item["text"].replace('"', '\\"')
