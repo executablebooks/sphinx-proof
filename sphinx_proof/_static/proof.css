@@ -205,3 +205,14 @@ div.assumption {
 div.assumption p.admonition-title {
 	background-color: var(--hint-title-color);
 }
+/*********************************************
+* Exercises *
+*********************************************/
+div.exercise {
+	border-color: var(--hint-border-color);
+	background-color: var(--hint-title-color);
+}
+
+div.exercise p.admonition-title {
+	background-color: var(--hint-title-color);
+}
