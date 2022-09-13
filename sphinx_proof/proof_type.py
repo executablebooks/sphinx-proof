@@ -94,11 +94,12 @@ class AssumptionDirective(ElementDirective):
 
     name = "assumption"
 
-    
+
 class ExerciseDirective(ElementDirective):
     """A custom exercise directive."""
 
-    name = "exercise" 
+    name = "exercise"
+
 
 PROOF_TYPES = {
     "axiom": AxiomDirective,
