@@ -216,3 +216,14 @@ div.exercise {
 div.exercise p.admonition-title {
 	background-color: var(--hint-title-color);
 }
+/*********************************************
+* Facts *
+*********************************************/
+div.fact {
+	border-color: var(--note-border-color);
+	background-color: var(--note-title-color);
+}
+
+div.fact p.admonition-title {
+	background-color: var(--note-title-color);
+}

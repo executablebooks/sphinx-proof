@@ -191,6 +191,10 @@ class exercise_node(nodes.Admonition, nodes.Element):
     pass
 
 
+class fact_node(nodes.Admonition, nodes.Element):
+    pass
+
+
 NODE_TYPES = {
     "axiom": axiom_node,
     "theorem": theorem_node,
@@ -207,4 +211,5 @@ NODE_TYPES = {
     "proposition": proposition_node,
     "assumption": assumption_node,
     "exercise": exercise_node,
+    "fact": fact_node,
 }

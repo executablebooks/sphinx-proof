@@ -766,10 +766,45 @@ This is a dummy exercise directive.
 This is a dummy exercise directive.
 ```
 ``````
-
 #### Referencing Exercises
 
 You can refer to an exercise using the `{prf:ref}` role like: ```{prf:ref}`your-exercise` ```, which will replace the reference with the exercise number like so: {prf:ref}`your-exercise`. When an explicit text is provided, this caption will serve as the title of the reference.
+
+### Facts
+
+An fact directive can be included using the `prf:fact` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+
+* `label` : text
+
+	A unique identifier for your fact that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
+* `class` : text
+
+	Value of the fact's class attribute which can be used to add custom CSS or JavaScript.
+* `nonumber` : flag (empty)
+
+	Turns off fact auto numbering.
+
+**Example**
+
+```{prf:fact}
+:label: my-fact
+
+This is a dummy fact directive.
+```
+
+**MyST Syntax**
+
+``````md
+```{prf:fact}
+:label: my-fact
+
+This is a dummy fact directive.
+```
+``````
+
+#### Referencing Facts
+
+You can refer to an fact using the `{prf:ref}` role like: ```{prf:ref}`my-fact` ```, which will replace the reference with the fact number like so: {prf:ref}`my-fact`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 ## How to Hide Content
 
