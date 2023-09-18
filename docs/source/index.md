@@ -34,7 +34,7 @@ To get started with `sphinx-proof`, first install it through `pip`:
 pip install sphinx-proof
 ```
 
-### Juputer-Book Project
+### Jupyter-Book Project
 
 Add `sphinx_proof` to your [extra_extensions](https://jupyterbook.org/advanced/sphinx.html#custom-sphinx-extensions) config in `_config.yml`
 
