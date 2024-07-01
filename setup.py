@@ -45,7 +45,7 @@ extras["all"] = set(ii for jj in extras.values() for ii in jj)
 setup(
     name="sphinx-proof",
     version=VERSION,
-    python_requires=">=3.6",
+    python_requires=">=3.9",
     author="QuantEcon",
     author_email="admin@quantecon.org",
     url=BASE_URL,
