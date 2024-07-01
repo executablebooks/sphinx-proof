@@ -39,14 +39,14 @@ jobs:
           pytest --durations=10 --cov=sphinx_proof --cov-report=xml --cov-report=term-missing
       - name: Create cov
         run: coverage xml
+      # TEMPORARY FIX: Disable codecov until we can get it working again
       - name: Upload to Codecov
-        if: matrix.python-version == 3.11
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v3.1.4
+        if: false
         with:
-          name: sphinx-proof-pytest-py3.11
+          name: sphinx-proof-pytests
           flags: pytests
-          file: ./coverage.xml
-          fail_ci_if_error: true
+          files: ./coverage.xml
 
   docs:
     name: Documentation build
