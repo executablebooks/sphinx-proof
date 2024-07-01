@@ -3,6 +3,8 @@
 [![Documentation Status][rtd-badge]][rtd-link]
 [![Github-CI][github-ci]][github-link]
 [![Coverage Status][codecov-badge]][codecov-link]
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/executablebooks/sphinx-proof/master.svg)](https://results.pre-commit.ci/latest/github/executablebooks/sphinx-proof/master)
+
 
 **A proof extension for Sphinx**.
 
