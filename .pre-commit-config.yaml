@@ -1,6 +1,12 @@
 # Install pre-commit hooks via
 # pre-commit install
 
+exclude: >
+    (?x)^(
+      test_html/
+      test_latex/
+    )$
+
 repos:
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
