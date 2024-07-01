@@ -7,6 +7,7 @@ A custom Sphinx Directive
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
+
 from typing import List
 from docutils import nodes
 from docutils.nodes import Node
