@@ -7,6 +7,7 @@ Enumerable and unenumerable nodes
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
+
 from docutils import nodes
 from docutils.nodes import Node
 from sphinx.writers.latex import LaTeXTranslator

@@ -7,7 +7,8 @@ A Proof Sphinx Domain
 :copyright: Copyright 2020 by the QuantEcon team, see AUTHORS
 :licences: see LICENSE for details
 """
-from typing import Any, Dict, Tuple, List, Callable
+
+from typing import Any, Dict, Tuple, List
 from docutils.nodes import Element, Node, document, system_message
 from sphinx.environment import BuildEnvironment
 from sphinx.addnodes import pending_xref

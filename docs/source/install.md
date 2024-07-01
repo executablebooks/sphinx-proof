@@ -26,6 +26,6 @@ To install `sphinx-proof` for package development:
 ```bash
 git clone https://github.com/executablebooks/sphinx-proof
 cd sphinx-proof
-git checkout master
+git checkout main
 pip install -e .[all]
 ```
