@@ -29,6 +29,7 @@ extras = {
         "beautifulsoup4",
         "myst-parser",
         "texsoup",
+        "defusedxml",
     ],
     "rtd": [
         "sphinx>=3.0",
