@@ -6,7 +6,7 @@
 
 **A proof extension for Sphinx**.
 
-This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
+This package contains a [Sphinx](http://www.sphinx-doc.org/) extension
 for producing proof, theorem, axiom, lemma, definition, criterion, remark, conjecture,
 corollary, algorithm, example, property, observation, proposition and assumption directives.
 
@@ -40,7 +40,7 @@ We welcome all contributions! See the [EBP Contributing Guide](https://executabl
 
 [rtd-badge]: https://readthedocs.org/projects/sphinx-proof/badge/?version=latest
 [rtd-link]: https://sphinx-proof.readthedocs.io/en/latest/?badge=latest
-[github-ci]: https://github.com/executablebooks/sphinx-proof/workflows/continuous-integration/badge.svg?branch=master
+[github-ci]: https://github.com/executablebooks/sphinx-proof/workflows/continuous-integration/badge.svg?branch=main
 [github-link]: https://github.com/executablebooks/sphinx-proof
-[codecov-badge]: https://codecov.io/gh/executablebooks/sphinx-proof/branch/master/graph/badge.svg
+[codecov-badge]: https://codecov.io/gh/executablebooks/sphinx-proof/branch/main/graph/badge.svg
 [codecov-link]: https://codecov.io/gh/executablebooks/sphinx-proof
