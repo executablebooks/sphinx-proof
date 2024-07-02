@@ -49,3 +49,10 @@ html_theme_options = {
     "use_issues_button": True,
     "use_repository_button": True,
 }
+
+# sphinx-proof extension options
+proof_minimal_theme = True
+
+# MyST Parser Configuration
+
+myst_enable_extensions = ["dollarmath", "amsmath"]
