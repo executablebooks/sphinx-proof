@@ -1,7 +1,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "sphinx-proof"
-copyright = "2020, QuantEcon Developers"
+copyright = "2024, QuantEcon Developers"
 author = "QuantEcon Developers"
 master_doc = "index"
 

@@ -16,14 +16,17 @@ zreferences
 **A proof extension for Sphinx**.
 
 This package contains a [Sphinx](http://www.sphinx-doc.org/) extension
-for producing proof, theorem, axiom, lemma, definition, criterion, remark, conjecture,
-corollary, algorithm, example, property, observation, proposition and assumption directives.
+for producing [proof](syntax:proof), [theorem](syntax:theorem), [axiom](syntax:axiom), [lemma](syntax:lemma),
+[definition](syntax:definition), [criterion](syntax:criterion), [remark](syntax:remark),
+[conjecture](syntax:conjecture),[corollary](syntax:corollary), [algorithm](syntax:algorithm),
+[example](syntax:example), [property](syntax:property), [observation](syntax:observation),
+[proposition](syntax:proposition) and [assumption](syntax:assumption) directives.
 
 **Features**:
 
 1. directives are automatically numbered
 2. supports directive options such as `class`, `label`, and `nonumber`
-3. can easily be referenced through `prf:ref` role
+3. can be referenced through the `prf:ref` role
 
 (getting-started)=
 ## Getting Started
