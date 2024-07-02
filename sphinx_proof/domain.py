@@ -92,6 +92,9 @@ class ProofDomain(Domain):
         for node, settings in env.app.registry.enumerable_nodes.items():
             self.enumerable_nodes[node] = settings
 
+    def resolve_any_xref(self, *args, **kwargs):
+        return []
+
     def resolve_xref(
         self,
         env: BuildEnvironment,
