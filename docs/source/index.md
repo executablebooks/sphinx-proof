@@ -5,6 +5,7 @@
 
 install
 syntax
+options
 testing
 zreferences
 ```
