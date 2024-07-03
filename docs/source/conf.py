@@ -51,7 +51,7 @@ html_theme_options = {
 }
 
 # sphinx-proof extension options
-proof_minimal_theme = True
+proof_minimal_theme = False
 
 # MyST Parser Configuration
 
