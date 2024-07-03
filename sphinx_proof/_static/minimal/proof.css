@@ -5,16 +5,16 @@
   --theorem-border-color: rgba(68,138,255,.1);
   --axiom-border-color: #ffc107;
   --criterion-border-color: #fd7e14;
-  --lemma-border-color: #ffc107;
+  --lemma-border-color: #36cf03;
   --definition-border-color: #007bff;
-  --remark-border-color: #65fa5a;
-  --conjecture-border-color: #ffc107;
-  --corollary-border-color: #fd7e14;
-  --example-border-color: #ffc107;
-  --property-border-color: #fd7e14;
-  --obseration-border-color: #ffc107;
-  --proposition-border-color: #007bff;
-  --assumption-border-color: #ffc107;
+  --remark-border-color: #79ff6f;
+  --conjecture-border-color: #775f15;
+  --corollary-border-color: #c500c1;
+  --example-border-color: #f9377b;
+  --property-border-color: #fdf914;
+  --obseration-border-color: #7707ff;
+  --proposition-border-color: #4f7aa8;
+  --assumption-border-color: #07fffb;
 
   /* --note-title-color: rgba(68,138,255,.1);
   --note-border-color: #007bff;
