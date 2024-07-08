@@ -10,7 +10,7 @@
 
 This package contains a [Sphinx](http://www.sphinx-doc.org/) extension
 for producing proof, theorem, axiom, lemma, definition, criterion, remark, conjecture,
-corollary, algorithm, example, property, observation, proposition and assumption directives.
+corollary, algorithm, example, property, observation, proposition ,assumption, exercise and fact directives.
 
 
 ## Get started

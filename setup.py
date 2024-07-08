@@ -7,8 +7,8 @@ VERSION = "v0.1.3"
 LONG_DESCRIPTION = """
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
 for producing proof, theorem, axiom, lemma, definition, criterion, remark, conjecture,
-corollary, algorithm, example, property, observation, proposition, and
-assumption directives.
+corollary, algorithm, example, property, observation, proposition,
+assumption, exercise, and fact directives.
 
 This project is maintained and supported by [najuzilu](https://github.com/najuzilu).
 """
