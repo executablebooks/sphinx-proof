@@ -92,6 +92,33 @@ class ProofDomain(Domain):
         for node, settings in env.app.registry.enumerable_nodes.items():
             self.enumerable_nodes[node] = settings
 
+    def resolve_any_xref(
+        self,
+        env: BuildEnvironment,
+        fromdocname: str,
+        builder: Builder,
+        target: str,
+        node: pending_xref,
+        contnode: Element,
+    ):
+        """
+        Support for resolve_any_xref as required by myst-parser.
+        Roles are forwarded to the resolve_xref method, and only non None results
+        are returned.
+        """
+        results = []
+        for role in self.roles:
+            res = self.resolve_xref(
+                env, fromdocname, builder, role, target, node, contnode
+            )
+            if res is None:
+                continue
+            else:
+                # https://www.sphinx-doc.org/en/master/extdev/domainapi.html#sphinx.domains.Domain.resolve_any_xref
+                res = (role.name, res)
+                results.append(res)
+        return results
+
     def resolve_xref(
         self,
         env: BuildEnvironment,

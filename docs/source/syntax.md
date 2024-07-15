@@ -4,10 +4,11 @@
 This documentation utilized the [Markedly Structured Text (MyST)](https://myst-parser.readthedocs.io/en/latest/index.html) syntax.
 ```
 
-This package utilizes a [Sphinx domain](https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html) - named "proof" - to describe and link typeset markup objects (theorems, proofs, corollaries, etc.) which we think belong together. All directives follow the pattern `{<domain_name>:<typeset>}` while all the roles follow the pattern `{<domain_name>:ref}`. To utilize any directive in the `proof` domain follow the pattern `{prf:<typeset>}`. To reference any directive follow the pattern `{prf:ref}`.
+This package utilizes a [Sphinx domain](https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html) - named "prf" - to describe and link typeset markup objects (theorems, proofs, corollaries, etc.) which we think belong together. All directives follow the pattern `{<domain_name>:<typeset>}` while all the roles follow the pattern `{<domain_name>:ref}`. To utilize any directive in the `proof` domain follow the pattern `{prf:<typeset>}`. To reference any directive follow the pattern `{prf:ref}`.
 
 ## Collection of Directives
 
+(syntax:proof)=
 ### Proofs
 
 A proof directive can be included using the `prf:proof` pattern. Unlike the other directives provided through this extension, a proof directive does not include any parameters nor does it require any arguments. A proof directive can easily be referenced through [targets](https://myst-parser.readthedocs.io/en/latest/using/syntax.html#targets-and-cross-referencing).
@@ -68,6 +69,7 @@ Hence $\| y - z \| \geq \| y - \hat y \|$, which completes the proof.
 _Source:_ [QuantEcon](https://python-advanced.quantecon.org/orth_proj.html#The-Orthogonal-Projection-Theorem)
 
 
+(syntax:theorem)=
 ### Theorems
 
 A theorem directive can be included using the `prf:theorem` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -139,6 +141,7 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/orth_proj.html#The-O
 
 You can refer to a theorem using the `{prf:ref}` role like: ```{prf:ref}`my-theorem` ```, which will replace the reference with the theorem number like so: {prf:ref}`my-theorem`. When an explicit text is provided, this caption will serve as the title of the reference. For example, ```{prf:ref}`Orthogonal-Projection-Theorem <my-theorem>` ``` will produce: {prf:ref}`Orthogonal-Projection-Theorem <my-theorem>`.
 
+(syntax:axiom)=
 ### Axioms
 
 An axiom directive can be included using the `prf:axiom` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -178,6 +181,7 @@ _Source:_ {cite}`economic-dynamics-book`
 You can refer to an axiom using the `{prf:ref}` role like: ```{prf:ref}`my-axiom` ```, which will replace the reference with the axiom number like so: {prf:ref}`my-axiom`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+(syntax:lemma)=
 ### Lemmas
 
 A lemma directive can be included using the `prf:lemma` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -229,6 +233,7 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/robustness.html#Appe
 You can refer to a lemma using the `{prf:ref}` role like: ```{prf:ref}`my-lemma` ```, which will replace the reference with the lemma number like so: {prf:ref}`my-lemma`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+(syntax:definition)=
 ### Definitions
 
 A definition directive can be included using the `prf:definition` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -282,6 +287,7 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/von_neumann_model.ht
 
 You can refer to a definition using the `{prf:ref}` role like: ```{prf:ref}`my-definition` ```, which will replace the reference with the definition number like so: {prf:ref}`my-definition`. When an explicit text is provided, this caption will serve as the title of the reference.
 
+(syntax:criterion)=
 ### Criteria
 
 A criterion directive can be included using the `prf:criterion` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -331,6 +337,7 @@ _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Equidistributed_sequence#Wey
 You can refer to a criterion using the `{prf:ref}` role like: ```{prf:ref}`weyls-criterion` ```, which will replace the reference with the criterion number like so: {prf:ref}`weyls-criterion`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+(syntax:remark)=
 ### Remarks
 
 A remark directive can be included using the `prf:remark` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -391,6 +398,7 @@ _Source:_ [QuantEcon](https://python-advanced.quantecon.org/black_litterman.html
 You can refer to a remark using the `{prf:ref}` role like: ```{prf:ref}`my-remark` ```, which will replace the reference with the remark number like so: {prf:ref}`my-remark`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+(syntax:conjecture)=
 ### Conjectures
 
 **Example**
@@ -415,6 +423,7 @@ This is a dummy conjecture to illustrate that one can use math in titles.
 
 You can refer to a conjecture using the `{prf:ref}` role like: ```{prf:ref}`my-conjecture` ```, which will replace the reference with the conjecture number like so: {prf:ref}`my-conjecture`. When an explicit text is provided, this caption will serve as the title of the reference.
 
+(syntax:corollary)=
 ### Corollaries
 
 A corollary directive can be included using the `prf:corollary` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -456,6 +465,7 @@ _Source:_ [QuantEcon](https://python-intro.quantecon.org/_static/lecture_specifi
 You can refer to a corollary using the `{prf:ref}` role like: ```{prf:ref}`my-corollary` ```, which will replace the reference with the corollary number like so: {prf:ref}`my-corollary`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+(syntax:algorithm)=
 ### Algorithms
 
 
@@ -519,6 +529,7 @@ _Source:_ [Wikipedia](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algor
 You can refer to a algorithms using the `{prf:ref}` role like: ```{prf:ref}`my-algorithm` ```, which will replace the reference with the algorithm number like so: {prf:ref}`my-algorithm`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+(syntax:example)=
 ### Examples
 
 An example directive can be included using the `prf:example` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -588,6 +599,7 @@ _Source:_ [QuantEcon](https://python.quantecon.org/lq_inventories.html#Example-2
 You can refer to an example using the `{prf:ref}` role like: ```{prf:ref}`my-example` ```, which will replace the reference with the example number like so: {prf:ref}`my-example`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+(syntax:property)=
 ### Properties
 
 A property directive can be included using the `prf:property` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -624,6 +636,8 @@ This is a dummy property to illustrate the directive.
 
 You can refer to a property using the `{prf:ref}` role like: ```{prf:ref}`my-property` ```, which will replace the reference with the property number like so: {prf:ref}`my-property`. When an explicit text is provided, this caption will serve as the title of the reference.
 
+
+(syntax:observation)=
 ### Observations
 
 An observation directive can be included using the `prf:observation` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -660,6 +674,7 @@ This is a dummy observation directive.
 
 You can refer to an observation using the `{prf:ref}` role like: ```{prf:ref}`my-observation` ```, which will replace the reference with the observation number like so: {prf:ref}`my-observation`. When an explicit text is provided, this caption will serve as the title of the reference.
 
+(syntax:proposition)=
 ### Propositions
 
 A proposition directive can be included using the `prf:proposition` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
@@ -697,6 +712,7 @@ This is a dummy proposition directive.
 You can refer to a proposition using the `{prf:ref}` role like: ```{prf:ref}`my-proposition` ```, which will replace the reference with the proposition number like so: {prf:ref}`my-proposition`. When an explicit text is provided, this caption will serve as the title of the reference.
 
 
+(syntax:assumption)=
 ### Assumptions
 
 An assumption directive can be included using the `prf:assumption` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
