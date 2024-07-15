@@ -64,7 +64,13 @@ def init_numfig(app: Sphinx, config: Config) -> None:
 
 
 def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
-    static_path = Path(__file__).parent.joinpath("_static", "proof.css").absolute()
+
+    if app.config["proof_minimal_theme"]:
+        static_path = (
+            Path(__file__).parent.joinpath("_static", "minimal", "proof.css").absolute()
+        )
+    else:
+        static_path = Path(__file__).parent.joinpath("_static", "proof.css").absolute()
     asset_files = [str(static_path)]
 
     if exc is None:
@@ -73,6 +79,8 @@ def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
+
+    app.add_config_value("proof_minimal_theme", False, "html")
 
     app.add_css_file("proof.css")
     app.connect("build-finished", copy_asset_files)
