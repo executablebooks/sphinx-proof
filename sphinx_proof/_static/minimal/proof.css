@@ -113,10 +113,9 @@ div.definition p.admonition-title {
 div.remark {
 	border-color: var(--remark-border-color);
 	background-color: none;
-}
-
-div.remark p.admonition-title {
-	background-color: transparent;
+	p.admonition-title {
+		background-color: transparent;
+	}
 }
 
 /*********************************************
