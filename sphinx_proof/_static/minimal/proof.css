@@ -34,7 +34,7 @@
 *********************************************/
 
 /* Remove content box */
-div.proof p.admonition-title::before {
+div.proof > .admonition-title::before {
 	content: none;
 }
 
@@ -55,7 +55,7 @@ div.theorem {
 	background-color: none;
 }
 
-div.theorem p.admonition-title {
+div.theorem > .admonition-title {
 	background-color: transparent;
 }
 
@@ -67,7 +67,7 @@ div.axiom {
 	background-color: none;
 }
 
-div.axiom p.admonition-title {
+div.axiom > .admonition-title {
 	background-color: transparent;
 }
 
@@ -79,7 +79,7 @@ div.criterion {
 	background-color: none;
 }
 
-div.criterion p.admonition-title {
+div.criterion > .admonition-title {
 	background-color: transparent;
 }
 
@@ -91,7 +91,7 @@ div.lemma {
 	background-color: none;
 }
 
-div.lemma p.admonition-title {
+div.lemma > .admonition-title {
 	background-color: transparent;
 }
 
@@ -103,7 +103,7 @@ div.definition {
 	background-color: none;
 }
 
-div.definition p.admonition-title {
+div.definition > .admonition-title {
 	background-color: transparent;
 }
 
@@ -115,7 +115,7 @@ div.remark {
 	background-color: none;
 }
 
-div.remark p.admonition-title {
+div.remark > .admonition-title {
 	background-color: transparent;
 }
 
@@ -127,7 +127,7 @@ div.conjecture {
 	background-color: none;
 }
 
-div.conjecture p.admonition-title {
+div.conjecture > .admonition-title {
 	background-color: transparent;
 }
 
@@ -139,7 +139,7 @@ div.corollary {
 	background-color: none;
 }
 
-div.corollary p.admonition-title {
+div.corollary > .admonition-title {
 	background-color: transparent;
 }
 
@@ -151,7 +151,7 @@ div.algorithm {
 	background-color: none;
 }
 
-div.algorithm p.admonition-title {
+div.algorithm > .admonition-title {
 	background-color: transparent;
 	border-top: .15rem solid var(--grey-border-color);
 	border-bottom: .15rem solid var(--grey-border-color);
@@ -170,7 +170,7 @@ div.example {
 	background-color: none;
 }
 
-div.example p.admonition-title {
+div.example > .admonition-title {
 	background-color: transparent;
 }
 
@@ -182,7 +182,7 @@ div.property {
 	background-color: none;
 }
 
-div.property p.admonition-title {
+div.property > .admonition-title {
 	background-color: transparent;
 }
 
@@ -194,7 +194,7 @@ div.observation {
 	background-color: none;
 }
 
-div.observation p.admonition-title {
+div.observation > .admonition-title {
 	background-color: transparent;
 }
 
@@ -206,7 +206,7 @@ div.proposition {
 	background-color: none;
 }
 
-div.proposition p.admonition-title {
+div.proposition > .admonition-title {
 	background-color: transparent;
 }
 /*********************************************
@@ -217,6 +217,6 @@ div.assumption {
 	background-color: none;
 }
 
-div.assumption p.admonition-title {
+div.assumption > .admonition-title {
 	background-color: transparent;
 }
