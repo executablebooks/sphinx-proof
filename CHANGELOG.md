@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.2.0 (2024-09-10)
+
+### NEW ✨
+
+- Adds a minimal theme with a simpler color scheme for admonitions [\#106](https://github.com/executablebooks/sphinx-proof/pull/106)
+- Support for assumption directive [\#80](https://github.com/executablebooks/sphinx-proof/pull/80)
+
+### Maintenance
+
+- Review of docs, minor maintenance and bug fix [\#105](https://github.com/executablebooks/sphinx-proof/pull/105)
+- Maintenance of repository and rename `master` to `main` [\#99](https://github.com/executablebooks/sphinx-proof/pull/99)
+
+
 ## v0.1.3 (2021-10-14)
 
 ### Fixes 🐛
