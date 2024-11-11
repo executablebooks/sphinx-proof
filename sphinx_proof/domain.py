@@ -24,7 +24,12 @@ from .directive import ProofDirective
 from .proof_type import PROOF_TYPES
 from copy import copy
 
+from sphinx.locale import get_translation
+
 logger = logging.getLogger(__name__)
+
+MESSAGE_CATALOG_NAME = "proof"
+_ = get_translation(MESSAGE_CATALOG_NAME)
 
 
 class ProofIndex(Index):
@@ -156,7 +161,8 @@ class ProofDomain(Domain):
                     number = ".".join(
                         map(str, env.toc_fignumbers[todocname][typ][target])
                     )
-                title = nodes.Text(f"{match['type'].title()} {number}")
+                # translate title
+                title = nodes.Text(f"{_(match['type'].title())} {number}")
             # builder, fromdocname, todocname, targetid, child, title=None
             return make_refnode(builder, fromdocname, todocname, target, title)
         else:
