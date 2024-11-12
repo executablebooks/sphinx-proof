@@ -31,6 +31,7 @@ logger = logging.getLogger(__name__)
 MESSAGE_CATALOG_NAME = "proof"
 _ = get_translation(MESSAGE_CATALOG_NAME)
 
+
 class ProofIndex(Index):
 
     name = "prf"
