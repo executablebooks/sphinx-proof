@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    sphinx_proof
-    ~~~~~~~~~~~~
+sphinx_proof
+~~~~~~~~~~~~
 
-    A Sphinx extension for producing proofs, theorems, lemmas, etc.
+A Sphinx extension for producing proofs, theorems, lemmas, etc.
 """
 import os
 from pathlib import Path
