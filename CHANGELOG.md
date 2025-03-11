@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.1 (2025-03-11)
+
+Please see [GitHub Releases for CHANGELOG notes](https://github.com/executablebooks/sphinx-proof/releases).
+
+This manually edited file will no longer be updated and removed in v0.3.0
+
 ## v0.2.0 (2024-09-10)
 
 ### NEW ✨
