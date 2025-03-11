@@ -4,5 +4,6 @@
     {"language":"Czech","symbol":"cs","text":"Pozorování"},
     {"language":"Dutch","symbol":"nl","text":"Observatie"},
     {"language":"French","symbol":"fr","text":"Observation"},
+    {"language":"German","symbol":"de","text":"Beobachtung"},
     {"language":"Italian","symbol":"it","text":"Osservazione"}
 ]

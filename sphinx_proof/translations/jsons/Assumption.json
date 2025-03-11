@@ -1,5 +1,6 @@
 [
     {"language":"English","symbol":"en","text":"Assumption"},
     {"language":"Chinese","symbol":"zh_CN","text":"假设"},
-    {"language":"Dutch","symbol":"nl","text":"Aanname"}
+    {"language":"Dutch","symbol":"nl","text":"Aanname"},
+    {"language":"German","symbol":"de","text":"Annahme"}
 ]
