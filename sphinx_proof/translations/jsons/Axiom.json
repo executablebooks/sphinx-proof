@@ -1,1 +1,7 @@
-[{"language":"English","symbol":"en","text":"Axiom"},{"language":"French","symbol":"fr","text":"Axiome"},{"language":"Italian","symbol":"it","text":"Assioma"},{"language":"Czech","symbol":"cs","text":"Axiom"}, {"language":"Chinese","symbol":"zh_CN","text":"公理"}]
+[
+    {"language":"English","symbol":"en","text":"Axiom"},
+    {"language":"Chinese","symbol":"zh_CN","text":"公理"},
+    {"language":"Czech","symbol":"cs","text":"Axiom"},
+    {"language":"French","symbol":"fr","text":"Axiome"},
+    {"language":"Italian","symbol":"it","text":"Assioma"}
+]

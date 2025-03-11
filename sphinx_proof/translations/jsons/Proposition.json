@@ -1,1 +1,6 @@
-[{"language":"English","symbol":"en","text":"Proposition"},{"language":"French","symbol":"fr","text":"Proposition"},{"language":"Italian","symbol":"it","text":"Proposizione"}, {"language":"Chinese","symbol":"zh_CN","text":"命题"}]
+[
+    {"language":"English","symbol":"en","text":"Proposition"},
+    {"language":"Chinese","symbol":"zh_CN","text":"命题"},
+    {"language":"French","symbol":"fr","text":"Proposition"},
+    {"language":"Italian","symbol":"it","text":"Proposizione"}
+]

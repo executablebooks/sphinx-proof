@@ -1,1 +1,7 @@
-[{"language":"English","symbol":"en","text":"Observation"},{"language":"French","symbol":"fr","text":"Observation"},{"language":"Italian","symbol":"it","text":"Osservazione"},{"language":"Czech","symbol":"cs","text":"Pozorování"}, {"language":"Chinese","symbol":"zh_CN","text":"观察"}]
+[
+    {"language":"English","symbol":"en","text":"Observation"},
+    {"language":"Chinese","symbol":"zh_CN","text":"观察"},
+    {"language":"Czech","symbol":"cs","text":"Pozorování"},
+    {"language":"French","symbol":"fr","text":"Observation"},
+    {"language":"Italian","symbol":"it","text":"Osservazione"}
+]
