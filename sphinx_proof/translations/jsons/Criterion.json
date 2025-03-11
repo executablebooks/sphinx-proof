@@ -1,1 +1,10 @@
-[{"language":"English","symbol":"en","text":"Criterion"},{"language":"French","symbol":"fr","text":"Critère"},{"language":"Italian","symbol":"it","text":"Criterio"},{"language":"Czech","symbol":"cs","text":"Kritérium"}, {"language":"Chinese","symbol":"zh_CN","text":"准则"}]
+[
+    {"language":"English","symbol":"en","text":"Criterion"},
+    {"language":"Chinese","symbol":"zh_CN","text":"准则"},
+    {"language":"Czech","symbol":"cs","text":"Kritérium"},
+    {"language":"Dutch","symbol":"nl","text":"Criterium"},
+    {"language":"French","symbol":"fr","text":"Critère"},
+    {"language":"German","symbol":"de","text":"Kriterium"},
+    {"language":"Italian","symbol":"it","text":"Criterio"},
+    {"language":"Spanish","symbol":"es","text":"Criterio"}
+]

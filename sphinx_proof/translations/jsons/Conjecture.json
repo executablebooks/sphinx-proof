@@ -1,1 +1,13 @@
-[{"language":"English","symbol":"en","text":"Conjecture"},{"language":"Arabic","symbol":"ar","text":"تخمين"},{"language":"Dutch","symbol":"nl","text":"Vermoeden"},{"language":"French","symbol":"fr","text":"Conjecture"},{"language":"German","symbol":"de","text":"Vermutung"},{"language":"Italian","symbol":"it","text":"Congetturare"},{"language":"Japanese","symbol":"ja","text":"推測"},{"language":"Russian","symbol":"ru","text":"Гипотеза"},{"language":"Spanish","symbol":"es","text":"Conjetura"},{"language":"Czech","symbol":"cs","text":"Domněnka"}, {"language":"Chinese","symbol":"zh_CN","text":"猜想"}]
+[
+    {"language":"English","symbol":"en","text":"Conjecture"},
+    {"language":"Arabic","symbol":"ar","text":"تخمين"},
+    {"language":"Chinese","symbol":"zh_CN","text":"猜想"},
+    {"language":"Czech","symbol":"cs","text":"Domněnka"},
+    {"language":"Dutch","symbol":"nl","text":"Vermoeden"},
+    {"language":"French","symbol":"fr","text":"Conjecture"},
+    {"language":"German","symbol":"de","text":"Vermutung"},
+    {"language":"Italian","symbol":"it","text":"Congetturare"},
+    {"language":"Japanese","symbol":"ja","text":"推測"},
+    {"language":"Russian","symbol":"ru","text":"Гипотеза"},
+    {"language":"Spanish","symbol":"es","text":"Conjetura"}
+]
