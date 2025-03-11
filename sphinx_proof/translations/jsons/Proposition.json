@@ -4,5 +4,6 @@
     {"language":"Dutch","symbol":"nl","text":"Propositie"},
     {"language":"French","symbol":"fr","text":"Proposition"},
     {"language":"German","symbol":"de","text":"Proposition"},
-    {"language":"Italian","symbol":"it","text":"Proposizione"}
+    {"language":"Italian","symbol":"it","text":"Proposizione"},
+    {"language":"Spanish","symbol":"es","text":"Proposición"}
 ]

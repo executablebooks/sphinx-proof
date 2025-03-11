@@ -5,5 +5,6 @@
     {"language":"Dutch","symbol":"nl","text":"Eigenschap"},
     {"language":"French","symbol":"fr","text":"Propriété"},
     {"language":"German","symbol":"de","text":"Eigenschaft"},
-    {"language":"Italian","symbol":"it","text":"Proprietà"}
+    {"language":"Italian","symbol":"it","text":"Proprietà"},
+    {"language":"Spanish","symbol":"es","text":"Propiedad"}
 ]

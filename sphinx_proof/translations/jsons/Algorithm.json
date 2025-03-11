@@ -5,5 +5,6 @@
     {"language":"Dutch","symbol":"nl","text":"Algoritme"},
     {"language":"French","symbol":"fr","text":"Algorithme"},
     {"language":"German","symbol":"de","text":"Algorithmus"},
-    {"language":"Italian","symbol":"it","text":"Algoritmo"}
+    {"language":"Italian","symbol":"it","text":"Algoritmo"},
+    {"language":"Spanish","symbol":"es","text":"Algoritmo"}
 ]
