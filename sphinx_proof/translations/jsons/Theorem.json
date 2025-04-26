@@ -9,4 +9,5 @@
     {"language":"Japanese","symbol":"ja","text":"定理"},
     {"language":"Russian","symbol":"ru","text":"Теорема"},
     {"language":"Spanish","symbol":"es","text":"Teorema"}
+    {"language":"Czech","symbol":"cs","text":"Věta"},
 ]
