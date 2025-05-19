@@ -43,7 +43,7 @@ jobs:
         run: coverage xml
       # TEMPORARY FIX: Disable codecov until we can get it working again
       - name: Upload to Codecov
-        uses: codecov/codecov-action@v5.4.0
+        uses: codecov/codecov-action@v5.4.3
         if: false
         with:
           name: sphinx-proof-pytests
