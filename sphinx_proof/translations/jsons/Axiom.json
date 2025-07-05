@@ -6,5 +6,6 @@
     {"language":"French","symbol":"fr","text":"Axiome"},
     {"language":"German","symbol":"de","text":"Axiom"},
     {"language":"Italian","symbol":"it","text":"Assioma"},
-    {"language":"Spanish","symbol":"es","text":"Axioma"}
+    {"language":"Spanish","symbol":"es","text":"Axioma"},
+    {"language":"Vietnamese","symbol":"vi","text":"Tiên đề"}
 ]

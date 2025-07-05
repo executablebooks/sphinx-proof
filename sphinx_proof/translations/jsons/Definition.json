@@ -9,5 +9,6 @@
     {"language":"Italian","symbol":"it","text":"Definizione"},
     {"language":"Japanese","symbol":"ja","text":"意味"},
     {"language":"Russian","symbol":"ru","text":"Определение"},
-    {"language":"Spanish","symbol":"es","text":"Definición"}
+    {"language":"Spanish","symbol":"es","text":"Definición"},
+    {"language":"Vietnamese","symbol":"vi","text":"Định nghĩa"}
 ]

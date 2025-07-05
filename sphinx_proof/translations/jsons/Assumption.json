@@ -3,5 +3,6 @@
     {"language":"Chinese","symbol":"zh_CN","text":"假设"},
     {"language":"Dutch","symbol":"nl","text":"Aanname"},
     {"language":"German","symbol":"de","text":"Annahme"},
-    {"language":"Spanish", "symbol":"es","text":"Supuesto"}
+    {"language":"Spanish", "symbol":"es","text":"Supuesto"},
+    {"language":"Vietnamese","symbol":"vi","text":"Giả định"}
 ]

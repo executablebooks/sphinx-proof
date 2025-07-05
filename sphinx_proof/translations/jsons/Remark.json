@@ -9,5 +9,6 @@
     {"language":"Italian","symbol":"it","text":"osservazione"},
     {"language":"Japanese","symbol":"ja","text":"述べる"},
     {"language":"Russian","symbol":"ru","text":"Замечание"},
-    {"language":"Spanish","symbol":"es","text":"Observación"}
+    {"language":"Spanish","symbol":"es","text":"Observación"},
+    {"language":"Vietnamese","symbol":"vi","text":"Nhận xét"}
 ]

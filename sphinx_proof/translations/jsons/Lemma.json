@@ -9,5 +9,6 @@
     {"language":"Italian","symbol":"it","text":"Lemma"},
     {"language":"Japanese","symbol":"ja","text":"補題"},
     {"language":"Russian","symbol":"ru","text":"Лемма"},
-    {"language":"Spanish","symbol":"es","text":"Lema"}
+    {"language":"Spanish","symbol":"es","text":"Lema"},
+    {"language":"Vietnamese","symbol":"vi","text":"Bổ đề"}
 ]
