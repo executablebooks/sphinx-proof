@@ -6,5 +6,6 @@
     {"language":"French","symbol":"fr","text":"Algorithme"},
     {"language":"German","symbol":"de","text":"Algorithmus"},
     {"language":"Italian","symbol":"it","text":"Algoritmo"},
-    {"language":"Spanish","symbol":"es","text":"Algoritmo"}
+    {"language":"Spanish","symbol":"es","text":"Algoritmo"},
+    {"language":"Vietnamese","symbol":"vi","text":"Thuật toán"}
 ]

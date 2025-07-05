@@ -5,5 +5,6 @@
     {"language":"French","symbol":"fr","text":"Exemple"},
     {"language":"German","symbol":"de","text":"Beispiel"},
     {"language":"Italian","symbol":"it","text":"Esempio"},
-    {"language":"Spanish","symbol":"es","text":"Ejemplo"}
+    {"language":"Spanish","symbol":"es","text":"Ejemplo"},
+    {"language":"Vietnamese","symbol":"vi","text":"Ví dụ"}
 ]
