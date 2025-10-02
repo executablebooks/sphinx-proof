@@ -13,6 +13,4 @@ This package supports the following languages specified in `conf.py` using the  
 - ru
 - zh_CN
 
-```{note} Work in progress
-Not all languages listed above are support across all admonition types
-```
+All admonition types (Theorem, Definition, Lemma, Proof, Assumption, Corollary, Example, etc.) are fully translated into Chinese (zh_CN).
