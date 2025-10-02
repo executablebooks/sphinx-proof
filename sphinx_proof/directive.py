@@ -14,10 +14,13 @@ from docutils.nodes import Node
 from sphinx.util import logging
 from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
+from sphinx.locale import get_translation
 from .nodes import unenumerable_node, NODE_TYPES
 from .nodes import proof_node
 
 logger = logging.getLogger(__name__)
+MESSAGE_CATALOG_NAME = "proof"
+_ = get_translation(MESSAGE_CATALOG_NAME)
 
 
 class ElementDirective(SphinxDirective):
@@ -124,7 +127,7 @@ class ProofDirective(SphinxDirective):
 
         section = nodes.admonition(classes=classes, ids=[typ])
 
-        self.content[0] = "{}. ".format(typ.title()) + self.content[0]
+        self.content[0] = "{}. ".format(_(typ.title())) + self.content[0]
         self.state.nested_parse(self.content, 0, section)
 
         node = proof_node()

@@ -1,5 +1,6 @@
 [
     {"language":"English","symbol":"en","text":"Example"},
+    {"language":"Chinese","symbol":"zh_CN","text":"例"},
     {"language":"Czech","symbol":"cs","text":"Příklad"},
     {"language":"Dutch","symbol":"nl","text":"Voorbeeld"},
     {"language":"French","symbol":"fr","text":"Exemple"},
