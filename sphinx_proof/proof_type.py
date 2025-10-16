@@ -94,6 +94,10 @@ class AssumptionDirective(ElementDirective):
 
     name = "assumption"
 
+class NotationDirective(ElementDirective):
+    """A custom notation directive."""
+
+    name = "notation"
 
 PROOF_TYPES = {
     "axiom": AxiomDirective,
@@ -110,4 +114,5 @@ PROOF_TYPES = {
     "observation": ObservationDirective,
     "proposition": PropositionDirective,
     "assumption": AssumptionDirective,
+    "notation": NotationDirective,
 }
