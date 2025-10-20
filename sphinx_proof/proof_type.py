@@ -94,10 +94,12 @@ class AssumptionDirective(ElementDirective):
 
     name = "assumption"
 
+
 class NotationDirective(ElementDirective):
     """A custom notation directive."""
 
     name = "notation"
+
 
 PROOF_TYPES = {
     "axiom": AxiomDirective,
