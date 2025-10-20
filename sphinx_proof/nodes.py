@@ -192,10 +192,6 @@ class notation_node(nodes.Admonition, nodes.Element):
     pass
 
 
-class notation_node(nodes.Admonition, nodes.Element):
-    pass
-
-
 NODE_TYPES = {
     "axiom": axiom_node,
     "theorem": theorem_node,
