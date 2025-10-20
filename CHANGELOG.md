@@ -6,7 +6,7 @@
 
 - **Major internationalization expansion**: Added support for 32 languages (33 total including English) [\#146](https://github.com/executablebooks/sphinx-proof/pull/146), [\#156](https://github.com/executablebooks/sphinx-proof/pull/156)
   - Added Vietnamese translations
-  - Added Czech translations  
+  - Added Czech translations
   - Added Bengali translations (230M+ speakers)
   - Added Urdu translations (230M+ speakers)
   - Added Malay translations (80M+ speakers)
