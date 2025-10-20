@@ -1,5 +1,37 @@
 # Changelog
 
+## v0.3.0 (2025-10-20)
+
+### NEW ✨
+
+- **Major internationalization expansion**: Added support for 32 languages (33 total including English) [\#146](https://github.com/executablebooks/sphinx-proof/pull/146), [\#156](https://github.com/executablebooks/sphinx-proof/pull/156)
+  - Added Vietnamese translations
+  - Added Czech translations  
+  - Added Bengali translations (230M+ speakers)
+  - Added Urdu translations (230M+ speakers)
+  - Added Malay translations (80M+ speakers)
+- All 15 directive types now have complete translations in 33 languages
+
+### Improved 👌
+
+- Organized translation files alphabetically for better maintainability [\#155](https://github.com/executablebooks/sphinx-proof/pull/155)
+- Updated internationalization documentation with complete language table [\#157](https://github.com/executablebooks/sphinx-proof/pull/157)
+- Fixed translation errors in Remark and Proposition directives [\#154](https://github.com/executablebooks/sphinx-proof/pull/154)
+- Fixed Sphinx compatibility issues [\#146](https://github.com/executablebooks/sphinx-proof/pull/146)
+
+### Maintenance 🔧
+
+- Updated dependency manifests
+- Bumped codecov/codecov-action from 5.4.0 to 5.5.1 [\#151](https://github.com/executablebooks/sphinx-proof/pull/151), [\#148](https://github.com/executablebooks/sphinx-proof/pull/148)
+- Bumped actions/setup-python from 5 to 6 [\#150](https://github.com/executablebooks/sphinx-proof/pull/150)
+- Bumped actions/checkout from 4 to 5 [\#147](https://github.com/executablebooks/sphinx-proof/pull/147)
+- Bumped pypa/gh-action-pypi-publish [\#149](https://github.com/executablebooks/sphinx-proof/pull/149)
+- Pre-commit configuration updates [\#140](https://github.com/executablebooks/sphinx-proof/pull/140)
+
+### Languages Supported
+
+English (default) plus 32 translations: Arabic, Bengali, Bulgarian, Chinese, Czech, Danish, Dutch, Finnish, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Malay, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Spanish, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese
+
 ## v0.2.1 (2025-03-11)
 
 Please see [GitHub Releases for CHANGELOG notes](https://github.com/executablebooks/sphinx-proof/releases).
