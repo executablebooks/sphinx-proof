@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Theorem"},
     {"language":"Arabic","symbol":"ar","text":"نظرية"},
+    {"language":"Bengali","symbol":"bn","text":"উপপাদ্য"},
     {"language":"Bulgarian","symbol":"bg","text":"Теорема"},
     {"language":"Chinese","symbol":"zh_CN","text":"定理"},
     {"language":"Czech","symbol":"cs","text":"Věta"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Teorema"},
     {"language":"Japanese","symbol":"ja","text":"定理"},
     {"language":"Korean","symbol":"ko","text":"정리"},
+    {"language":"Malay","symbol":"ms","text":"Teorem"},
     {"language":"Norwegian","symbol":"no","text":"Teorem"},
     {"language":"Persian","symbol":"fa","text":"قضیه"},
     {"language":"Polish","symbol":"pl","text":"Twierdzenie"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"ทฤษฎีบท"},
     {"language":"Turkish","symbol":"tr","text":"Teorem"},
     {"language":"Ukrainian","symbol":"uk","text":"Теорема"},
+    {"language":"Urdu","symbol":"ur","text":"نظریہ"},
     {"language":"Vietnamese","symbol":"vi","text":"Định lý"}
 ]

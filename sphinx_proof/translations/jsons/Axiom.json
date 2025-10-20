@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Axiom"},
     {"language":"Arabic","symbol":"ar","text":"بديهية"},
+    {"language":"Bengali","symbol":"bn","text":"স্বতঃসিদ্ধ"},
     {"language":"Bulgarian","symbol":"bg","text":"Аксиома"},
     {"language":"Chinese","symbol":"zh_CN","text":"公理"},
     {"language":"Czech","symbol":"cs","text":"Axiom"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Assioma"},
     {"language":"Japanese","symbol":"ja","text":"公理"},
     {"language":"Korean","symbol":"ko","text":"공리"},
+    {"language":"Malay","symbol":"ms","text":"Aksiom"},
     {"language":"Norwegian","symbol":"no","text":"Aksiom"},
     {"language":"Persian","symbol":"fa","text":"بدیهیات"},
     {"language":"Polish","symbol":"pl","text":"Aksjomat"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"สัจพจน์"},
     {"language":"Turkish","symbol":"tr","text":"Aksiyom"},
     {"language":"Ukrainian","symbol":"uk","text":"Аксіома"},
+    {"language":"Urdu","symbol":"ur","text":"مسلمہ"},
     {"language":"Vietnamese","symbol":"vi","text":"Tiên đề"}
 ]

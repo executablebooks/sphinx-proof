@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Notation"},
     {"language":"Arabic","symbol":"ar","text":"الترميز"},
+    {"language":"Bengali","symbol":"bn","text":"চিহ্ন"},
     {"language":"Bulgarian","symbol":"bg","text":"Нотация"},
     {"language":"Chinese","symbol":"zh_CN","text":"表示法"},
     {"language":"Czech","symbol":"cs","text":"Notace"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Notazione"},
     {"language":"Japanese","symbol":"ja","text":"表記"},
     {"language":"Korean","symbol":"ko","text":"표기법"},
+    {"language":"Malay","symbol":"ms","text":"Notasi"},
     {"language":"Norwegian","symbol":"no","text":"Notasjon"},
     {"language":"Persian","symbol":"fa","text":"نمادگذاری"},
     {"language":"Polish","symbol":"pl","text":"Notacja"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"สัญกรณ์"},
     {"language":"Turkish","symbol":"tr","text":"Gösterim"},
     {"language":"Ukrainian","symbol":"uk","text":"Нотація"},
+    {"language":"Urdu","symbol":"ur","text":"علامت"},
     {"language":"Vietnamese","symbol":"vi","text":"Ký hiệu"}
 ]

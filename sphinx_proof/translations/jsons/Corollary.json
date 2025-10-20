@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Corollary"},
     {"language":"Arabic","symbol":"ar","text":"نتيجة"},
+    {"language":"Bengali","symbol":"bn","text":"অনুসিদ্ধান্ত"},
     {"language":"Bulgarian","symbol":"bg","text":"Следствие"},
     {"language":"Chinese","symbol":"zh_CN","text":"推论"},
     {"language":"Czech","symbol":"cs","text":"Důsledek"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Corollario"},
     {"language":"Japanese","symbol":"ja","text":"系"},
     {"language":"Korean","symbol":"ko","text":"따름정리"},
+    {"language":"Malay","symbol":"ms","text":"Akibat"},
     {"language":"Norwegian","symbol":"no","text":"Korollar"},
     {"language":"Persian","symbol":"fa","text":"نتیجه"},
     {"language":"Polish","symbol":"pl","text":"Wniosek"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"บทตาม"},
     {"language":"Turkish","symbol":"tr","text":"Sonuç"},
     {"language":"Ukrainian","symbol":"uk","text":"Наслідок"},
+    {"language":"Urdu","symbol":"ur","text":"نتیجہ"},
     {"language":"Vietnamese","symbol":"vi","text":"Hệ quả"}
 ]

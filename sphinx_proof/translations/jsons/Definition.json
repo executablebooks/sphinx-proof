@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Definition"},
     {"language":"Arabic","symbol":"ar","text":"تعريف"},
+    {"language":"Bengali","symbol":"bn","text":"সংজ্ঞা"},
     {"language":"Bulgarian","symbol":"bg","text":"Определение"},
     {"language":"Chinese","symbol":"zh_CN","text":"定义"},
     {"language":"Czech","symbol":"cs","text":"Definice"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Definizione"},
     {"language":"Japanese","symbol":"ja","text":"定義"},
     {"language":"Korean","symbol":"ko","text":"정의"},
+    {"language":"Malay","symbol":"ms","text":"Definisi"},
     {"language":"Norwegian","symbol":"no","text":"Definisjon"},
     {"language":"Persian","symbol":"fa","text":"تعریف"},
     {"language":"Polish","symbol":"pl","text":"Definicja"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"คำนิยาม"},
     {"language":"Turkish","symbol":"tr","text":"Tanım"},
     {"language":"Ukrainian","symbol":"uk","text":"Визначення"},
+    {"language":"Urdu","symbol":"ur","text":"تعریف"},
     {"language":"Vietnamese","symbol":"vi","text":"Định nghĩa"}
 ]

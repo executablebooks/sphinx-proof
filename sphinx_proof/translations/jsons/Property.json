@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Property"},
     {"language":"Arabic","symbol":"ar","text":"خاصية"},
+    {"language":"Bengali","symbol":"bn","text":"বৈশিষ্ট্য"},
     {"language":"Bulgarian","symbol":"bg","text":"Свойство"},
     {"language":"Chinese","symbol":"zh_CN","text":"性质"},
     {"language":"Czech","symbol":"cs","text":"Vlastnost"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Proprietà"},
     {"language":"Japanese","symbol":"ja","text":"性質"},
     {"language":"Korean","symbol":"ko","text":"성질"},
+    {"language":"Malay","symbol":"ms","text":"Sifat"},
     {"language":"Norwegian","symbol":"no","text":"Egenskap"},
     {"language":"Persian","symbol":"fa","text":"ویژگی"},
     {"language":"Polish","symbol":"pl","text":"Własność"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"คุณสมบัติ"},
     {"language":"Turkish","symbol":"tr","text":"Özellik"},
     {"language":"Ukrainian","symbol":"uk","text":"Властивість"},
+    {"language":"Urdu","symbol":"ur","text":"خاصیت"},
     {"language":"Vietnamese","symbol":"vi","text":"Tính chất"}
 ]

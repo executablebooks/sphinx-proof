@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Algorithm"},
     {"language":"Arabic","symbol":"ar","text":"خوارزمية"},
+    {"language":"Bengali","symbol":"bn","text":"অ্যালগরিদম"},
     {"language":"Bulgarian","symbol":"bg","text":"Алгоритъм"},
     {"language":"Chinese","symbol":"zh_CN","text":"算法"},
     {"language":"Czech","symbol":"cs","text":"Algoritmus"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Algoritmo"},
     {"language":"Japanese","symbol":"ja","text":"アルゴリズム"},
     {"language":"Korean","symbol":"ko","text":"알고리즘"},
+    {"language":"Malay","symbol":"ms","text":"Algoritma"},
     {"language":"Norwegian","symbol":"no","text":"Algoritme"},
     {"language":"Persian","symbol":"fa","text":"الگوریتم"},
     {"language":"Polish","symbol":"pl","text":"Algorytm"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"อัลกอริทึม"},
     {"language":"Turkish","symbol":"tr","text":"Algoritma"},
     {"language":"Ukrainian","symbol":"uk","text":"Алгоритм"},
+    {"language":"Urdu","symbol":"ur","text":"الگورتھم"},
     {"language":"Vietnamese","symbol":"vi","text":"Thuật toán"}
 ]

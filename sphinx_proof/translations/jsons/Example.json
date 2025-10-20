@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Example"},
     {"language":"Arabic","symbol":"ar","text":"مثال"},
+    {"language":"Bengali","symbol":"bn","text":"উদাহরণ"},
     {"language":"Bulgarian","symbol":"bg","text":"Пример"},
     {"language":"Chinese","symbol":"zh_CN","text":"例子"},
     {"language":"Czech","symbol":"cs","text":"Příklad"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Esempio"},
     {"language":"Japanese","symbol":"ja","text":"例"},
     {"language":"Korean","symbol":"ko","text":"예제"},
+    {"language":"Malay","symbol":"ms","text":"Contoh"},
     {"language":"Norwegian","symbol":"no","text":"Eksempel"},
     {"language":"Persian","symbol":"fa","text":"مثال"},
     {"language":"Polish","symbol":"pl","text":"Przykład"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"ตัวอย่าง"},
     {"language":"Turkish","symbol":"tr","text":"Örnek"},
     {"language":"Ukrainian","symbol":"uk","text":"Приклад"},
+    {"language":"Urdu","symbol":"ur","text":"مثال"},
     {"language":"Vietnamese","symbol":"vi","text":"Ví dụ"}
 ]
