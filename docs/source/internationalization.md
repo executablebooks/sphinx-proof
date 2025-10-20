@@ -1,6 +1,6 @@
 # Internationalization
 
-This package supports **30 languages** for all proof directive types. Translations are specified in `conf.py` using the `language` option.
+This package supports **33 languages** for all proof directive types. Translations are specified in `conf.py` using the `language` option.
 
 ## Supported Languages
 
@@ -8,21 +8,22 @@ All 15 directive types (Algorithm, Assumption, Axiom, Conjecture, Corollary, Cri
 
 | Language | Code | Language | Code |
 |----------|------|----------|------|
-| Arabic | `ar` | Japanese | `ja` |
-| Bulgarian | `bg` | Korean | `ko` |
-| Chinese | `zh_CN` | Norwegian | `no` |
-| Czech | `cs` | Persian | `fa` |
-| Danish | `da` | Polish | `pl` |
-| Dutch | `nl` | Portuguese | `pt` |
-| Finnish | `fi` | Romanian | `ro` |
-| French | `fr` | Russian | `ru` |
-| German | `de` | Spanish | `es` |
-| Greek | `el` | Swedish | `sv` |
-| Hebrew | `he` | Thai | `th` |
-| Hindi | `hi` | Turkish | `tr` |
-| Hungarian | `hu` | Ukrainian | `uk` |
-| Indonesian | `id` | Vietnamese | `vi` |
-| Italian | `it` |  |  |
+| Arabic | `ar` | Bulgarian | `bg` |
+| Bengali | `bn` | Chinese | `zh_CN` |
+| Czech | `cs` | Danish | `da` |
+| Dutch | `nl` | Finnish | `fi` |
+| French | `fr` | German | `de` |
+| Greek | `el` | Hebrew | `he` |
+| Hindi | `hi` | Hungarian | `hu` |
+| Indonesian | `id` | Italian | `it` |
+| Japanese | `ja` | Korean | `ko` |
+| Malay | `ms` | Norwegian | `no` |
+| Persian | `fa` | Polish | `pl` |
+| Portuguese | `pt` | Romanian | `ro` |
+| Russian | `ru` | Spanish | `es` |
+| Swedish | `sv` | Thai | `th` |
+| Turkish | `tr` | Ukrainian | `uk` |
+| Urdu | `ur` | Vietnamese | `vi` |
 
 ## Usage
 
