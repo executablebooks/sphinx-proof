@@ -187,6 +187,7 @@ class unenumerable_node(nodes.Admonition, nodes.Element):
 class assumption_node(nodes.Admonition, nodes.Element):
     pass
 
+
 class notation_node(nodes.Admonition, nodes.Element):
     pass
 
