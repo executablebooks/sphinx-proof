@@ -8,8 +8,8 @@ All 15 directive types (Algorithm, Assumption, Axiom, Conjecture, Corollary, Cri
 
 | Language | Code | Language | Code |
 |----------|------|----------|------|
-| Arabic | `ar` | Bulgarian | `bg` |
-| Bengali | `bn` | Chinese | `zh_CN` |
+| Arabic | `ar` | Bengali | `bn` |
+| Bulgarian | `bg` | Chinese | `zh_CN` |
 | Czech | `cs` | Danish | `da` |
 | Dutch | `nl` | Finnish | `fi` |
 | French | `fr` | German | `de` |
