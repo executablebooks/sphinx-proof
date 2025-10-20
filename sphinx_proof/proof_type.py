@@ -94,6 +94,10 @@ class AssumptionDirective(ElementDirective):
 
     name = "assumption"
 
+class NotationDirective(ElementDirective):
+    """A custom notation directive."""
+
+    name = "notation"
 
 class NotationDirective(ElementDirective):
     """A custom notation directive."""
