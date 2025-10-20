@@ -50,7 +50,7 @@ We welcome all contributions! See the [EBP Contributing Guide](https://executabl
 
 [rtd-badge]: https://readthedocs.org/projects/sphinx-proof/badge/?version=latest
 [rtd-link]: https://sphinx-proof.readthedocs.io/en/latest/?badge=latest
-[github-ci]: https://github.com/executablebooks/sphinx-proof/workflows/ci.yml/badge.svg?branch=main
-[github-link]: https://github.com/executablebooks/sphinx-proof
+[github-ci]: https://github.com/executablebooks/sphinx-proof/workflows/continuous-integration/badge.svg?branch=main
+[github-link]: https://github.com/executablebooks/sphinx-proof/actions/workflows/ci.yml
 [codecov-badge]: https://codecov.io/gh/executablebooks/sphinx-proof/branch/main/graph/badge.svg
 [codecov-link]: https://codecov.io/gh/executablebooks/sphinx-proof
