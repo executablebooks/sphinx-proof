@@ -6,7 +6,7 @@
 install
 syntax
 options
-Internationalization
+internationalization
 testing
 zreferences
 ```
@@ -26,9 +26,11 @@ for producing [proof](syntax:proof), [theorem](syntax:theorem), [axiom](syntax:a
 
 **Features**:
 
-1. directives are automatically numbered
-2. supports directive options such as `class`, `label`, and `nonumber`
-3. can be referenced through the `prf:ref` role
+1. **15 directive types** - all automatically numbered with cross-referencing support
+2. **33 languages supported** - complete internationalization for global academic communities
+3. **Flexible options** - supports `class`, `label`, and `nonumber` directive options
+4. **Easy referencing** - use the `prf:ref` role to reference any directive
+5. **Customizable themes** - includes default and minimal theme options
 
 (getting-started)=
 ## Getting Started

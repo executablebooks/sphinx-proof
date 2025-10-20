@@ -10,6 +10,11 @@ for producing proof, theorem, axiom, lemma, definition, criterion, remark, conje
 corollary, algorithm, example, property, observation, proposition, and
 assumption directives.
 
+**Features:**
+- 15 directive types with automatic numbering and cross-referencing
+- Complete internationalization support for 33 languages
+- Customizable styling with multiple theme options
+
 This project is maintained and supported by [najuzilu](https://github.com/najuzilu).
 """
 
