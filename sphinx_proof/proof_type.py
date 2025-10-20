@@ -101,12 +101,6 @@ class NotationDirective(ElementDirective):
     name = "notation"
 
 
-class NotationDirective(ElementDirective):
-    """A custom notation directive."""
-
-    name = "notation"
-
-
 PROOF_TYPES = {
     "axiom": AxiomDirective,
     "theorem": TheoremDirective,
