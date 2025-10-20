@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Assumption"},
     {"language":"Arabic","symbol":"ar","text":"افتراض"},
+    {"language":"Bengali","symbol":"bn","text":"অনুমান"},
     {"language":"Bulgarian","symbol":"bg","text":"Предположение"},
     {"language":"Chinese","symbol":"zh_CN","text":"假设"},
     {"language":"Czech","symbol":"cs","text":"Předpoklad"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Assunzione"},
     {"language":"Japanese","symbol":"ja","text":"仮定"},
     {"language":"Korean","symbol":"ko","text":"가정"},
+    {"language":"Malay","symbol":"ms","text":"Andaian"},
     {"language":"Norwegian","symbol":"no","text":"Antagelse"},
     {"language":"Persian","symbol":"fa","text":"فرض"},
     {"language":"Polish","symbol":"pl","text":"Założenie"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"สมมติฐาน"},
     {"language":"Turkish","symbol":"tr","text":"Varsayım"},
     {"language":"Ukrainian","symbol":"uk","text":"Припущення"},
+    {"language":"Urdu","symbol":"ur","text":"مفروضہ"},
     {"language":"Vietnamese","symbol":"vi","text":"Giả định"}
 ]

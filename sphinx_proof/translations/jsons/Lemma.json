@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Lemma"},
     {"language":"Arabic","symbol":"ar","text":"ليما"},
+    {"language":"Bengali","symbol":"bn","text":"লেমা"},
     {"language":"Bulgarian","symbol":"bg","text":"Лема"},
     {"language":"Chinese","symbol":"zh_CN","text":"引理"},
     {"language":"Czech","symbol":"cs","text":"Lemma"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Lemma"},
     {"language":"Japanese","symbol":"ja","text":"補題"},
     {"language":"Korean","symbol":"ko","text":"보조정리"},
+    {"language":"Malay","symbol":"ms","text":"Lema"},
     {"language":"Norwegian","symbol":"no","text":"Lemma"},
     {"language":"Persian","symbol":"fa","text":"لم"},
     {"language":"Polish","symbol":"pl","text":"Lemat"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"บทแทรก"},
     {"language":"Turkish","symbol":"tr","text":"Lemma"},
     {"language":"Ukrainian","symbol":"uk","text":"Лема"},
+    {"language":"Urdu","symbol":"ur","text":"لیما"},
     {"language":"Vietnamese","symbol":"vi","text":"Bổ đề"}
 ]

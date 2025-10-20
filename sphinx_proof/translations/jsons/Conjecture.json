@@ -1,6 +1,7 @@
 [
     {"language":"English","symbol":"en","text":"Conjecture"},
     {"language":"Arabic","symbol":"ar","text":"تخمين"},
+    {"language":"Bengali","symbol":"bn","text":"অনুমিত সিদ্ধান্ত"},
     {"language":"Bulgarian","symbol":"bg","text":"Предположение"},
     {"language":"Chinese","symbol":"zh_CN","text":"猜想"},
     {"language":"Czech","symbol":"cs","text":"Domněnka"},
@@ -17,6 +18,7 @@
     {"language":"Italian","symbol":"it","text":"Congettura"},
     {"language":"Japanese","symbol":"ja","text":"推測"},
     {"language":"Korean","symbol":"ko","text":"추측"},
+    {"language":"Malay","symbol":"ms","text":"Konjektur"},
     {"language":"Norwegian","symbol":"no","text":"Formodning"},
     {"language":"Persian","symbol":"fa","text":"حدس"},
     {"language":"Polish","symbol":"pl","text":"Przypuszczenie"},
@@ -28,5 +30,6 @@
     {"language":"Thai","symbol":"th","text":"ข้อสันนิษฐาน"},
     {"language":"Turkish","symbol":"tr","text":"Tahmin"},
     {"language":"Ukrainian","symbol":"uk","text":"Гіпотеза"},
+    {"language":"Urdu","symbol":"ur","text":"قیاس"},
     {"language":"Vietnamese","symbol":"vi","text":"Phỏng đoán"}
 ]
