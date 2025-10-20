@@ -15,7 +15,8 @@ assumption directives.
 - Complete internationalization support for 33 languages
 - Customizable styling with multiple theme options
 
-This project is maintained and supported by the [Executable Books team](https://github.com/executablebooks/).
+This project is maintained and supported by the
+[Executable Books team](https://github.com/executablebooks/).
 """
 
 SHORT_DESCRIPTION = "A Sphinx extension for producing proofs, theorems, axioms, etc."
