@@ -45,7 +45,7 @@ class ProofIndex(Index):
             return content, True
 
         proofs = self.domain.env.proof_list
-        # {'theorem-0': {'docname': 'start/overview', 'type': 'theorem', 'ids': ['theorem-0'], 'label': 'theorem-0', 'prio': 0, 'nonumber': False}} # noqa: E501
+        # {'theorem-0': {'docname': 'start/overview', 'realtype': 'theorem', 'countertype': 'theorem', 'ids': ['theorem-0'], 'label': 'theorem-0', 'prio': 0, 'nonumber': False}} # noqa: E501
 
         # name, subtype, docname, typ, anchor, extra, qualifier, description
         for anchor, values in proofs.items():
@@ -57,7 +57,7 @@ class ProofIndex(Index):
                     anchor,
                     values["docname"],
                     "",
-                    values["type"],
+                    values["realtype"],
                 )
             )
 
@@ -157,11 +157,11 @@ class ProofDomain(Domain):
             if target in contnode[0]:
                 number = ""
                 if not env.proof_list[target]["nonumber"]:
-                    typ = env.proof_list[target]["type"]
+                    countertyp = env.proof_list[target]["countertype"]
                     number = ".".join(
-                        map(str, env.toc_fignumbers[todocname][typ][target])
+                        map(str, env.toc_fignumbers[todocname][countertyp][target])
                     )
-                title = nodes.Text(f"{translate(match['type'].title())} {number}")
+                title = nodes.Text(f"{translate(match["realtype"].title())} {number}")
             # builder, fromdocname, todocname, targetid, child, title=None
             return make_refnode(builder, fromdocname, todocname, target, title)
         else:

@@ -81,6 +81,7 @@ def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
 def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("proof_minimal_theme", False, "html")
+    app.add_config_value("proof_uniform_numbering", False, "env")
 
     app.add_css_file("proof.css")
     app.connect("build-finished", copy_asset_files)

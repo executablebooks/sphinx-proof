@@ -56,3 +56,5 @@ proof_minimal_theme = False
 # MyST Parser Configuration
 
 myst_enable_extensions = ["dollarmath", "amsmath"]
+
+proof_uniform_numbering = True
