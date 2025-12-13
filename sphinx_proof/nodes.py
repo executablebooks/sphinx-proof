@@ -60,18 +60,18 @@ def visit_unenumerable_node(self, node: Node) -> None:
 
 
 def depart_unenumerable_node(self, node: Node) -> None:
-    typ = node.attributes.get("type", "")
+    realtyp = node.attributes.get("realtype", "")
     title = node.attributes.get("title", "")
     if isinstance(self, LaTeXTranslator):
         idx = list_rindex(self.body, latex_admonition_start) + 2
-        self.body.insert(idx, f"{typ.title()}")
+        self.body.insert(idx, f"{realtyp.title()}")
         self.body.append(latex_admonition_end)
     else:
         if title == "":
             idx = list_rindex(self.body, '<p class="admonition-title">') + 1
         else:
             idx = list_rindex(self.body, title)
-        element = f"<span>{_(typ.title())} </span>"
+        element = f"<span>{_(realtyp.title())} </span>"
         self.body.insert(idx, element)
         self.body.append("</div>")
 

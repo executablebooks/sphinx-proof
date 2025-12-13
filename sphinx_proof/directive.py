@@ -119,16 +119,16 @@ class ProofDirective(SphinxDirective):
     }
 
     def run(self) -> List[Node]:
-        typ = self.name.split(":")[1]
+        realtyp = self.name.split(":")[1]
 
         # If class in options add to class array
-        classes, class_name = ["proof", typ], self.options.get("class", [])
+        classes, class_name = ["proof", realtyp], self.options.get("class", [])
         if class_name:
             classes.extend(class_name)
 
-        section = nodes.admonition(classes=classes, ids=[typ])
+        section = nodes.admonition(classes=classes, ids=[realtyp])
 
-        self.content[0] = "{}. ".format(typ.title()) + self.content[0]
+        self.content[0] = "{}. ".format(realtyp.title()) + self.content[0]
         self.state.nested_parse(self.content, 0, section)
 
         node = proof_node()
