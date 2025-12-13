@@ -36,13 +36,16 @@ class ElementDirective(SphinxDirective):
 
     def run(self) -> List[Node]:
         env = self.env
-        typ = self.name.split(":")[1]
+        realtyp = self.name.split(":")[1]
+        countertyp = realtyp
+        if env.config.proof_uniform_numbering:
+            countertyp = "theorem"
         serial_no = env.new_serialno()
         if not hasattr(env, "proof_list"):
             env.proof_list = {}
 
         # If class in options add to class array
-        classes, class_name = ["proof", typ], self.options.get("class", [])
+        classes, class_name = ["proof", realtyp], self.options.get("class", [])
         if class_name:
             classes.extend(class_name)
 
@@ -53,15 +56,15 @@ class ElementDirective(SphinxDirective):
             node_id = f"{label}"
         else:
             self.options["noindex"] = True
-            label = f"{typ}-{serial_no}"
-            node_id = f"{typ}-{serial_no}"
+            label = f"{realtyp}-{serial_no}"
+            node_id = f"{realtyp}-{serial_no}"
         ids = [node_id]
 
         # Duplicate label warning
         if not label == "" and label in env.proof_list.keys():
             path = env.doc2path(env.docname)[:-3]
             other_path = env.doc2path(env.proof_list[label]["docname"])
-            msg = f"duplicate {typ} label '{label}', other instance in {other_path}"
+            msg = f"duplicate {realtyp} label '{label}', other instance in {other_path}"
             logger.warning(msg, location=path, color="red")
 
         title_text = ""
@@ -70,13 +73,13 @@ class ElementDirective(SphinxDirective):
 
         textnodes, messages = self.state.inline_text(title_text, self.lineno)
 
-        section = nodes.section(classes=[f"{typ}-content"], ids=["proof-content"])
+        section = nodes.section(classes=[f"{realtyp}-content"], ids=["proof-content"])
         self.state.nested_parse(self.content, self.content_offset, section)
 
         if "nonumber" in self.options:
             node = unenumerable_node()
         else:
-            node_type = NODE_TYPES[typ]
+            node_type = NODE_TYPES[countertyp]
             node = node_type()
 
         node.document = self.state.document
@@ -88,17 +91,18 @@ class ElementDirective(SphinxDirective):
         node["classes"].extend(classes)
         node["title"] = title_text
         node["label"] = label
-        node["type"] = typ
+        node["countertype"] = countertyp
+        node["realtype"] = realtyp
 
         env.proof_list[label] = {
             "docname": env.docname,
-            "type": typ,
+            "countertype": countertyp,
+            "realtype" : realtyp,
             "ids": ids,
             "label": label,
             "prio": 0,
             "nonumber": True if "nonumber" in self.options else False,
         }
-
         return [node]
 
 
