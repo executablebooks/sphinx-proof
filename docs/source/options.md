@@ -32,7 +32,7 @@ sphinx:
 Add `proof_minimal_theme = True` to your `conf.py`
 
 
-## Shared numbering 
+## Shared numbering
 
 By default, each type of theorem has their own numbering and counter.
 This can be changed to a common counter by setting the option `proof_uniform_numbering` to true.
