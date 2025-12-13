@@ -162,7 +162,7 @@ class ProofDomain(Domain):
                         map(str, env.toc_fignumbers[todocname][countertyp][target])
                     )
                 title = nodes.Text(
-                    f"{translate(match['countertype'].title())} {number}"
+                    f"{translate(match["realtype"].title())} {number}"
                 )
             # builder, fromdocname, todocname, targetid, child, title=None
             return make_refnode(builder, fromdocname, todocname, target, title)
