@@ -97,7 +97,7 @@ class ElementDirective(SphinxDirective):
         env.proof_list[label] = {
             "docname": env.docname,
             "countertype": countertyp,
-            "realtype" : realtyp,
+            "realtype": realtyp,
             "ids": ids,
             "label": label,
             "prio": 0,

@@ -15,6 +15,7 @@ from sphinx.locale import get_translation
 
 
 from sphinx.util import logging
+
 logger = logging.getLogger(__name__)
 
 MESSAGE_CATALOG_NAME = "proof"
@@ -36,7 +37,7 @@ def visit_enumerable_node(self, node: Node) -> None:
 
 def depart_enumerable_node(self, node: Node) -> None:
     countertyp = node.attributes.get("countertype", "")
-    realtyp= node.attributes.get("realtype", "")
+    realtyp = node.attributes.get("realtype", "")
     if isinstance(self, LaTeXTranslator):
         number = get_node_number(self, node, countertyp)
         idx = list_rindex(self.body, latex_admonition_start) + 2
