@@ -23,6 +23,15 @@ div.proof p.admonition-title::before {
 	content: none;
 }
 
+/* Set font weights */
+div.proof > p.admonition-title {
+    font-weight: var(--pst-admonition-font-weight-heading) !important;
+}
+
+div.proof > p.admonition-title > span.caption-number {
+    font-weight: var(--pst-admonition-font-weight-heading) !important;
+}
+
 /*********************************************
 * Proof *
 *********************************************/
