@@ -1,7 +1,7 @@
 import shutil
 import pytest
 
-from sphinx.testing.path import path
+from os import path
 
 pytest_plugins = "sphinx.testing.fixtures"
 
