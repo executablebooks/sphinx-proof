@@ -33,11 +33,32 @@ Add `proof_minimal_theme = True` to your `conf.py`
 
 ## Title format
 
-By default, the directive titles are formatted as `Name x.y.z (Title)`, where `Name` is the name of the directive (e.g., Proof, Theorem, Definition), `x.y.z` is the numbering of the directive, and `Title` is the optional title provided by the user. If no title is provided, only `Name x.y.z` is displayed. The font weight of the title is set to `--pst-admonition-font-weight-heading` by default, which commonly results in a semi-bold appearance.
+By default, the directive titles are formatted as `Name x.y.z (Title)`, where `Name` is the name of the directive (e.g., Proof, Theorem, Definition), `x.y.z` is the numbering of the directive, and `Title` is the optional title provided by the user.
 
-You can customize the title format using the `proof_title_format` option. This option allows you to define how the title should be displayed by using `%t` as a placeholder for the user-provided title. The default format is ` (%t)`. A value of an empty string will result in no title being displayed, while ` *%t*` will italicize the title and contain no brackets. Note that the initial part of the title (i.e., `Name x.y.z`) is not customizable and will always be displayed.
+If no title is provided, only `Name x.y.z` is displayed.
 
-The font weight of the title can be adjusted using `proof_number_weight` and the `proof_title_weight` options. Any valid CSS font-weight value can be used, such as `normal`, `bold`, `bolder`, `lighter`, or numeric values like `400`, `700`, etc. The option `proof_number_weight` controls the weight of the initial part of the title (i.e., `Name x.y.z`), while `proof_title_weight` controls the weight of the user-provided title. Default value for both options is `--pst-admonition-font-weight-heading`.
+The font weight of the entire title (`Name x.y.z (Title)` or `Name x.y.z`) is set to `--pst-admonition-font-weight-heading` by default, which commonly results in a semi-bold appearance.
+
+In the reminder we call the part `Name x.y.z` the "number" and the part `(Title)` the "title".
+
+You can customize the title format using the `proof_title_format` option:
+
+- This option allows you to define how the title should be displayed by using `%t` as a placeholder for the user-provided title.
+- The default format is ` (%t)`.
+- A value of an empty string will result in no title being displayed.
+- A `markdown` string can be used to format the title.
+  - For example, ` *%t*` will emphasize the title and contain no brackets.
+  
+Note that the initial part of the title (i.e., `Name x.y.z`) is not customizable and will always be displayed.
+
+The font weight of the title can be adjusted using the `proof_title_weight` option:
+
+- Any valid CSS font-weight value can be used, such as `normal`, `bold`, `bolder`, `lighter`, or numeric values like `400`, `700`, etc.
+- Default value is `var(--pst-admonition-font-weight-heading)`.
+
+The font weight of the number can be adjusted using the `proof_number_weight` option:
+- Any valid CSS font-weight value can be used, such as `normal`, `bold`, `bolder`, `lighter`, or numeric values like `400`, `700`, etc.
+- Default value is `var(--pst-admonition-font-weight-heading)`.
 
 ### Jupyter Book Project
 
