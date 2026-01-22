@@ -48,7 +48,7 @@ You can customize the title format using the `proof_title_format` option:
 - A value of an empty string will result in no title being displayed.
 - A `markdown` string can be used to format the title.
   - For example, ` *%t*` will emphasize the title and contain no brackets.
-  
+
 Note that the initial part of the title (i.e., `Name x.y.z`) is not customizable and will always be displayed.
 
 The font weight of the title can be adjusted using the `proof_title_weight` option:
