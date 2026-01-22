@@ -87,12 +87,12 @@ def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
                 if app.config.proof_number_weight:
                     css_content = css_content.replace(
                         "div.proof > p.admonition-title > span.caption-number {\n    font-weight: var(--pst-admonition-font-weight-heading);\n}",  # noqa: E501
-                        f"div.proof > p.admonition-title > span.caption-number {{\n    font-weight: {app.config.proof_number_weight} !important;\n}}",  # noqa: E501
+                        f"div.proof > p.admonition-title > span.caption-number {{\n    font-weight: {app.config.proof_number_weight};\n}}",  # noqa: E501
                     )
                 if app.config.proof_title_weight:
                     css_content = css_content.replace(
                         "div.proof > p.admonition-title {\n    font-weight: var(--pst-admonition-font-weight-heading);\n}",  # noqa: E501
-                        f"div.proof > p.admonition-title {{\n    font-weight: {app.config.proof_title_weight} !important;\n}}",  # noqa: E501
+                        f"div.proof > p.admonition-title {{\n    font-weight: {app.config.proof_title_weight};\n}}",  # noqa: E501
                     )
                 out_path = Path(app.outdir).joinpath("_static", os.path.basename(path))
                 with open(out_path, "w", encoding="utf-8") as f:
