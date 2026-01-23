@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Options for customizing proof directive title format.
+
 ## v0.3.0 (2025-10-20)
 
 ### NEW ✨

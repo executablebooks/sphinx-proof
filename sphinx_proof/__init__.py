@@ -76,11 +76,35 @@ def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
     if exc is None:
         for path in asset_files:
             copy_asset(path, str(Path(app.outdir).joinpath("_static").absolute()))
+            # if needed, load css to memory,
+            # adjust font-weight according to user's setting in config
+            # and write to output static file
+            if app.config.proof_number_weight or app.config.proof_title_weight:
+                # only if at least one of the two options is set
+                path = str(Path(app.outdir).joinpath("_static", "proof.css").absolute())
+                with open(path, "r", encoding="utf-8") as f:
+                    css_content = f.read()
+                if app.config.proof_number_weight:
+                    css_content = css_content.replace(
+                        "div.proof > p.admonition-title > span.caption-number {\n    font-weight: var(--pst-admonition-font-weight-heading);\n}",  # noqa: E501
+                        f"div.proof > p.admonition-title > span.caption-number {{\n    font-weight: {app.config.proof_number_weight};\n}}",  # noqa: E501
+                    )
+                if app.config.proof_title_weight:
+                    css_content = css_content.replace(
+                        "div.proof > p.admonition-title {\n    font-weight: var(--pst-admonition-font-weight-heading);\n}",  # noqa: E501
+                        f"div.proof > p.admonition-title {{\n    font-weight: {app.config.proof_title_weight};\n}}",  # noqa: E501
+                    )
+                out_path = Path(app.outdir).joinpath("_static", os.path.basename(path))
+                with open(out_path, "w", encoding="utf-8") as f:
+                    f.write(css_content)
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_config_value("proof_minimal_theme", False, "html")
+    app.add_config_value("proof_title_format", " (%t)", "html")
+    app.add_config_value("proof_number_weight", "", "env")
+    app.add_config_value("proof_title_weight", "", "env")
 
     app.add_css_file("proof.css")
     app.connect("build-finished", copy_asset_files)

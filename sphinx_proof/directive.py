@@ -66,7 +66,9 @@ class ElementDirective(SphinxDirective):
 
         title_text = ""
         if self.arguments != []:
-            title_text += f" ({self.arguments[0]})"
+            title_format = self.config.proof_title_format
+            title_text += title_format.replace("%t", self.arguments[0])
+            # title_text += f" ({self.arguments[0]})"
 
         textnodes, messages = self.state.inline_text(title_text, self.lineno)
 
