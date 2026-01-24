@@ -118,21 +118,3 @@ PROOF_TYPES = {
     "assumption": AssumptionDirective,
     "notation": NotationDirective,
 }
-
-DEFAULT_REALTYP_TO_COUNTERTYP = {
-    "axiom": "axiom",
-    "theorem": "theorem",
-    "lemma": "lemma",
-    "algorithm": "algorithm",
-    "definition": "definition",
-    "remark": "remark",
-    "conjecture": "conjecture",
-    "corollary": "corollary",
-    "criterion": "criterion",
-    "example": "example",
-    "property": "property",
-    "observation": "observation",
-    "proposition": "proposition",
-    "assumption": "assumption",
-    "notation": "notation",
-}
