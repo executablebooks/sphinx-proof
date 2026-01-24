@@ -56,3 +56,5 @@ proof_minimal_theme = False
 # MyST Parser Configuration
 
 myst_enable_extensions = ["dollarmath", "amsmath"]
+
+prf_realtyp_to_countertyp = {}
