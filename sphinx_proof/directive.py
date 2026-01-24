@@ -16,27 +16,13 @@ from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
 from .nodes import unenumerable_node, NODE_TYPES
 from .nodes import proof_node
+from .proof_type import PROOF_TYPES
 
 logger = logging.getLogger(__name__)
 
-
-DEFAULT_REALTYP_TO_COUNTERTYP = {
-    "axiom": "axiom",
-    "theorem": "theorem",
-    "lemma": "lemma",
-    "algorithm": "algorithm",
-    "definition": "definition",
-    "remark": "remark",
-    "conjecture": "conjecture",
-    "corollary": "corollary",
-    "criterion": "criterion",
-    "example": "example",
-    "property": "property",
-    "observation": "observation",
-    "proposition": "proposition",
-    "assumption": "assumption",
-    "notation": "notation",
-}
+DEFAULT_REALTYP_TO_COUNTERTYP = {}
+for proof_type in PROOF_TYPES:
+    DEFAULT_REALTYP_TO_COUNTERTYP[proof_type] = proof_type
 
 
 class ElementDirective(SphinxDirective):
