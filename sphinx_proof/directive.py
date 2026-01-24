@@ -16,13 +16,9 @@ from docutils.parsers.rst import directives
 from sphinx.util.docutils import SphinxDirective
 from .nodes import unenumerable_node, NODE_TYPES
 from .nodes import proof_node
-from .proof_type import PROOF_TYPES
+from .proof_type import DEFAULT_REALTYP_TO_COUNTERTYP
 
 logger = logging.getLogger(__name__)
-
-DEFAULT_REALTYP_TO_COUNTERTYP = {}
-for proof_type in PROOF_TYPES:
-    DEFAULT_REALTYP_TO_COUNTERTYP[proof_type] = proof_type
 
 
 class ElementDirective(SphinxDirective):

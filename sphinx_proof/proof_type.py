@@ -118,3 +118,7 @@ PROOF_TYPES = {
     "assumption": AssumptionDirective,
     "notation": NotationDirective,
 }
+
+DEFAULT_REALTYP_TO_COUNTERTYP = {}
+for proof_type in PROOF_TYPES:
+    DEFAULT_REALTYP_TO_COUNTERTYP[proof_type] = proof_type
