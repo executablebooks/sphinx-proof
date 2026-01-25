@@ -4,7 +4,13 @@
 
 ### Added
 
-- Options for customizing proof directive title format.
+- Options for customizing proof directive title format. [#163](https://github.com/executablebooks/sphinx-proof/pull/163)
+- Possibility for shared numbering of groups of directives, fixing [\#64](https://github.com/executablebooks/sphinx-proof/issues/64). [\#https://github.com/executablebooks/sphinx-proof/pull/161](https://github.com/executablebooks/sphinx-proof/pull/161)
+
+### Fixed
+
+- Inconsistencies and missing colors within CSS styles. [b337c21](https://github.com/executablebooks/sphinx-proof/commit/b337c21675464224a4418beb9e70d3b6dc8e4127)
+- Missing documentation for notation directive. [6f33744](https://github.com/executablebooks/sphinx-proof/commit/6f33744544b7596a30beba5b8807491d642b77a7) and [b15c7c0](https://github.com/executablebooks/sphinx-proof/commit/b15c7c09adefe85e0fdb8dea6dc460bd0f51fb1f)
 
 ## v0.3.0 (2025-10-20)
 
