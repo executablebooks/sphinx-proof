@@ -22,7 +22,7 @@ for producing [proof](syntax:proof), [theorem](syntax:theorem), [axiom](syntax:a
 [definition](syntax:definition), [criterion](syntax:criterion), [remark](syntax:remark),
 [conjecture](syntax:conjecture),[corollary](syntax:corollary), [algorithm](syntax:algorithm),
 [example](syntax:example), [property](syntax:property), [observation](syntax:observation),
-[proposition](syntax:proposition) and [assumption](syntax:assumption) directives.
+[proposition](syntax:proposition), [assumption](syntax:assumption) and [notation](syntax:notation) directives.
 
 **Features**:
 
