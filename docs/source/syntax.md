@@ -749,6 +749,43 @@ This is a dummy assumption directive.
 
 You can refer to an assumption using the `{prf:ref}` role like: ```{prf:ref}`my-assumption` ```, which will replace the reference with the assumption number like so: {prf:ref}`my-assumption`. When an explicit text is provided, this caption will serve as the title of the reference.
 
+(syntax:notation)=
+### Notations
+
+A notation directive can be included using the `prf:notation` pattern. The directive is enumerated by default and can take in an optional title argument. The following options are also supported:
+
+* `label` : text
+
+	A unique identifier for your notation that you can use to reference it with `{prf:ref}`. Cannot contain spaces or special characters.
+* `class` : text
+
+	Value of the notation’s class attribute which can be used to add custom CSS or JavaScript.
+* `nonumber` : flag (empty)
+
+	Turns off notation auto numbering.
+
+**Example**
+
+```{prf:notation}
+:label: my-notation
+
+This is a dummy notation directive.
+```
+
+**MyST Syntax**
+
+``````md
+```{prf:notation}
+:label: my-notation
+
+This is a dummy notation directive.
+```
+``````
+
+#### Referencing Notations
+
+You can refer to a notation using the `{prf:ref}` role like: ```{prf:ref}`my-notation` ```, which will replace the reference with the notation number like so: {prf:ref}`my-notation`. When an explicit text is provided, this caption will serve as the title of the reference.
+
 ## How to Hide Content
 
 Directive content can be hidden using the `dropdown` class which is available through [sphinx-togglebutton](https://sphinx-togglebutton.readthedocs.io/en/latest/). If your project utilizes the [MyST-NB](https://myst-nb.readthedocs.io/en/latest/) extension, there is no need to activate `sphinx-togglebutton` since it is already bundled with `MyST-NB`.
