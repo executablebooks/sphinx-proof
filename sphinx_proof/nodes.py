@@ -69,7 +69,22 @@ def depart_unenumerable_node(self, node: Node) -> None:
         self.body.append(latex_admonition_end)
     else:
         if title == "":
-            idx = list_rindex(self.body, '<p class="admonition-title">') + 1
+            # because of nesting, first find out the correct occurrence
+            logger.info("Departing unenumerable node with empty title", color="blue")
+            logger.info(f"Node: {node.pformat()}", color="green")
+            closer_found = False
+            skip = 0
+            while not closer_found:
+                idx = list_rindex(self.body, '<p class="admonition-title">', skip) + 1
+                closer = self.body[idx]
+                logger.info(f"Closer found: {closer}", color="yellow")
+                if "</p>" in closer:
+                    closer_found = True
+                else:
+                    skip += 1
+            # Here the issue is generated
+            # a closing </p> should be found.
+
         else:
             idx = list_rindex(self.body, title)
         element = f"<span>{_(realtyp.title())} </span>"
@@ -122,11 +137,15 @@ def find_parent(env, node, parent_tag):
     return None
 
 
-def list_rindex(li, x) -> int:
-    """Getting the last occurence of an item in a list."""
+def list_rindex(li, x, skip=0) -> int:
+    """Getting the last occurrence of an item in a list."""
+    """Skipping the first skip occurrences from the end."""
     for i in reversed(range(len(li))):
         if li[i] == x:
-            return i
+            if skip == 0:
+                return i
+            else:
+                skip -= 1
     raise ValueError("{} is not in list".format(x))
 
 
