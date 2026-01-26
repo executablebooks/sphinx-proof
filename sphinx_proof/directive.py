@@ -104,7 +104,12 @@ class ElementDirective(SphinxDirective):
             node = node_type()
 
         node.document = self.state.document
-        node += nodes.title(title_text, "", *textnodes)
+        node_title = nodes.title(title_text, "", *textnodes)
+        if "nonumber" in self.options:
+            # add ids to the title node for nonumber
+            # nodes for later searching
+            node_title["ids"].extend(ids)
+        node += node_title
         node += section
 
         # Set node attributes

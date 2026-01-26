@@ -62,32 +62,16 @@ def visit_unenumerable_node(self, node: Node) -> None:
 
 def depart_unenumerable_node(self, node: Node) -> None:
     realtyp = node.attributes.get("realtype", "")
-    title = node.attributes.get("title", "")
+    id = node.attributes.get("ids", [""])[0]
     if isinstance(self, LaTeXTranslator):
         idx = list_rindex(self.body, latex_admonition_start) + 2
         self.body.insert(idx, f"{realtyp.title()}")
         self.body.append(latex_admonition_end)
     else:
-        if title == "":
-            # because of nesting, first find out the correct occurrence
-            logger.info("Departing unenumerable node with empty title", color="blue")
-            logger.info(f"Node: {node.pformat()}", color="green")
-            closer_found = False
-            skip = 0
-            while not closer_found:
-                idx = list_rindex(self.body, '<p class="admonition-title">', skip) + 1
-                closer = self.body[idx]
-                logger.info(f"Closer found: {closer}", color="yellow")
-                if "</p>" in closer:
-                    closer_found = True
-                else:
-                    skip += 1
-            # Here the issue is generated
-            # a closing </p> should be found.
-
-        else:
-            idx = list_rindex(self.body, title)
-        element = f"<span>{_(realtyp.title())} </span>"
+        # use the id to find the correct title location
+        search_str = f'<p class="admonition-title" id="{id}">'
+        idx = list_rindex(self.body, search_str) + 1
+        element = f'<span class="caption-number">{_(realtyp.title())} </span>'
         self.body.insert(idx, element)
         self.body.append("</div>")
 
