@@ -53,6 +53,20 @@ def test_duplicate_label(app, warnings):
     assert "WARNING: duplicate algorithm label" in warnings(app)
 
 
+@pytest.mark.sphinx("html", testroot="unlabeled-multidoc")
+def test_unlabeled_examples_across_documents(app, warnings):
+    """Unlabeled examples in different files must not share a label."""
+    app.build()
+    examples = {
+        label: info
+        for label, info in app.env.proof_list.items()
+        if info["realtype"] == "example"
+    }
+    assert len(examples) == 2
+    assert {info["docname"] for info in examples.values()} == {"foo", "bar"}
+    assert "duplicate example label" not in warnings(app)
+
+
 # Tests for Proofs
 @pytest.mark.sphinx("html", testroot="mybook")
 @pytest.mark.parametrize(
