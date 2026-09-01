@@ -75,8 +75,11 @@ class ElementDirective(SphinxDirective):
             node_id = f"{label}"
         else:
             self.options["noindex"] = True
-            label = f"{realtyp}-{serial_no}"
-            node_id = f"{realtyp}-{serial_no}"
+            # new_serialno() is unique per document only; include docname
+            # so unlabeled directives do not collide across files.
+            doc_id = env.docname.replace("/", "-")
+            label = f"{doc_id}-{realtyp}-{serial_no}"
+            node_id = label
         ids = [node_id]
 
         # Duplicate label warning
