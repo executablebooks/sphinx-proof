@@ -5,6 +5,7 @@ sphinx_proof
 
 A Sphinx extension for producing proofs, theorems, lemmas, etc.
 """
+
 import os
 from pathlib import Path
 from typing import Any, Dict, Set, Union
