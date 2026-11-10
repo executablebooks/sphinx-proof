@@ -26,11 +26,23 @@ latex_admonition_start = CR + "\\begin{sphinxadmonition}{note}"
 latex_admonition_end = "\\end{sphinxadmonition}" + CR
 
 
+def visit_latex_admonition(self) -> None:
+    self.body.append(latex_admonition_start)
+    # Write figures inside the box as [H] rather than floats, which LaTeX
+    # rejects there, as Sphinx does for its own admonitions
+    self.no_latex_floats += 1
+
+
+def depart_latex_admonition(self) -> None:
+    self.body.append(latex_admonition_end)
+    self.no_latex_floats -= 1
+
+
 def visit_enumerable_node(self, node: Node) -> None:
     if isinstance(self, LaTeXTranslator):
         docname = find_parent(self.builder.env, node, "section")
         self.body.append("\\label{" + f"{docname}:{node.attributes['label']}" + "}")
-        self.body.append(latex_admonition_start)
+        visit_latex_admonition(self)
     else:
         self.body.append(self.starttag(node, "div", CLASS="admonition"))
 
@@ -42,7 +54,7 @@ def depart_enumerable_node(self, node: Node) -> None:
         number = get_node_number(self, node, countertyp)
         idx = list_rindex(self.body, latex_admonition_start) + 2
         self.body.insert(idx, f"{realtyp.title()} {number}")
-        self.body.append(latex_admonition_end)
+        depart_latex_admonition(self)
     else:
         # Find index in list of 'Proof #'
         number = get_node_number(self, node, countertyp)
@@ -55,7 +67,7 @@ def visit_unenumerable_node(self, node: Node) -> None:
     if isinstance(self, LaTeXTranslator):
         docname = find_parent(self.builder.env, node, "section")
         self.body.append("\\label{" + f"{docname}:{node.attributes['label']}" + "}")
-        self.body.append(latex_admonition_start)
+        visit_latex_admonition(self)
     else:
         self.body.append(self.starttag(node, "div", CLASS="admonition"))
 
@@ -66,7 +78,7 @@ def depart_unenumerable_node(self, node: Node) -> None:
     if isinstance(self, LaTeXTranslator):
         idx = list_rindex(self.body, latex_admonition_start) + 2
         self.body.insert(idx, f"{realtyp.title()}")
-        self.body.append(latex_admonition_end)
+        depart_latex_admonition(self)
     else:
         # use the id to find the correct title location
         search_str = f'<p class="admonition-title" id="{id}">'
