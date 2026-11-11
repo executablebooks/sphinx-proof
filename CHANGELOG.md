@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- Captioned figures inside `prf:` directive boxes breaking the LaTeX/PDF build with `LaTeX Error: Not in outer par mode`, fixing [\#169](https://github.com/executablebooks/sphinx-proof/issues/169).
+  - Figures inside every `prf:` box, numbered or `:nonumber:`, are now written as `\begin{figure}[H]` so they stay in place, as Sphinx already does for figures inside its own admonitions
+  - HTML output is unchanged
+
 ## v0.4.0 (2026-01-27)
 
 ### Added
