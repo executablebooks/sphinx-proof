@@ -26,7 +26,8 @@ LATEX_FIGURE_NAME = re.compile(r"\\label\{\\detokenize\{[^:}]*:(?P<name>[^}]+)\}
 def latex_figures(tex):
     """Map each figure's name to (figure placement, sphinxadmonition depth).
 
-    A figure without a name is collected under None.
+    A figure without a name is collected under None. A name seen twice
+    fails, so no figure can drop out of the comparison unnoticed.
     """
     figures = {}
     for figure in LATEX_FIGURE.finditer(tex):
@@ -35,7 +36,9 @@ def latex_figures(tex):
             r"\end{sphinxadmonition}"
         )
         name = LATEX_FIGURE_NAME.search(figure["body"])
-        figures[name["name"] if name else None] = (figure["align"], depth)
+        key = name["name"] if name else None
+        assert key not in figures, f"two figures share the name {key!r}"
+        figures[key] = (figure["align"], depth)
     return figures
 
 
